@@ -1,0 +1,11 @@
+History.txt
+Manifest.txt
+README.txt
+TODO.txt
+Rakefile
+lib/cssfilter.rb
+lib/htmlfilter.rb
+lib/htmlfilter/multiton.rb
+test/test_htmlfilter.rb
+test/test_cssfilter.rb
+

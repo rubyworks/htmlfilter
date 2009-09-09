@@ -1,0 +1,53 @@
+= HtmlFilter
+
+* http://death.rubyforge.org
+
+== DESCRIPTION:
+
+HTML Filter library can be used to sanitize and sterilize
+HTML. A good idea if you let users submit HTML in comments,
+for instance. 
+
+This library also include CssFilter. The CssFilter class will
+clean-up a cascading style sheet. It can be used to remove
+whitespace and most importantly remove urls.
+
+== FEATURES/PROBLEMS:
+
+* Santize HTML
+* Compress CSS
+
+== SYNOPSIS:
+
+Via the class.
+
+  html = "<<b>hello</b>"
+
+  HtmlFilter.new(options).filter(html)
+
+Or using the String extension.
+
+  html.html_filter  #=> "<b>hello</b>"
+
+See RDocs for more information.
+
+== REQUIREMENTS:
+
+* Uses a copy of multiton.rb (included)
+
+== INSTALL:
+
+* sudo gem install htmlfilter
+
+== LICENSE:
+
+(Creative Commons Attribution-ShareAlike License)
+
+Copyright (c) 2009 Death_of_a_Programmer
+
+See http://creativecommons.org/licenses/by-sa/3.0/deed.en
+
+HtmlFilter is a port of lib_filter.php, v1.15 by Cal Henderson <cal@iamcal.com>.
+This code is licensed under a Creative Commons Attribution-ShareAlike 2.5 License.
+See http://creativecommons.org/licenses/by-sa/2.5/.
+
