@@ -2,4 +2,6 @@
 
 * Maybe write executable(s) to use library via commandline.
 * Elaborate on Features list in README.txt.
+* Rename class to HTMLFilter (instead of HtmlFilter)
+
 
