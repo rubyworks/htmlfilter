@@ -1,6 +1,6 @@
 = HtmlFilter
 
-* http://death.rubyforge.org
+* http://rubyworks.github.com/htmlfilter
 
 == DESCRIPTION:
 

@@ -1,3 +1,4 @@
+#!mast bin lib meta test [A-Z]*
 History.txt
 Manifest.txt
 README.txt
