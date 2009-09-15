@@ -12,7 +12,7 @@ This library also include CssFilter. The CssFilter class will
 clean-up a cascading style sheet. It can be used to remove
 whitespace and most importantly remove urls.
 
-== FEATURES/PROBLEMS:
+== FEATURES:
 
 * Santize HTML
 * Compress CSS
@@ -43,7 +43,7 @@ See RDocs for more information.
 
 (Creative Commons Attribution-ShareAlike License)
 
-Copyright (c) 2009 Death_of_a_Programmer
+Copyright (c) 2009 Thomas Sawyer
 
 See http://creativecommons.org/licenses/by-sa/3.0/deed.en
 
