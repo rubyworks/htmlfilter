@@ -1,0 +1,8 @@
+---
+vclog:
+  service  : VClog
+  active   : false
+  layout   : rel    # gnu
+  typed    : false
+  output   : ~
+

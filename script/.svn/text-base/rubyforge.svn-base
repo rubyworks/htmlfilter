@@ -1,0 +1,10 @@
+---
+rubyforge:
+  service : Rubyforge
+  unixname: death
+  groupid : ~
+  package : <%= name %>
+  sitemap:
+    doc/rdoc: <%= name %>
+  active  : true
+

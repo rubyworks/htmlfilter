@@ -1,0 +1,8 @@
+---
+zip:
+  service: Zip
+  include: ~
+  exclude: ~
+  ignore : ~
+  active : false
+

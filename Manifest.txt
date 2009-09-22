@@ -1,12 +1,19 @@
 #!mast bin lib meta test [A-Z]*
-History.txt
-Manifest.txt
-README.txt
-TODO.txt
-Rakefile
+lib
 lib/cssfilter.rb
-lib/htmlfilter.rb
+lib/htmlfilter
 lib/htmlfilter/multiton.rb
-test/test_htmlfilter.rb
+lib/htmlfilter.rb
+meta
+meta/package
+meta/project
+meta/title
+meta/version
+test
 test/test_cssfilter.rb
-
+test/test_htmlfilter.rb
+Rakefile
+Manifest.txt
+TODO
+README.rdoc
+History.rdoc
