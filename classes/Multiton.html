@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang='en'>
+  <head>
+    <title>: Multiton [HTMLFilter]</title>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+    <link href='../rdoc-style.css' media='screen' rel='stylesheet' type='text/css'>
+    <script type='text/javascript'>
+      //<![CDATA[
+        function popupCode(url) {
+          window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+        }
+        
+        function toggleCode(id) {
+          var code = document.getElementById(id)
+        
+          code.style.display = code.style.display != 'block' ? 'block' : 'none'
+          return true
+        }
+        
+        // Make codeblocks hidden by default
+        document.writeln('<' + 'style type="text/css">.method .source pre { display: none }<\/style>')
+      //]]>
+    </script>
+  </head>
+  <body class='page'>
+    <div class='class' id='wrapper'>
+      <div class='header'>
+        <div class='name'>
+          <span class='type'>Module</span>
+          Multiton
+        </div>
+        <ol class='paths'>
+          <li>
+            <a href="../files/lib/htmlfilter/multiton_rb.html">lib/htmlfilter/multiton.rb</a>
+          </li>
+        </ol>
+      </div>
+      <div id='content'>
+        <div id='text'>
+          <div id='description'>
+            <h1><a href="Multiton.html">Multiton</a></h1>
+            <p>
+            <a href="Multiton.html">Multiton</a> design pattern ensures only one object
+            is allocated for a given state.
+            </p>
+            <p>
+            The &#8216;multiton&#8217; pattern is similar to a singleton, but instead
+            of only one instance, there are several similar instances. It is useful
+            when you want to avoid constructing objects many times because of some huge
+            expense (connecting to a database for example), require a set of similar
+            but not identical objects, and cannot easily control how many times a
+            contructor may be called.
+            </p>
+            <pre>class SomeMultitonClass&#x000A;  include Multiton&#x000A;  attr :arg&#x000A;  def initialize(arg)&#x000A;    @arg = arg&#x000A;  end&#x000A;end&#x000A;&#x000A;a = SomeMultitonClass.new(4)&#x000A;b = SomeMultitonClass.new(4)   # a and b are same object&#x000A;c = SomeMultitonClass.new(2)   # c is a different object</pre>
+            <h2>How It Works</h2>
+            <p>
+            A pool of objects is searched for a previously cached object, if one is not
+            found we construct one and cache it in the pool based on class and the args
+            given to the contructor.
+            </p>
+            <p>
+            A limitation of this approach is that it is impossible to detect if
+            different blocks were given to a contructor (if it takes a block). So it is
+            the constructor arguments <em>only</em> which determine the uniqueness of
+            an object. To workaround this, define the <em>class</em> method
+            ::multiton_id.
+            </p>
+            <pre>def Klass.multiton_id(*args, &amp;block)&#x000A;  # ...&#x000A;end</pre>
+            <p>
+            Which should return a hash key used to identify the object being
+            constructed as (not) unique.
+            </p>
+          </div>
+          <div id='method-list'>
+            <h2>Methods</h2>
+            <h3>public instance</h3>
+            <ol>
+              <li><a href="#M000017">clone</a></li>
+              <li><a href="#M000018">dup</a></li>
+            </ol>
+            <h3>protected instance</h3>
+            <ol>
+              <li><a href="#M000019">_dump</a></li>
+            </ol>
+          </div>
+          <div id='section'>
+            <div id='class-list'>
+              <h2>Classes and Modules</h2>
+              Module <a href="Multiton/Inclusive.html" class="link">Multiton::Inclusive</a><br />
+              Module <a href="Multiton/MetaMethods.html" class="link">Multiton::MetaMethods</a><br />
+            </div>
+            <div id='methods'>
+              <h2>Public instance methods</h2>
+              <div class='public-instance method' id='method-M000017'>
+                <a name='M000017'>      </a>
+                <div class='synopsis'>
+                  <span class='name'>clone</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  disable build-in copying methods
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000017-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000017-source'><span class="ruby-comment cmt"># File lib/htmlfilter/multiton.rb, line 135</span>&#x000A;  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clone</span>&#x000A;    <span class="ruby-identifier">raise</span> <span class="ruby-constant">TypeError</span>, <span class="ruby-node">&quot;can't clone Multiton #{self}&quot;</span>&#x000A;    <span class="ruby-comment cmt">#self</span>&#x000A;  <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='public-instance method' id='method-M000018'>
+                <a name='M000018'>      </a>
+                <div class='synopsis'>
+                  <span class='name'>dup</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000018-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000018-source'><span class="ruby-comment cmt"># File lib/htmlfilter/multiton.rb, line 140</span>&#x000A;  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dup</span>&#x000A;    <span class="ruby-identifier">raise</span> <span class="ruby-constant">TypeError</span>, <span class="ruby-node">&quot;can't dup Multiton #{self}&quot;</span>&#x000A;    <span class="ruby-comment cmt">#self</span>&#x000A;  <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <h2>Protected instance methods</h2>
+              <div class='protected-instance method' id='method-M000019'>
+                <a name='M000019'>      </a>
+                <div class='synopsis'>
+                  <span class='name'>_dump</span>
+                  <span class='arguments'>(depth=-1)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  default marshalling strategy
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000019-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000019-source'><span class="ruby-comment cmt"># File lib/htmlfilter/multiton.rb, line 149</span>&#x000A;  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">_dump</span>(<span class="ruby-identifier">depth</span>=<span class="ruby-value">-1</span>)&#x000A;    <span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-ivar">@multiton_initializer</span>)&#x000A;  <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id='footer-push'></div>
+    </div>
+    <div id='footer'>
+      <a href="http://github.com/mislav/hanna/tree/master"><strong>Hanna</strong> RDoc template</a>
+    </div>
+  </body>
+</html>

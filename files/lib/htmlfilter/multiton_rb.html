@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang='en'>
+  <head>
+    <title>File: multiton.rb [HTMLFilter]</title>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+    <link href='../../../rdoc-style.css' media='screen' rel='stylesheet' type='text/css'>
+    <script type='text/javascript'>
+      //<![CDATA[
+        function popupCode(url) {
+          window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+        }
+        
+        function toggleCode(id) {
+          var code = document.getElementById(id)
+        
+          code.style.display = code.style.display != 'block' ? 'block' : 'none'
+          return true
+        }
+        
+        // Make codeblocks hidden by default
+        document.writeln('<' + 'style type="text/css">.method .source pre { display: none }<\/style>')
+      //]]>
+    </script>
+  </head>
+  <body class='page'>
+    <div class='file' id='wrapper'>
+      <div class='header'>
+        <div class='name'>multiton.rb</div>
+        <div class='paths'>
+          lib/htmlfilter/multiton.rb
+        </div>
+        <div class='last-update'>
+          Last Update:
+          <span class='datetime'>Sat Jun 27 11:18:15 -0400 2009</span>
+        </div>
+      </div>
+      <div id='content'>
+        <div id='text'>
+          <div id='description'>
+            <h1><a href="../../../classes/Multiton.html">Multiton</a></h1>
+            <h2>Synopsis</h2>
+            <p>
+            <a href="../../../classes/Multiton.html">Multiton</a> design pattern
+            ensures only one object is allocated for a given state.
+            </p>
+            <p>
+            The &#8216;multiton&#8217; pattern is similar to a singleton, but instead
+            of only one instance, there are several similar instances. It is useful
+            when you want to avoid constructing objects many times because of some huge
+            expense (connecting to a database for example), require a set of similar
+            but not identical objects, and cannot easily control how many times a
+            contructor may be called.
+            </p>
+            <pre>class SomeMultitonClass&#x000A;  include Multiton&#x000A;  attr :arg&#x000A;  def initialize(arg)&#x000A;    @arg = arg&#x000A;  end&#x000A;end&#x000A;&#x000A;a = SomeMultitonClass.new(4)&#x000A;b = SomeMultitonClass.new(4)   # a and b are same object&#x000A;c = SomeMultitonClass.new(2)   # c is a different object</pre>
+            <h2>Previous Behavior</h2>
+            <p>
+            In previous versions of <a
+            href="../../../classes/Multiton.html">Multiton</a> the new method was made
+            private and instance had to be used in its stay &#8212;just like Singleton.
+            But this is less desirable for <a
+            href="../../../classes/Multiton.html">Multiton</a> since Multitions can
+            have multiple instances, not just one.
+            </p>
+            <p>
+            So instead <a href="../../../classes/Multiton.html">Multiton</a> now
+            defines create as a private alias of the original new method (just in case
+            it is needed) and then defines new to handle the multiton; instance is
+            provided as an alias for it.
+            </p>
+            <h2>How It Works</h2>
+            <p>
+            A pool of objects is searched for a previously cached object, if one is not
+            found we construct one and cache it in the pool based on class and the args
+            given to the contructor.
+            </p>
+            <p>
+            A limitation of this approach is that it is impossible to detect if
+            different blocks were given to a contructor (if it takes a block). So it is
+            the constructor arguments <em>only</em> which determine the uniqueness of
+            an object. To workaround this, define the <em>class</em> method
+            ::multiton_id.
+            </p>
+            <pre>def Klass.multiton_id(*args, &amp;block)&#x000A;  # ...&#x000A;end</pre>
+            <p>
+            Which should return a hash key used to identify the object being
+            constructed as (not) unique.
+            </p>
+            <h2>Authors</h2>
+            <ul>
+            <li>Christoph Rippel
+            
+            </li>
+            <li>Thomas Sawyer
+            
+            </li>
+            </ul>
+            <h1>Copying</h1>
+            <p>
+            Copyright &#169; 2007 Christoph Rippel, Thomas Sawyer
+            </p>
+            <p>
+            Ruby License
+            </p>
+            <p>
+            This module is free software. You may use, modify, and/or redistribute this
+            software under the same terms as Ruby.
+            </p>
+            <p>
+            This program is distributed in the hope that it will be useful, but WITHOUT
+            ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+            FITNESS FOR A PARTICULAR PURPOSE.
+            </p>
+          </div>
+          <div id='context'>
+            <div id='requires'>
+              <h2>Required files</h2>
+              <ol>
+                <li>thread</li>
+              </ol>
+            </div>
+          </div>
+          <div id='section'>
+          </div>
+        </div>
+      </div>
+      <div id='footer-push'></div>
+    </div>
+    <div id='footer'>
+      <a href="http://github.com/mislav/hanna/tree/master"><strong>Hanna</strong> RDoc template</a>
+    </div>
+  </body>
+</html>
