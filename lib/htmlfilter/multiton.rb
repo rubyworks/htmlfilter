@@ -128,7 +128,7 @@ require 'thread'
 # Which should return a hash key used to identify the object being
 # constructed as (not) unique.
 
-module Multiton
+module Multiton #:nodoc:
 
   #  disable build-in copying methods
 
