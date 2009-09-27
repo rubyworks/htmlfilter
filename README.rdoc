@@ -1,6 +1,7 @@
 = HtmlFilter
 
 * http://rubyworks.github.com/htmlfilter
+* http://github.com/rubyworks/htmlfilter
 
 == DESCRIPTION:
 
