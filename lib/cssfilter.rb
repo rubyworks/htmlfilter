@@ -1,6 +1,6 @@
 # = CSS Filter
 #
-# The CssFilter class will clean up a cascading style sheet.
+# The CSSFilter class will clean up a cascading style sheet.
 # It can be used to remove whitespace and most importantly
 # remove urls.
 #
@@ -8,25 +8,27 @@
 #
 # * Trans
 #
-# == Todo
-#
-# * Allow urls to be specified per attribute type.
-#
 # == Copying
 #
-#   Copyright (c) 2007 7rans
+# Copyright (c) 2007 Thomas Sawyer
+#
+# Creative Commons Attribution-ShareAlike 3.0 License
+#
+# Ref. http://creativecommons.org/licenses/by-sa/3.0/
+
+
+# TODO: Allow urls to be specified per attribute type.
 
 #require 'htmlfilter/uri'
 require 'uri'
 
 # = CSS Filter
 #
-# The CssFilter class will clean up a cascading style sheet.
+# The CSSFilter class will clean up a cascading style sheet.
 # It can be used to remove whitespace and most importantly
 # remove urls.
-#
-class CssFilter
-  VERSION="1.0.0"
+
+class CSSFilter
 
   # should we remove comments? (true, false)
   attr_accessor :strip_comments

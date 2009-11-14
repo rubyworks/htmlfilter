@@ -2,7 +2,7 @@ require "test/unit"
 require "cssfilter"
 #require 'yaml'
 
-class TestCssFilter < Test::Unit::TestCase
+class TestCSSFilter < Test::Unit::TestCase
 
   def setup
     @css = <<-END
@@ -26,7 +26,7 @@ class TestCssFilter < Test::Unit::TestCase
   end
 
   def test_filter
-    cssfilter = CssFilter.new(:allowed_hosts=>["here.org"], :strip_whitespace => true)
+    cssfilter = CSSFilter.new(:allowed_hosts=>["here.org"], :strip_whitespace => true)
     csstree   = cssfilter.filter(@css)
     assert_equal(@result, csstree.to_s)
   end

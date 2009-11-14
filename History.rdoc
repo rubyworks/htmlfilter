@@ -1,6 +1,21 @@
-=== 1.0.0 / 2009-06-25
+= RELEASE HISTORY
 
-* 1 major enhancement
+== 1.1.0 / 2009-11-06
 
-  * Birthday!
+This is release adjusts the names of the classes
+to be capitialized according to the actual use of
+the terms. It also sheds the Multion, which was
+basically a YAGNI.
+
+Changes:
+
+* Renamed HtmlFilter to HTMLFilter.
+* Renamed CssFilter to CSSFilter
+* HTMLFilter is no longer a Multiton.
+
+== 1.0.0 / 2009-06-25
+
+Changes:
+
+* Birthday! (Spun-off from Ruby Facets)
 

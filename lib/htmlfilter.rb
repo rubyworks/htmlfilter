@@ -5,9 +5,8 @@
 # for instance.
 #
 # HtmlFilter is a port of lib_filter.php, v1.15 by Cal Henderson <cal@iamcal.com>
-#
-# This code is licensed under a Creative Commons Attribution-ShareAlike 2.5 License
-# http://creativecommons.org/licenses/by-sa/2.5/
+# licensed under a Creative Commons Attribution-ShareAlike 2.5 License
+# http://creativecommons.org/licenses/by-sa/2.5/.
 #
 # Thanks to Jang Kim for adding support for single quoted attributes.
 #
@@ -26,32 +25,30 @@
 #
 # == Copying
 #
-# Copyright (c) 2007 Trans
+# Copyright (c) 2007 Thomas Sawyer
+#
+# Creative Commons Attribution-ShareAlike 3.0 License
+#
+# Ref. http://creativecommons.org/licenses/by-sa/3.0/
 
-require 'htmlfilter/multiton.rb'
 
-# = HtmlFilter
+# = HTMLFilter
 #
 # HTML Filter library can be used to sanitize and sterilize
 # HTML. A good idea if you let users submit HTML in comments,
 # for instance.
 #
-# lib_filter.php, v1.15 by Cal Henderson <cal@iamcal.com>
+# == Usage
 #
-# This code is licensed under a Creative Commons Attribution-ShareAlike 2.5 License
-# http://creativecommons.org/licenses/by-sa/2.5/
-#
-# Thanks to Jang Kim for adding support for single quoted attributes.
+#   hf = HTMLFilter.new
+#   hf.filter("<b>Bold Action")  #=> "<b>Bold Action</b>"
 #
 # == Reference
 #
 # * http://iamcal.com/publish/articles/php/processing_html/
 # * http://iamcal.com/publish/articles/php/processing_html_part_2/
 
-class HtmlFilter
-  VERSION = "1.0.0"
-
-  include Multiton
+class HTMLFilter
 
   # tags and attributes that are allowed
   #
@@ -85,7 +82,7 @@ class HtmlFilter
   # should we remove comments? (true, false)
   attr_accessor :strip_comments
 
-  # should we try and make a b tag out of "b>" (true, false)
+  # should we try and make a <b> tag out of "b>" (true, false)
   attr_accessor :always_make_tags
 
   # entity control option (true, false)
@@ -94,8 +91,10 @@ class HtmlFilter
   # entity control option (amp, gt, lt, quot, etc.)
   attr_accessor :allowed_entities
 
-  # default settings
+  ## max number of text characters at which to truncate (leave as +nil+ for no truncation)
+  #attr_accessor :truncate
 
+  # default settings
   DEFAULT = {
     'allowed' => {
       'a'   => ['href', 'target'],
@@ -116,7 +115,7 @@ class HtmlFilter
 
   # New html filter.
 
-  def initialize( options=nil )
+  def initialize(options=nil)
     if options
       h = DEFAULT.dup
       options.each do |k,v|
@@ -126,22 +125,20 @@ class HtmlFilter
     else
       options = DEFAULT.dup
     end
-
     options.each{ |k,v| send("#{k}=",v) }
   end
 
   # Filter html string.
 
-  def filter(data)
+  def filter(html)
     @tag_counts = {}
-
-    data = escape_comments(data)
-    data = balance_html(data)
-    data = check_tags(data)
-    data = process_remove_blanks(data)
-    data = validate_entities(data)
-
-    return data
+    html = escape_comments(html)
+    html = balance_html(html)
+    html = check_tags(html)
+    html = process_remove_blanks(html)
+    html = validate_entities(html)
+    #html = truncate_html(html)
+    html
   end
 
   private
@@ -504,13 +501,45 @@ class HtmlFilter
     return data
   end
 
+  ## HTML comment regular expression
+  #REM_RE = %r{<\!--(.*?)-->}
+  #
+  ## HTML tag regular expression
+  #TAG_RE = %r{</?\w+((\s+\w+(\s*=\s*(?:"(.|\n)*?"|'(.|\n)*?'|[^'">\s]+))?)+\s*|\s*)/?>}    #'
+  #
+  ##
+  ##
+  ##
+  #
+  #def truncate_html(html)
+  #  return html unless truncate
+  #
+  #  limit = truncate
+  #
+  #  mask = html.gsub(REM_RE){ |m| "\0" * m.size }
+  #  mask = mask.gsub(TAG_RE){ |m| "\0" * m.size }
+  #
+  #  i, x = 0, 0
+  #
+  #  while i < mask.size && x < limit
+  #    x += 1 if mask[i] != "\0"
+  #    i += 1
+  #  end
+  #
+  #  while x > 0 && mask[x,1] == "\0"
+  #    x -= 1
+  #  end
+  #
+  #  return html[0..x]
+  #end
+
 end
 
 # Overload the standard String class for extra convienience.
 
 class String
   def html_filter(*opts)
-    HtmlFilter.new(*opts).filter(self)
+    HTMLFilter.new(*opts).filter(self)
   end
 end
 

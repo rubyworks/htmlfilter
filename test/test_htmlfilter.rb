@@ -1,28 +1,28 @@
 require "test/unit"
 require "htmlfilter"
 
-class TestHtmlFilter < Test::Unit::TestCase
+class TestHTMLFilter < Test::Unit::TestCase
 
   # core tests
 
   def test_multiton_without_options
-    h1 = HtmlFilter.new
-    h2 = HtmlFilter.new
-    h3 = HtmlFilter.new( :strip_comments => false )
+    h1 = HTMLFilter.new
+    h2 = HTMLFilter.new
+    h3 = HTMLFilter.new( :strip_comments => false )
     assert_equal( h1.object_id, h2.object_id )
     assert_not_equal( h1.object_id, h3.object_id )
   end
 
   def test_multiton_with_options
-    h1 = HtmlFilter.new( :strip_comments => false )
-    h2 = HtmlFilter.new( :strip_comments => false )
-    h3 = HtmlFilter.new
+    h1 = HTMLFilter.new( :strip_comments => false )
+    h2 = HTMLFilter.new( :strip_comments => false )
+    h3 = HTMLFilter.new
     assert_equal( h1.object_id, h2.object_id )
     assert_not_equal( h1.object_id, h3.object_id )
   end
 
   def test_strip_single
-    hf = HtmlFilter.new
+    hf = HTMLFilter.new
     assert_equal( '"', hf.send(:strip_single,'\"') )
     assert_equal( "\000", hf.send(:strip_single,'\0') )
   end
