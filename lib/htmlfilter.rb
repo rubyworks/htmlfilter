@@ -47,7 +47,12 @@
 #
 # * http://iamcal.com/publish/articles/php/processing_html/
 # * http://iamcal.com/publish/articles/php/processing_html_part_2/
-
+#
+# == Issues
+#
+# * The built in option constants could use a fair bit of refinement.
+# * Eventually the old HtmlFilter name needs to be deprecated.
+#
 class HTMLFilter
 
   # tags and attributes that are allowed
@@ -94,13 +99,75 @@ class HTMLFilter
   ## max number of text characters at which to truncate (leave as +nil+ for no truncation)
   #attr_accessor :truncate
 
-  # default settings
+  # Default settings
   DEFAULT = {
     'allowed' => {
       'a'   => ['href', 'target'],
+      'img' => ['src', 'width', 'height', 'alt']
       'b'   => [],
       'i'   => [],
-      'img' => ['src', 'width', 'height', 'alt']
+      'em'  => [],
+      'tt'  => [],
+    },
+    'no_close' => ['img', 'br', 'hr'],
+    'always_close' => ['a', 'b'],
+    'protocol_attributes' => ['src', 'href'],
+    'allowed_protocols' => ['http', 'ftp', 'mailto'],
+    'remove_blanks' => ['a', 'b'],
+    'strip_comments' => true,
+    'always_make_tags' => true,
+    'allow_numbered_entities' => true,
+    'allowed_entities' => ['amp', 'gt', 'lt', 'quot']
+  }
+
+  # Basic settings are simlialr to DEFAULT but do not allow any type
+  # of links, neither <tt>a href</tt> or <tt>img</tt>.
+  BASIC = {
+    'allowed' => {
+      'b'   => [],
+      'i'   => [],
+      'em'  => [],
+      'tt'  => [],
+    },
+    'no_close' => ['img', 'br', 'hr'],
+    'always_close' => ['a', 'b'],
+    'protocol_attributes' => ['src', 'href'],
+    'allowed_protocols' => ['http', 'ftp', 'mailto'],
+    'remove_blanks' => ['a', 'b'],
+    'strip_comments' => true,
+    'always_make_tags' => true,
+    'allow_numbered_entities' => true,
+    'allowed_entities' => ['amp', 'gt', 'lt', 'quot']
+  }
+
+  # Strict settings do not allow any tags.
+  STRICT = {
+    'allowed' => {},
+    'no_close' => ['img', 'br', 'hr'],
+    'always_close' => ['a', 'b'],
+    'protocol_attributes' => ['src', 'href'],
+    'allowed_protocols' => ['http', 'ftp', 'mailto'],
+    'remove_blanks' => ['a', 'b'],
+    'strip_comments' => true,
+    'always_make_tags' => true,
+    'allow_numbered_entities' => true,
+    'allowed_entities' => ['amp', 'gt', 'lt', 'quot']
+  }
+
+  # Relaxed settings allows a great deal of HTML spec.
+  #
+  # TODO: Need to expand upon RELAXED options.
+  #
+  RELAXED = {
+    'allowed' => {
+      'a'    => ['class', 'href', 'target'],
+      'b'    => ['class'],
+      'i'    => ['class'],
+      'img'  => ['class', 'src', 'width', 'height', 'alt'],
+      'div'  => ['class'],
+      'pre'  => ['class'],
+      'code' => ['class'],
+      'ul'   => ['class'], 'ol' => ['class'], 'li' => ['class']
     },
     'no_close' => ['img', 'br', 'hr'],
     'always_close' => ['a', 'b'],
@@ -114,7 +181,13 @@ class HTMLFilter
   }
 
   # New html filter.
-
+  #
+  # Provide custom +options+, or use one of the built-in options
+  # constants.
+  #
+  #   hf = HTMLFilter.new(HTMLFilter::RELAXED)
+  #   hf.filter(htmlstr)
+  #
   def initialize(options=nil)
     if options
       h = DEFAULT.dup
@@ -508,12 +581,9 @@ class HTMLFilter
   #TAG_RE = %r{</?\w+((\s+\w+(\s*=\s*(?:"(.|\n)*?"|'(.|\n)*?'|[^'">\s]+))?)+\s*|\s*)/?>}    #'
   #
   ##
-  ##
-  ##
-  #
   #def truncate_html(html)
   #  return html unless truncate
-  #
+  #  # default settings
   #  limit = truncate
   #
   #  mask = html.gsub(REM_RE){ |m| "\0" * m.size }
@@ -542,4 +612,9 @@ class String
     HTMLFilter.new(*opts).filter(self)
   end
 end
+
+# For backward compatability. Eventually this will be deprecated.
+HtmlFilter = HTMLFilter
+
+
 

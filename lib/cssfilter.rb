@@ -1,6 +1,6 @@
 # = CSS Filter
 #
-# The CSSFilter class will clean up a cascading style sheet.
+# The CSSFilter class will clean up a cascading stylesheet.
 # It can be used to remove whitespace and most importantly
 # remove urls.
 #
@@ -160,7 +160,7 @@ class CSSFilter
   # TODO: Not complete, does not work with "@xxx foo;" for example.
 
   def parse(css)
-    tree = CssTree.new
+    tree = Tree.new
     entries = css.scan(/^(.*?)\{(.*?)\}/m)
     entries.each do |ref, props|
       tree[ref.strip] ||= {}
@@ -198,31 +198,33 @@ class CSSFilter
     return val
   end
 
-end
+  # CSS parse tree. This is for a "deep filtering".
 
+  class Tree < Hash
 
-# CSS parse tree. This is for a "deep filtering".
-
-class CssTree < Hash
-
-  def initialize(options=nil)
-    @options = options || {}
-    super()
-  end
-
-  # Re-output the CSS, all tidy ;)
-
-  def to_css
-    css = ""
-    each do |selector, entries|
-      css << "#{selector}{"
-      entries.each do |key, value|
-        css << "#{key}:#{value};"
-      end
-      css << "}\n"
+    def initialize(options=nil)
+      @options = options || {}
+      super()
     end
-    return css
+
+    # Re-output the CSS, all tidy ;)
+
+    def to_css
+      css = ""
+      each do |selector, entries|
+        css << "#{selector}{"
+        entries.each do |key, value|
+          css << "#{key}:#{value};"
+        end
+        css << "}\n"
+      end
+      return css
+    end
+
   end
 
 end
+
+# For backward compatability. Eventually this will be deprecated.
+CssFilter = CSSFilter
 
