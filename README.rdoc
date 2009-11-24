@@ -15,8 +15,11 @@ whitespace and most importantly remove urls.
 
 == FEATURES:
 
-* Santize HTML
-* Compress CSS
+* Based on well-worn PHP library.
+* Regular expression based filtering.
+* Very efficient for small snippets, like blog comments.
+* Pure-Ruby and no dependencies.
+* Also has library to clean and compact cascading stylesheets.
 
 == SYNOPSIS:
 
@@ -28,13 +31,9 @@ Via the class.
 
 Or using the String extension.
 
-  html.html_filter  #=> "<b>hello</b>"
+  html.html_filter(options)  #=> "<b>hello</b>"
 
 See RDocs for more information.
-
-== REQUIREMENTS:
-
-* Uses a copy of multiton.rb (included)
 
 == INSTALL:
 

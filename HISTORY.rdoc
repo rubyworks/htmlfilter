@@ -1,0 +1,24 @@
+= RELEASE HISTORY
+
+== 1.1 / 2009-11-24
+
+This is release adjusts the names of the classes to
+be capitialized according to the actual use of the
+terms. Some alternate options presets have been added
+as well, and this releaseo sheds the Multiton, which
+was basically a YAGNI.
+
+Changes:
+
+* Renamed HtmlFilter to HTMLFilter.
+* Renamed CssFilter to CSSFilter
+* HTMLFilter is no longer a Multiton.
+* Old names are still available temporarily.
+* Added built-in option constants.
+
+== 1.0.0 / 2009-06-25
+
+Changes:
+
+* Birthday! (Spun-off from Ruby Facets)
+
