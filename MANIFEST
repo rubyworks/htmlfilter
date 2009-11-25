@@ -12,6 +12,6 @@ meta/version
 test/test_cssfilter.rb
 test/test_htmlfilter.rb
 Rakefile
-HISTORY.rdoc
 TODO
 README.rdoc
+HISTORY
