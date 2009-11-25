@@ -15,6 +15,7 @@ Changes:
 * HTMLFilter is no longer a Multiton.
 * Old names are still available temporarily.
 * Added built-in option constants.
+* CssTree is now CSSFilter::Tree.
 
 == 1.0.0 / 2009-06-25
 
