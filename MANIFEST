@@ -1,19 +1,17 @@
 #!mast bin lib meta test [A-Z]*
-lib
 lib/cssfilter.rb
-lib/htmlfilter
-lib/htmlfilter/multiton.rb
 lib/htmlfilter.rb
-meta
-meta/package
-meta/project
+meta/collection
+meta/contact
+meta/description
+meta/homepage
+meta/name
+meta/repository
 meta/title
 meta/version
-test
 test/test_cssfilter.rb
 test/test_htmlfilter.rb
 Rakefile
-Manifest.txt
+HISTORY.rdoc
 TODO
 README.rdoc
-History.rdoc
