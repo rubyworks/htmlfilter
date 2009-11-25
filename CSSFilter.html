@@ -1,0 +1,808 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: CSSFilter</title>
+
+	<link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
+
+	<script src="./js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="./lib/cssfilter_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/cssfilter.rb">lib/cssfilter.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">Object</p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+			<div id="namespace-list-section" class="section">
+				<h3 class="section-header">Namespace</h3>
+				<ul class="link-list">
+					
+					<li><span class="type">CLASS</span> <a href="CSSFilter/Tree.html">CSSFilter::Tree</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#M000000">::new</a></li>
+					
+					<li><a href="#M000001">#accept_host</a></li>
+					
+					<li><a href="#M000009">#clean_properties</a></li>
+					
+					<li><a href="#M000010">#clean_value</a></li>
+					
+					<li><a href="#M000002">#filter</a></li>
+					
+					<li><a href="#M000008">#parse</a></li>
+					
+					<li><a href="#M000006">#remove_blanklines</a></li>
+					
+					<li><a href="#M000003">#remove_comments</a></li>
+					
+					<li><a href="#M000007">#remove_nullvalues</a></li>
+					
+					<li><a href="#M000004">#remove_urls</a></li>
+					
+					<li><a href="#M000005">#remove_whitespace</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="./HISTORY.html">HISTORY</a></li>
+				
+					<li class="file"><a href="./README_rdoc.html">README.rdoc</a></li>
+				
+					<li class="file"><a href="./Rakefile.html">Rakefile</a></li>
+				
+					<li class="file"><a href="./TODO.html">TODO</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="./images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="./CSSFilter.html">CSSFilter</a></li>
+				
+					<li><a href="./CSSFilter/Tree.html">CSSFilter::Tree</a></li>
+				
+					<li><a href="./HTMLFilter.html">HTMLFilter</a></li>
+				
+					<li><a href="./String.html">String</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">CSSFilter</h1>
+
+		<div id="description">
+			<h1>CSS Filter</h1>
+<p>
+The <a href="CSSFilter.html">CSSFilter</a> class will clean up a cascading
+style sheet. It can be used to remove whitespace and most importantly
+remove urls.
+</p>
+
+		</div>
+
+		<!-- Constants -->
+		
+		<div id="constants-list" class="section">
+			<h3 class="section-header">Constants</h3>
+			<dl>
+			
+				<dt><a name="DEFAULT">DEFAULT</a></dt>
+				
+				<dd class="description"><p>
+CssFilter option defaults.
+</p></dd>
+				
+			
+			</dl>
+		</div>
+		
+
+		<!-- Attributes -->
+		
+		<div id="attribute-method-details" class="method-section section">
+			<h3 class="section-header">Attributes</h3>
+
+			
+			<div id="strip-comments-attribute-method" class="method-detail">
+				<a name="strip_comments"></a>
+				
+				<a name="strip_comments="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">strip_comments</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+should we remove comments? (true, false)
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="strip-urls-attribute-method" class="method-detail">
+				<a name="strip_urls"></a>
+				
+				<a name="strip_urls="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">strip_urls</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+should we remove urls? (true, false)
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="allowed-scheme-attribute-method" class="method-detail">
+				<a name="allowed_scheme"></a>
+				
+				<a name="allowed_scheme="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">allowed_scheme</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+url schemes which will be allowed (http, ftp, mailto)
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="allowed-hosts-attribute-method" class="method-detail">
+				<a name="allowed_hosts"></a>
+				
+				<a name="allowed_hosts="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">allowed_hosts</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+url hosts which will be allowed.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="allowed-urls-attribute-method" class="method-detail">
+				<a name="allowed_urls"></a>
+				
+				<a name="allowed_urls="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">allowed_urls</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+urls which will be allowed. (NOT YET USED)
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="substitute-urls-attribute-method" class="method-detail">
+				<a name="substitute_urls"></a>
+				
+				<a name="substitute_urls="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">substitute_urls</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+substitue urls (NOT YET USED)
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="strip-whitespace-attribute-method" class="method-detail">
+				<a name="strip_whitespace"></a>
+				
+				<a name="strip_whitespace="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">strip_whitespace</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+remove blank lines.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="strip-blanklines-attribute-method" class="method-detail">
+				<a name="strip_blanklines"></a>
+				
+				<a name="strip_blanklines="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">strip_blanklines</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+remove blank lines.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="rewrite-attribute-method" class="method-detail">
+				<a name="rewrite"></a>
+				
+				<a name="rewrite="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">rewrite</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+Complete parse and rewrite of CSS document. This does a complete
+&#8220;cleaning&#8221; but note that is not yet a perfect parser.
+</p>
+				
+				</div>
+			</div>
+			
+		</div>
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="new-method" class="method-detail ">
+				<a name="M000000"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new</span><span
+						class="method-args">(options=nil)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="new-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/cssfilter.rb, line 82</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">options</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>
+      <span class="ruby-identifier">h</span> = <span class="ruby-constant">DEFAULT</span>.<span class="ruby-identifier">dup</span>
+      <span class="ruby-identifier">options</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">h</span>[<span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_s</span>] = <span class="ruby-identifier">v</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">options</span> = <span class="ruby-identifier">h</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">options</span> = <span class="ruby-constant">DEFAULT</span>.<span class="ruby-identifier">dup</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">options</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;#{k}=&quot;</span>,<span class="ruby-identifier">v</span>) }
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="accept-host-method" class="method-detail ">
+				<a name="M000001"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">accept_host</span><span
+						class="method-args">(host)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="accept-host-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/cssfilter.rb, line 98</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">accept_host</span>(<span class="ruby-identifier">host</span>)
+    <span class="ruby-ivar">@hosts</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">host</span>
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="clean-properties-method" class="method-detail ">
+				<a name="M000009"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">clean_properties</span><span
+						class="method-args">(atts)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Takes a css entry and ensures it is valid (as best it can). It will fix
+trival mistakes, and raise an error when it is beyond repair.
+</p>
+<p>
+TODO: So far this does absolutely nothing!
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="clean-properties-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/cssfilter.rb, line 182</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clean_properties</span>(<span class="ruby-identifier">atts</span>)
+    <span class="ruby-identifier">atts</span>
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="clean-value-method" class="method-detail ">
+				<a name="M000010"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">clean_value</span><span
+						class="method-args">(val)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="clean-value-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/cssfilter.rb, line 188</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clean_value</span>(<span class="ruby-identifier">val</span>)
+    <span class="ruby-identifier">val</span> = <span class="ruby-identifier">val</span>.<span class="ruby-identifier">strip</span>
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">urls</span>
+      <span class="ruby-identifier">uris</span> = <span class="ruby-constant">URI</span>.<span class="ruby-identifier">extract</span>(<span class="ruby-identifier">val</span>)
+      <span class="ruby-identifier">uris</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">u</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">val</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-identifier">u</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">urls</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">val</span>
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="filter-method" class="method-detail ">
+				<a name="M000002"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">filter</span><span
+						class="method-args">(css)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="filter-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/cssfilter.rb, line 104</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">filter</span>(<span class="ruby-identifier">css</span>)
+    <span class="ruby-identifier">css</span> = <span class="ruby-identifier">remove_comments</span>(<span class="ruby-identifier">css</span>)    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">strip_comments</span>
+    <span class="ruby-identifier">css</span> = <span class="ruby-identifier">remove_urls</span>(<span class="ruby-identifier">css</span>)        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">strip_urls</span>
+
+    <span class="ruby-identifier">css</span> = <span class="ruby-identifier">remove_nullvalues</span>(<span class="ruby-identifier">css</span>)
+
+    <span class="ruby-identifier">css</span> = <span class="ruby-identifier">remove_whitespace</span>(<span class="ruby-identifier">css</span>)  <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">strip_whitespace</span>
+    <span class="ruby-identifier">css</span> = <span class="ruby-identifier">remove_blanklines</span>(<span class="ruby-identifier">css</span>)  <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">strip_blanklines</span>
+
+    <span class="ruby-identifier">css</span> = <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">css</span>).<span class="ruby-identifier">to_css</span>       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">rewrite</span>
+    <span class="ruby-identifier">css</span>
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="parse-method" class="method-detail ">
+				<a name="M000008"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">parse</span><span
+						class="method-args">(css)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Breaks a css document up into a hash. This can be used completely
+rewritting the css.
+</p>
+<p>
+TODO: Not complete, does not work with &#8220;@xxx foo;&#8221; for example.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="parse-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/cssfilter.rb, line 162</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">css</span>)
+    <span class="ruby-identifier">tree</span> = <span class="ruby-constant">Tree</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">entries</span> = <span class="ruby-identifier">css</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp re">/^(.*?)\{(.*?)\}/</span><span class="ruby-identifier">m</span>)
+    <span class="ruby-identifier">entries</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ref</span>, <span class="ruby-identifier">props</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">tree</span>[<span class="ruby-identifier">ref</span>.<span class="ruby-identifier">strip</span>] <span class="ruby-operator">||=</span> {}
+      <span class="ruby-identifier">props</span> = <span class="ruby-identifier">clean_properties</span>(<span class="ruby-identifier">props</span>)
+      <span class="ruby-identifier">props</span> = <span class="ruby-identifier">props</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp re">/(.*?)[:](.*?)([;]|\s*\Z)/</span>)
+      <span class="ruby-identifier">props</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span>(<span class="ruby-identifier">key</span>,<span class="ruby-identifier">val</span>)<span class="ruby-operator">|</span>
+        <span class="ruby-identifier">tree</span>[<span class="ruby-identifier">ref</span>.<span class="ruby-identifier">strip</span>][<span class="ruby-identifier">key</span>.<span class="ruby-identifier">strip</span>] = <span class="ruby-identifier">clean_value</span>(<span class="ruby-identifier">val</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">tree</span>
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="remove-blanklines-method" class="method-detail ">
+				<a name="M000006"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">remove_blanklines</span><span
+						class="method-args">(data)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="remove-blanklines-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/cssfilter.rb, line 147</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remove_blanklines</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-identifier">data</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/^\s*\n/</span>,<span class="ruby-value str">''</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="remove-comments-method" class="method-detail ">
+				<a name="M000003"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">remove_comments</span><span
+						class="method-args">(data)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="remove-comments-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/cssfilter.rb, line 119</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remove_comments</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/\/\*(.8?)\*\//</span>,<span class="ruby-value str">''</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="remove-nullvalues-method" class="method-detail ">
+				<a name="M000007"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">remove_nullvalues</span><span
+						class="method-args">(data)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="remove-nullvalues-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/cssfilter.rb, line 153</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remove_nullvalues</span>(<span class="ruby-identifier">data</span>);
+    <span class="ruby-identifier">data</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/\w+[:](\s+)[;]/</span>,<span class="ruby-value str">''</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="remove-urls-method" class="method-detail ">
+				<a name="M000004"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">remove_urls</span><span
+						class="method-args">(data)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+TODO: <a href="CSSFilter.html#allowed_urls">allowed_urls</a>
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="remove-urls-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/cssfilter.rb, line 125</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remove_urls</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-identifier">urls</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp re">/url\((.*?)\)/</span>).<span class="ruby-identifier">flatten</span>
+    <span class="ruby-identifier">uris</span> = <span class="ruby-identifier">urls</span>.<span class="ruby-identifier">collect</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">u</span><span class="ruby-operator">|</span> <span class="ruby-constant">URI</span>.<span class="ruby-identifier">extract</span>(<span class="ruby-identifier">u</span>) }.<span class="ruby-identifier">flatten</span>
+    <span class="ruby-identifier">uris</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">u</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">uri</span> = <span class="ruby-constant">URI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">u</span>)
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">allowed_hosts</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">uri</span>.<span class="ruby-identifier">host</span>) <span class="ruby-keyword kw">or</span>
+             <span class="ruby-identifier">allowed_scheme</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">uri</span>.<span class="ruby-identifier">scheme</span>)
+        <span class="ruby-identifier">data</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-identifier">u</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-value str">''</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/url\(\s*\)/</span>, <span class="ruby-value str">''</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="remove-whitespace-method" class="method-detail ">
+				<a name="M000005"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">remove_whitespace</span><span
+						class="method-args">(data)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="remove-whitespace-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/cssfilter.rb, line 140</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remove_whitespace</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-identifier">data</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/^\s*/</span>,<span class="ruby-value str">''</span>)
+    <span class="ruby-identifier">data</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/\s*$/</span>,<span class="ruby-value str">''</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

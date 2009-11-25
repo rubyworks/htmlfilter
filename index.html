@@ -1,15 +1,218 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
-<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
-  <head>
-    <title>HTMLFilter</title>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
-  </head>
-  <frameset border='1' bordercolor='gray' cols='20%, *' frameborder='1'>
-    <frameset rows='15%, 35%, 50%'>
-      <frame name='Files' src='fr_file_index.html' title='Files'></frame>
-      <frame name='Classes' src='fr_class_index.html'></frame>
-      <frame name='Methods' src='fr_method_index.html'></frame>
-    </frameset>
-    <frame name='docwin' src='files/README_rdoc.html'></frame>
-  </frameset>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>HTMLFilter</title>
+
+	<link type="text/css" media="screen" href="rdoc.css" rel="stylesheet" />
+
+	<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body class="indexpage">
+
+	
+	<h1>HTMLFilter</h1>
+
+	
+	<div id="main">
+		
+<ul>
+<li><a
+href="http://rubyworks.github.com/htmlfilter">rubyworks.github.com/htmlfilter</a>
+
+</li>
+<li><a
+href="http://github.com/rubyworks/htmlfilter">github.com/rubyworks/htmlfilter</a>
+
+</li>
+</ul>
+<h2>DESCRIPTION:</h2>
+<p>
+HTML Filter library can be used to sanitize and sterilize HTML. A good idea
+if you let users submit HTML in comments, for instance.
+</p>
+<p>
+This library also include CssFilter. The CssFilter class will clean-up a
+cascading style sheet. It can be used to remove whitespace and most
+importantly remove urls.
+</p>
+<h2>FEATURES:</h2>
+<ul>
+<li>Based on well-worn PHP library.
+
+</li>
+<li>Regular expression based filtering.
+
+</li>
+<li>Very efficient for small snippets, like blog comments.
+
+</li>
+<li>Pure-Ruby and no dependencies.
+
+</li>
+<li>Also has library to clean and compact cascading stylesheets.
+
+</li>
+</ul>
+<h2>SYNOPSIS:</h2>
+<p>
+Via the class.
+</p>
+<pre>
+  html = &quot;&lt;&lt;b&gt;hello&lt;/b&gt;&quot;
+
+  HtmlFilter.new(options).filter(html)
+</pre>
+<p>
+Or using the <a href="String.html">String</a> extension.
+</p>
+<pre>
+  html.html_filter(options)  #=&gt; &quot;&lt;b&gt;hello&lt;/b&gt;&quot;
+</pre>
+<p>
+See RDocs for more information.
+</p>
+<h2>INSTALL:</h2>
+<ul>
+<li>sudo gem install htmlfilter
+
+</li>
+</ul>
+<h2>LICENSE:</h2>
+<p>
+(Creative Commons Attribution-ShareAlike License)
+</p>
+<p>
+Copyright &#169; 2009 Thomas Sawyer
+</p>
+<p>
+See <a
+href="http://creativecommons.org/licenses/by-sa/3.0/deed.en">creativecommons.org/licenses/by-sa/3.0/deed.en</a>
+</p>
+<p>
+HtmlFilter is a port of lib_filter.php, v1.15 by Cal Henderson
+<cal@iamcal.com>. This code is licensed under a Creative Commons
+Attribution-ShareAlike 2.5 License. See <a
+href="http://creativecommons.org/licenses/by-sa/2.5/.">creativecommons.org/licenses/by-sa/2.5/.</a>
+</p>
+
+	</div>
+	
+
+	
+	
+	<h2>Files</h2>
+	<ul>
+		
+			<li class="file"><a href="HISTORY.html">HISTORY</a></li>
+		
+			<li class="file"><a href="README_rdoc.html">README.rdoc</a></li>
+		
+			<li class="file"><a href="Rakefile.html">Rakefile</a></li>
+		
+			<li class="file"><a href="TODO.html">TODO</a></li>
+		
+	</ul>
+	
+
+	<h2>Classes/Modules</h2>
+	<ul>
+		
+		<li class="class"><a href="CSSFilter.html">CSSFilter</a></li>
+		
+		<li class="class"><a href="CSSFilter/Tree.html">CSSFilter::Tree</a></li>
+		
+		<li class="class"><a href="HTMLFilter.html">HTMLFilter</a></li>
+		
+		<li class="class"><a href="String.html">String</a></li>
+		
+	</ul>
+
+	<h2>Methods</h2>
+	<ul>
+		
+			<li><a href="CSSFilter/Tree.html#M000011">::new &mdash; CSSFilter::Tree</a></li>
+		
+			<li><a href="HTMLFilter.html#M000013">::new &mdash; HTMLFilter</a></li>
+		
+			<li><a href="CSSFilter.html#M000000">::new &mdash; CSSFilter</a></li>
+		
+			<li><a href="CSSFilter.html#M000001">#accept_host &mdash; CSSFilter</a></li>
+		
+			<li><a href="HTMLFilter.html#M000017">#balance_html &mdash; HTMLFilter</a></li>
+		
+			<li><a href="HTMLFilter.html#M000025">#check_entity &mdash; HTMLFilter</a></li>
+		
+			<li><a href="HTMLFilter.html#M000018">#check_tags &mdash; HTMLFilter</a></li>
+		
+			<li><a href="CSSFilter.html#M000009">#clean_properties &mdash; CSSFilter</a></li>
+		
+			<li><a href="CSSFilter.html#M000010">#clean_value &mdash; CSSFilter</a></li>
+		
+			<li><a href="HTMLFilter.html#M000029">#decode_dec_entity &mdash; HTMLFilter</a></li>
+		
+			<li><a href="HTMLFilter.html#M000027">#decode_entities &mdash; HTMLFilter</a></li>
+		
+			<li><a href="HTMLFilter.html#M000028">#decode_hex_entity &mdash; HTMLFilter</a></li>
+		
+			<li><a href="HTMLFilter.html#M000030">#decode_num_entity &mdash; HTMLFilter</a></li>
+		
+			<li><a href="HTMLFilter.html#M000016">#escape_comments &mdash; HTMLFilter</a></li>
+		
+			<li><a href="HTMLFilter.html#M000032">#escape_special_chars &mdash; HTMLFilter</a></li>
+		
+			<li><a href="HTMLFilter.html#M000014">#filter &mdash; HTMLFilter</a></li>
+		
+			<li><a href="CSSFilter.html#M000002">#filter &mdash; CSSFilter</a></li>
+		
+			<li><a href="HTMLFilter.html#M000022">#fix_case &mdash; HTMLFilter</a></li>
+		
+			<li><a href="HTMLFilter.html#M000023">#fix_case_inner &mdash; HTMLFilter</a></li>
+		
+			<li><a href="String.html#M000033">#html_filter &mdash; String</a></li>
+		
+			<li><a href="HTMLFilter.html#M000026">#is_valid_entity &mdash; HTMLFilter</a></li>
+		
+			<li><a href="CSSFilter.html#M000008">#parse &mdash; CSSFilter</a></li>
+		
+			<li><a href="HTMLFilter.html#M000020">#process_param_protocol &mdash; HTMLFilter</a></li>
+		
+			<li><a href="HTMLFilter.html#M000021">#process_remove_blanks &mdash; HTMLFilter</a></li>
+		
+			<li><a href="HTMLFilter.html#M000019">#process_tag &mdash; HTMLFilter</a></li>
+		
+			<li><a href="CSSFilter.html#M000006">#remove_blanklines &mdash; CSSFilter</a></li>
+		
+			<li><a href="CSSFilter.html#M000003">#remove_comments &mdash; CSSFilter</a></li>
+		
+			<li><a href="CSSFilter.html#M000007">#remove_nullvalues &mdash; CSSFilter</a></li>
+		
+			<li><a href="CSSFilter.html#M000004">#remove_urls &mdash; CSSFilter</a></li>
+		
+			<li><a href="CSSFilter.html#M000005">#remove_whitespace &mdash; CSSFilter</a></li>
+		
+			<li><a href="HTMLFilter.html#M000031">#strip_single &mdash; HTMLFilter</a></li>
+		
+			<li><a href="HTMLFilter.html#M000015">#tag_counts &mdash; HTMLFilter</a></li>
+		
+			<li><a href="CSSFilter/Tree.html#M000012">#to_css &mdash; CSSFilter::Tree</a></li>
+		
+			<li><a href="HTMLFilter.html#M000024">#validate_entities &mdash; HTMLFilter</a></li>
+		
+	</ul>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+</body>
 </html>

@@ -1,0 +1,1381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: HTMLFilter</title>
+
+	<link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
+
+	<script src="./js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="./lib/htmlfilter_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/htmlfilter.rb">lib/htmlfilter.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">Object</p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#M000013">::new</a></li>
+					
+					<li><a href="#M000017">#balance_html</a></li>
+					
+					<li><a href="#M000025">#check_entity</a></li>
+					
+					<li><a href="#M000018">#check_tags</a></li>
+					
+					<li><a href="#M000029">#decode_dec_entity</a></li>
+					
+					<li><a href="#M000027">#decode_entities</a></li>
+					
+					<li><a href="#M000028">#decode_hex_entity</a></li>
+					
+					<li><a href="#M000030">#decode_num_entity</a></li>
+					
+					<li><a href="#M000016">#escape_comments</a></li>
+					
+					<li><a href="#M000032">#escape_special_chars</a></li>
+					
+					<li><a href="#M000014">#filter</a></li>
+					
+					<li><a href="#M000022">#fix_case</a></li>
+					
+					<li><a href="#M000023">#fix_case_inner</a></li>
+					
+					<li><a href="#M000026">#is_valid_entity</a></li>
+					
+					<li><a href="#M000020">#process_param_protocol</a></li>
+					
+					<li><a href="#M000021">#process_remove_blanks</a></li>
+					
+					<li><a href="#M000019">#process_tag</a></li>
+					
+					<li><a href="#M000031">#strip_single</a></li>
+					
+					<li><a href="#M000015">#tag_counts</a></li>
+					
+					<li><a href="#M000024">#validate_entities</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="./HISTORY.html">HISTORY</a></li>
+				
+					<li class="file"><a href="./README_rdoc.html">README.rdoc</a></li>
+				
+					<li class="file"><a href="./Rakefile.html">Rakefile</a></li>
+				
+					<li class="file"><a href="./TODO.html">TODO</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="./images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="./CSSFilter.html">CSSFilter</a></li>
+				
+					<li><a href="./CSSFilter/Tree.html">CSSFilter::Tree</a></li>
+				
+					<li><a href="./HTMLFilter.html">HTMLFilter</a></li>
+				
+					<li><a href="./String.html">String</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">HTMLFilter</h1>
+
+		<div id="description">
+			<h1><a href="HTMLFilter.html">HTMLFilter</a></h1>
+<p>
+HTML Filter library can be used to sanitize and sterilize HTML. A good idea
+if you let users submit HTML in comments, for instance.
+</p>
+<h2>Usage</h2>
+<pre>
+  hf = HTMLFilter.new
+  hf.filter(&quot;&lt;b&gt;Bold Action&quot;)  #=&gt; &quot;&lt;b&gt;Bold Action&lt;/b&gt;&quot;
+</pre>
+<h2>Reference</h2>
+<ul>
+<li><a
+href="http://iamcal.com/publish/articles/php/processing_html/">iamcal.com/publish/articles/php/processing_html/</a>
+
+</li>
+<li><a
+href="http://iamcal.com/publish/articles/php/processing_html_part_2/">iamcal.com/publish/articles/php/processing_html_part_2/</a>
+
+</li>
+</ul>
+<h2>Issues</h2>
+<ul>
+<li>The built in option constants could use a fair bit of refinement.
+
+</li>
+<li>Eventually the old HtmlFilter name needs to be deprecated.
+
+</li>
+</ul>
+
+		</div>
+
+		<!-- Constants -->
+		
+		<div id="constants-list" class="section">
+			<h3 class="section-header">Constants</h3>
+			<dl>
+			
+				<dt><a name="DEFAULT">DEFAULT</a></dt>
+				
+				<dd class="description"><p>
+Default settings
+</p></dd>
+				
+			
+				<dt><a name="BASIC">BASIC</a></dt>
+				
+				<dd class="description"><p>
+Basic settings are simlialr to <a
+href="HTMLFilter.html#DEFAULT">DEFAULT</a> but do not allow any type of
+links, neither <tt>a href</tt> or <tt>img</tt>.
+</p></dd>
+				
+			
+				<dt><a name="STRICT">STRICT</a></dt>
+				
+				<dd class="description"><p>
+Strict settings do not allow any tags.
+</p></dd>
+				
+			
+				<dt><a name="RELAXED">RELAXED</a></dt>
+				
+				<dd class="description"><p>
+Relaxed settings allows a great deal of HTML spec.
+</p>
+<p>
+TODO: Need to expand upon <a href="HTMLFilter.html#RELAXED">RELAXED</a>
+options.
+</p></dd>
+				
+			
+			</dl>
+		</div>
+		
+
+		<!-- Attributes -->
+		
+		<div id="attribute-method-details" class="method-section section">
+			<h3 class="section-header">Attributes</h3>
+
+			
+			<div id="allowed-attribute-method" class="method-detail">
+				<a name="allowed"></a>
+				
+				<a name="allowed="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">allowed</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+tags and attributes that are allowed
+</p>
+<p>
+Eg.
+</p>
+<pre>
+  {
+    'a' =&gt; ['href', 'target'],
+    'b' =&gt; [],
+    'img' =&gt; ['src', 'width', 'height', 'alt']
+  }
+</pre>
+				
+				</div>
+			</div>
+			
+			<div id="no-close-attribute-method" class="method-detail">
+				<a name="no_close"></a>
+				
+				<a name="no_close="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">no_close</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+tags which should always be self-closing (e.g. &#8220;<img />&#8221;)
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="always-close-attribute-method" class="method-detail">
+				<a name="always_close"></a>
+				
+				<a name="always_close="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">always_close</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+tags which must always have seperate opening and closing tags (e.g.
+&#8220;&#8221;)
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="protocol-attributes-attribute-method" class="method-detail">
+				<a name="protocol_attributes"></a>
+				
+				<a name="protocol_attributes="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">protocol_attributes</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+attributes which should be checked for valid protocols (src,href)
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="allowed-protocols-attribute-method" class="method-detail">
+				<a name="allowed_protocols"></a>
+				
+				<a name="allowed_protocols="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">allowed_protocols</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+protocols which are allowed (http, ftp, mailto)
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="remove-blanks-attribute-method" class="method-detail">
+				<a name="remove_blanks"></a>
+				
+				<a name="remove_blanks="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">remove_blanks</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+tags which should be removed if they contain no content (e.g.
+&#8220;&#8221; or &#8220;<b />&#8221;)
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="strip-comments-attribute-method" class="method-detail">
+				<a name="strip_comments"></a>
+				
+				<a name="strip_comments="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">strip_comments</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+should we remove comments? (true, false)
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="always-make-tags-attribute-method" class="method-detail">
+				<a name="always_make_tags"></a>
+				
+				<a name="always_make_tags="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">always_make_tags</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+should we try and make a <b> tag out of &#8220;b>&#8221; (true, false)
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="allow-numbered-entities-attribute-method" class="method-detail">
+				<a name="allow_numbered_entities"></a>
+				
+				<a name="allow_numbered_entities="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">allow_numbered_entities</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+entity control option (true, false)
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="allowed-entities-attribute-method" class="method-detail">
+				<a name="allowed_entities"></a>
+				
+				<a name="allowed_entities="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">allowed_entities</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+entity control option (amp, gt, lt, quot, etc.)
+</p>
+				
+				</div>
+			</div>
+			
+		</div>
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="new-method" class="method-detail ">
+				<a name="M000013"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new</span><span
+						class="method-args">(options=nil)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+New html filter.
+</p>
+<p>
+Provide custom <tt>options</tt>, or use one of the built-in options
+constants.
+</p>
+<pre>
+  hf = HTMLFilter.new(HTMLFilter::RELAXED)
+  hf.filter(htmlstr)
+</pre>
+					
+
+					
+					<div class="method-source-code"
+						id="new-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/htmlfilter.rb, line 191</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">options</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>
+      <span class="ruby-identifier">h</span> = <span class="ruby-constant">DEFAULT</span>.<span class="ruby-identifier">dup</span>
+      <span class="ruby-identifier">options</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">h</span>[<span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_s</span>] = <span class="ruby-identifier">v</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">options</span> = <span class="ruby-identifier">h</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">options</span> = <span class="ruby-constant">DEFAULT</span>.<span class="ruby-identifier">dup</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">options</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;#{k}=&quot;</span>,<span class="ruby-identifier">v</span>) }
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="filter-method" class="method-detail ">
+				<a name="M000014"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">filter</span><span
+						class="method-args">(html)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Filter html string.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="filter-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/htmlfilter.rb, line 206</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">filter</span>(<span class="ruby-identifier">html</span>)
+    <span class="ruby-ivar">@tag_counts</span> = {}
+    <span class="ruby-identifier">html</span> = <span class="ruby-identifier">escape_comments</span>(<span class="ruby-identifier">html</span>)
+    <span class="ruby-identifier">html</span> = <span class="ruby-identifier">balance_html</span>(<span class="ruby-identifier">html</span>)
+    <span class="ruby-identifier">html</span> = <span class="ruby-identifier">check_tags</span>(<span class="ruby-identifier">html</span>)
+    <span class="ruby-identifier">html</span> = <span class="ruby-identifier">process_remove_blanks</span>(<span class="ruby-identifier">html</span>)
+    <span class="ruby-identifier">html</span> = <span class="ruby-identifier">validate_entities</span>(<span class="ruby-identifier">html</span>)
+    <span class="ruby-comment cmt">#html = truncate_html(html)</span>
+    <span class="ruby-identifier">html</span>
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="private-instance-method-details" class="method-section section">
+			<h3 class="section-header">Private Instance Methods</h3>
+
+		
+			<div id="balance-html-method" class="method-detail ">
+				<a name="M000017"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">balance_html</span><span
+						class="method-args">(data)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="balance-html-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/htmlfilter.rb, line 241</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">balance_html</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-identifier">data</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">dup</span>
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">always_make_tags</span>
+      <span class="ruby-comment cmt"># try and form html</span>
+      <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp re">/&gt;&gt;+/</span>, <span class="ruby-value str">'&gt;'</span>)
+      <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp re">/&lt;&lt;+/</span>, <span class="ruby-value str">'&lt;'</span>)
+      <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp re">/^&gt;/</span>, <span class="ruby-value str">''</span>)
+      <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp re">/&lt;([^&gt;]*?)(?=&lt;|$)/</span>, <span class="ruby-value str">'&lt;\1&gt;'</span>)
+      <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp re">/(^|&gt;)([^&lt;]*?)(?=&gt;)/</span>, <span class="ruby-value str">'\1&lt;\2'</span>)
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-comment cmt"># escape stray brackets</span>
+      <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp re">/&lt;([^&gt;]*?)(?=&lt;|$)/</span>, <span class="ruby-value str">'&amp;lt;\1'</span>)
+      <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp re">/(^|&gt;)([^&lt;]*?)(?=&gt;)/</span>, <span class="ruby-value str">'\1\2&amp;gt;&lt;'</span>)
+      <span class="ruby-comment cmt"># the last regexp causes '&lt;&gt;' entities to appear</span>
+      <span class="ruby-comment cmt"># (we need to do a lookahead assertion so that the last bracket</span>
+      <span class="ruby-comment cmt"># can be used in the next pass of the regexp)</span>
+      <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-value str">'&lt;&gt;'</span>, <span class="ruby-value str">''</span>)
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">data</span>
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="check-entity-method" class="method-detail ">
+				<a name="M000025"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">check_entity</span><span
+						class="method-args">(preamble, term)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="check-entity-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/htmlfilter.rb, line 471</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_entity</span>(<span class="ruby-identifier">preamble</span>, <span class="ruby-identifier">term</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">term</span> <span class="ruby-operator">!=</span> <span class="ruby-value str">';'</span>
+        <span class="ruby-keyword kw">return</span> <span class="ruby-value str">'&amp;amp;'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">preamble</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">is_valid_entity</span>(<span class="ruby-identifier">preamble</span>)
+        <span class="ruby-keyword kw">return</span> <span class="ruby-value str">'&amp;'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">preamble</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">return</span> <span class="ruby-value str">'&amp;amp;'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">preamble</span>
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="check-tags-method" class="method-detail ">
+				<a name="M000018"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">check_tags</span><span
+						class="method-args">(data)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="check-tags-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/htmlfilter.rb, line 268</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_tags</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-identifier">data</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">dup</span>
+
+    <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp re">/&lt;(.*?)&gt;/s</span>){
+      <span class="ruby-identifier">process_tag</span>(<span class="ruby-identifier">strip_single</span>(<span class="ruby-identifier">$1</span>))
+    }
+
+    <span class="ruby-identifier">tag_counts</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">tag</span>, <span class="ruby-identifier">cnt</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">cnt</span>.<span class="ruby-identifier">times</span>{ <span class="ruby-identifier">data</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;&lt;/#{tag}&gt;&quot;</span> }
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">data</span>
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="decode-dec-entity-method" class="method-detail ">
+				<a name="M000029"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">decode_dec_entity</span><span
+						class="method-args">(*m)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="decode-dec-entity-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/htmlfilter.rb, line 532</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">decode_dec_entity</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">m</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">decode_num_entity</span>(<span class="ruby-identifier">m</span>[<span class="ruby-value">1</span>], <span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>])
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="decode-entities-method" class="method-detail ">
+				<a name="M000027"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">decode_entities</span><span
+						class="method-args">(data)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+within attributes, we want to convert all hex/dec/url escape sequences into
+their raw characters so that we can check we don&#8217;t get stray
+quotes/brackets inside strings.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="decode-entities-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/htmlfilter.rb, line 508</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">decode_entities</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-identifier">data</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">dup</span>
+
+    <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp re">/(&amp;)#(\d+);?/</span>){ <span class="ruby-identifier">decode_dec_entity</span>(<span class="ruby-identifier">$1</span>, <span class="ruby-identifier">$2</span>) }
+    <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp re">/(&amp;)#x([0-9a-f]+);?/i</span>){ <span class="ruby-identifier">decode_hex_entity</span>(<span class="ruby-identifier">$1</span>, <span class="ruby-identifier">$2</span>) }
+    <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp re">/(%)([0-9a-f]{2});?/i</span>){ <span class="ruby-identifier">decode_hex_entity</span>(<span class="ruby-identifier">$1</span>, <span class="ruby-identifier">$2</span>) }
+
+    <span class="ruby-identifier">data</span> = <span class="ruby-identifier">validate_entities</span>(<span class="ruby-identifier">data</span>)
+
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">data</span>
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="decode-hex-entity-method" class="method-detail ">
+				<a name="M000028"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">decode_hex_entity</span><span
+						class="method-args">(*m)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="decode-hex-entity-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/htmlfilter.rb, line 524</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">decode_hex_entity</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">m</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">decode_num_entity</span>(<span class="ruby-identifier">m</span>[<span class="ruby-value">1</span>], <span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span>(<span class="ruby-value">16</span>))
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="decode-num-entity-method" class="method-detail ">
+				<a name="M000030"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">decode_num_entity</span><span
+						class="method-args">(orig_type, d)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="decode-num-entity-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/htmlfilter.rb, line 540</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">decode_num_entity</span>(<span class="ruby-identifier">orig_type</span>, <span class="ruby-identifier">d</span>)
+    <span class="ruby-identifier">d</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">to_i</span>
+    <span class="ruby-identifier">d</span> = <span class="ruby-value">32</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span>   <span class="ruby-comment cmt"># space</span>
+
+    <span class="ruby-comment cmt"># don't mess with high chars</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">d</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">127</span>
+        <span class="ruby-keyword kw">return</span> <span class="ruby-value str">'%'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">to_s</span>(<span class="ruby-value">16</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">orig_type</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'%'</span>
+        <span class="ruby-keyword kw">return</span> <span class="ruby-node">&quot;&amp;#{d};&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">orig_type</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'&amp;'</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">escape_special_chars</span>(<span class="ruby-identifier">d</span>.<span class="ruby-identifier">chr</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="escape-comments-method" class="method-detail ">
+				<a name="M000016"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">escape_comments</span><span
+						class="method-args">(data)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="escape-comments-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/htmlfilter.rb, line 229</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">escape_comments</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-identifier">data</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/&lt;!--(.*?)--&gt;/s</span>) <span class="ruby-keyword kw">do</span>
+      <span class="ruby-value str">'&lt;!--'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">escape_special_chars</span>(<span class="ruby-identifier">strip_single</span>(<span class="ruby-identifier">$1</span>)) <span class="ruby-operator">+</span> <span class="ruby-value str">'--&gt;'</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">data</span>
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="escape-special-chars-method" class="method-detail ">
+				<a name="M000032"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">escape_special_chars</span><span
+						class="method-args">(data)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Certain characters have special significance in HTML, and should be
+represented by HTML entities if they are to preserve their meanings. This
+function returns a string with some of these conversions made; the
+translations made are those most useful for everyday web programming.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="escape-special-chars-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/htmlfilter.rb, line 567</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">escape_special_chars</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-identifier">data</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">dup</span>
+    <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-regexp re">/&amp;/n</span>  , <span class="ruby-value str">'&amp;amp;'</span> )
+    <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-regexp re">/\&quot;/n</span> , <span class="ruby-value str">'&amp;quot;'</span> )
+    <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-regexp re">/&gt;/n</span>  , <span class="ruby-value str">'&amp;gt;'</span> )
+    <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-regexp re">/&lt;/n</span>  , <span class="ruby-value str">'&amp;lt;'</span> )
+    <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub!</span>( <span class="ruby-regexp re">/'/</span>   , <span class="ruby-value str">'&amp;#039;'</span> )
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">data</span>
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="fix-case-method" class="method-detail ">
+				<a name="M000022"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">fix_case</span><span
+						class="method-args">(data)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="fix-case-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/htmlfilter.rb, line 407</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fix_case</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-identifier">data_notags</span> = <span class="ruby-identifier">strip_tags</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-identifier">data_notags</span> = <span class="ruby-identifier">data_notags</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/[^a-zA-Z]/</span>, <span class="ruby-value str">''</span>)
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">data_notags</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">5</span>
+        <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">data</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-regexp re">/[a-z]/</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">data_notags</span>
+        <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">data</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">data</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/(&gt;|^)([^&lt;]+?)(&lt;|$)/s</span>){
+        <span class="ruby-identifier">strip_single</span>(<span class="ruby-identifier">$1</span>) <span class="ruby-operator">+</span>
+        <span class="ruby-identifier">fix_case_inner</span>(<span class="ruby-identifier">strip_single</span>(<span class="ruby-identifier">$2</span>)) <span class="ruby-operator">+</span>
+        <span class="ruby-identifier">strip_single</span>(<span class="ruby-identifier">$3</span>)
+    }
+
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">data</span>
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="fix-case-inner-method" class="method-detail ">
+				<a name="M000023"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">fix_case_inner</span><span
+						class="method-args">(data)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="fix-case-inner-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/htmlfilter.rb, line 432</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fix_case_inner</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-identifier">data</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">dup</span>
+
+    <span class="ruby-identifier">data</span>.<span class="ruby-identifier">downcase!</span>
+
+    <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp re">/(^|[^\w\s\';,\\-])(\s*)([a-z])/</span>){
+        <span class="ruby-identifier">strip_single</span>(<span class="ruby-node">&quot;#{$1}#{$2}&quot;</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">strip_single</span>(<span class="ruby-identifier">$3</span>).<span class="ruby-identifier">upcase</span>
+    }
+
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">data</span>
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="is-valid-entity-method" class="method-detail ">
+				<a name="M000026"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">is_valid_entity</span><span
+						class="method-args">(entity)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="is-valid-entity-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/htmlfilter.rb, line 487</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">is_valid_entity</span>(<span class="ruby-identifier">entity</span>)
+    <span class="ruby-identifier">re</span> = <span class="ruby-regexp re">/^#([0-9]+)$/i</span>
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">md</span> = <span class="ruby-identifier">re</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">entity</span>)
+        <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">md</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">127</span>)
+            <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">allow_numbered_entities</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">allowed_entities</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">entity</span>)
+        <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span>
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="process-param-protocol-method" class="method-detail ">
+				<a name="M000020"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">process_param_protocol</span><span
+						class="method-args">(data)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="process-param-protocol-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/htmlfilter.rb, line 373</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">process_param_protocol</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-identifier">data</span> = <span class="ruby-identifier">decode_entities</span>(<span class="ruby-identifier">data</span>)
+
+    <span class="ruby-identifier">re</span> = <span class="ruby-regexp re">/^([^:]+)\:/s</span><span class="ruby-identifier">i</span>
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">matches</span> = <span class="ruby-identifier">re</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">data</span>)
+        <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">allowed_protocols</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">matches</span>[<span class="ruby-value">1</span>])
+            <span class="ruby-comment cmt">#data = '#'.substr(data, strlen(matches[1])+1)</span>
+            <span class="ruby-identifier">data</span> = <span class="ruby-value str">'#'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">data</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">matches</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">size</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>]
+        <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">data</span>
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="process-remove-blanks-method" class="method-detail ">
+				<a name="M000021"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">process_remove_blanks</span><span
+						class="method-args">(data)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="process-remove-blanks-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/htmlfilter.rb, line 392</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">process_remove_blanks</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-identifier">data</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">dup</span>
+
+    <span class="ruby-identifier">remove_blanks</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">tag</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-node">/&lt;#{tag}(\s[^&gt;]*)?&gt;&lt;\/#{tag}&gt;/</span>, <span class="ruby-value str">''</span>)
+        <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-node">/&lt;#{tag}(\s[^&gt;]*)?\/&gt;/</span>, <span class="ruby-value str">''</span>)
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">data</span>
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="process-tag-method" class="method-detail ">
+				<a name="M000019"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">process_tag</span><span
+						class="method-args">(data)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="process-tag-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/htmlfilter.rb, line 286</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">process_tag</span>(<span class="ruby-identifier">data</span>)
+
+    <span class="ruby-comment cmt"># ending tags</span>
+
+    <span class="ruby-identifier">re</span> = <span class="ruby-regexp re">/^\/([a-z0-9]+)/s</span><span class="ruby-identifier">i</span>
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">matches</span> = <span class="ruby-identifier">re</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">data</span>)
+        <span class="ruby-identifier">name</span> = <span class="ruby-identifier">matches</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">downcase</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">allowed</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">name</span>)
+            <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">no_close</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">name</span>)
+                <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">tag_counts</span>[<span class="ruby-identifier">name</span>]
+                    <span class="ruby-identifier">tag_counts</span>[<span class="ruby-identifier">name</span>] <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+                    <span class="ruby-keyword kw">return</span> <span class="ruby-node">&quot;&lt;/#{name}&gt;&quot;</span>
+                <span class="ruby-keyword kw">end</span>
+            <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">else</span>
+            <span class="ruby-keyword kw">return</span> <span class="ruby-value str">''</span>
+        <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-comment cmt"># starting tags</span>
+
+    <span class="ruby-identifier">re</span> = <span class="ruby-regexp re">/^([a-z0-9]+)(.*?)(\/?)$/s</span><span class="ruby-identifier">i</span>
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">matches</span> = <span class="ruby-identifier">re</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">data</span>)
+        <span class="ruby-identifier">name</span>   = <span class="ruby-identifier">matches</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">downcase</span>
+        <span class="ruby-identifier">body</span>   = <span class="ruby-identifier">matches</span>[<span class="ruby-value">2</span>]
+        <span class="ruby-identifier">ending</span> = <span class="ruby-identifier">matches</span>[<span class="ruby-value">3</span>]
+
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">allowed</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">name</span>)
+            <span class="ruby-identifier">params</span> = <span class="ruby-value str">&quot;&quot;</span>
+
+            <span class="ruby-identifier">matches_2</span> = <span class="ruby-identifier">body</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp re">/([a-z0-9]+)=([&quot;'])(.*?)\2/s</span><span class="ruby-identifier">i</span>)         <span class="ruby-comment cmt"># &lt;foo a=&quot;b&quot; /&gt;</span>
+            <span class="ruby-identifier">matches_1</span> = <span class="ruby-identifier">body</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp re">/([a-z0-9]+)(=)([^&quot;\s']+)/s</span><span class="ruby-identifier">i</span>)          <span class="ruby-comment cmt"># &lt;foo a=b /&gt;</span>
+            <span class="ruby-identifier">matches_3</span> = <span class="ruby-identifier">body</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp re">/([a-z0-9]+)=([&quot;'])([^&quot;']*?)\s*$/s</span><span class="ruby-identifier">i</span>)   <span class="ruby-comment cmt"># &lt;foo a=&quot;b /&gt;</span>
+
+            <span class="ruby-identifier">matches</span> = <span class="ruby-identifier">matches_1</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">matches_2</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">matches_3</span>
+
+            <span class="ruby-identifier">matches</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">match</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">pname</span> = <span class="ruby-identifier">match</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">downcase</span>
+                <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">allowed</span>[<span class="ruby-identifier">name</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">pname</span>)
+                    <span class="ruby-identifier">value</span> = <span class="ruby-identifier">match</span>[<span class="ruby-value">2</span>]
+                    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">protocol_attributes</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">pname</span>)
+                        <span class="ruby-identifier">value</span> = <span class="ruby-identifier">process_param_protocol</span>(<span class="ruby-identifier">value</span>)
+                    <span class="ruby-keyword kw">end</span>
+                    <span class="ruby-identifier">params</span> <span class="ruby-operator">+=</span> <span class="ruby-node">%{ #{pname}=&quot;#{value}&quot;}</span>
+                <span class="ruby-keyword kw">end</span>
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">no_close</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">name</span>)
+                <span class="ruby-identifier">ending</span> = <span class="ruby-value str">' /'</span>
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">always_close</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">name</span>)
+                <span class="ruby-identifier">ending</span> = <span class="ruby-value str">''</span>
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ending</span>.<span class="ruby-identifier">empty?</span>
+                <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">tag_counts</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">name</span>)
+                    <span class="ruby-identifier">tag_counts</span>[<span class="ruby-identifier">name</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                <span class="ruby-keyword kw">else</span>
+                    <span class="ruby-identifier">tag_counts</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-value">1</span>
+                <span class="ruby-keyword kw">end</span>
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">ending</span>.<span class="ruby-identifier">empty?</span>
+                <span class="ruby-identifier">ending</span> = <span class="ruby-value str">' /'</span>
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-keyword kw">return</span> <span class="ruby-value str">'&lt;'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">params</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ending</span> <span class="ruby-operator">+</span> <span class="ruby-value str">'&gt;'</span>
+        <span class="ruby-keyword kw">else</span>
+            <span class="ruby-keyword kw">return</span> <span class="ruby-value str">''</span>
+        <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-comment cmt"># comments</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-regexp re">/^!--(.*)--$/s</span><span class="ruby-identifier">i</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">data</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">strip_comments</span>
+            <span class="ruby-keyword kw">return</span> <span class="ruby-value str">''</span>
+        <span class="ruby-keyword kw">else</span>
+            <span class="ruby-keyword kw">return</span> <span class="ruby-value str">'&lt;'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">data</span> <span class="ruby-operator">+</span> <span class="ruby-value str">'&gt;'</span>
+        <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-comment cmt"># garbage, ignore it</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-value str">''</span>
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="strip-single-method" class="method-detail ">
+				<a name="M000031"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">strip_single</span><span
+						class="method-args">(data)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="strip-single-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/htmlfilter.rb, line 557</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">strip_single</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">'\&quot;'</span>, <span class="ruby-value str">'&quot;'</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">'\0'</span>, <span class="ruby-value">0</span>.<span class="ruby-identifier">chr</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="tag-counts-method" class="method-detail ">
+				<a name="M000015"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">tag_counts</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+internal tag counter
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="tag-counts-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/htmlfilter.rb, line 223</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">tag_counts</span> ; <span class="ruby-ivar">@tag_counts</span>; <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="validate-entities-method" class="method-detail ">
+				<a name="M000024"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">validate_entities</span><span
+						class="method-args">(data)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="validate-entities-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/htmlfilter.rb, line 448</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">validate_entities</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-identifier">data</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">dup</span>
+
+    <span class="ruby-comment cmt"># validate entities throughout the string</span>
+    <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp re">%r!&amp;([^&amp;;]*)(?=(;|&amp;|$))!</span>){
+        <span class="ruby-identifier">check_entity</span>(<span class="ruby-identifier">strip_single</span>(<span class="ruby-identifier">$1</span>), <span class="ruby-identifier">strip_single</span>(<span class="ruby-identifier">$2</span>))
+    }
+
+    <span class="ruby-comment cmt"># validate quotes outside of tags</span>
+    <span class="ruby-identifier">data</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp re">/(&gt;|^)([^&lt;]+?)(&lt;|$)/s</span>){
+        <span class="ruby-identifier">m1</span>, <span class="ruby-identifier">m2</span>, <span class="ruby-identifier">m3</span> = <span class="ruby-identifier">$1</span>, <span class="ruby-identifier">$2</span>, <span class="ruby-identifier">$3</span>
+        <span class="ruby-identifier">strip_single</span>(<span class="ruby-identifier">m1</span>) <span class="ruby-operator">+</span>
+        <span class="ruby-identifier">strip_single</span>(<span class="ruby-identifier">m2</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">'\&quot;'</span>, <span class="ruby-value str">'&amp;quot;'</span>) <span class="ruby-operator">+</span>
+        <span class="ruby-identifier">strip_single</span>(<span class="ruby-identifier">m3</span>)
+    }
+
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">data</span>
+  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+
