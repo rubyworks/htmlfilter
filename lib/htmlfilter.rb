@@ -103,7 +103,7 @@ class HTMLFilter
   DEFAULT = {
     'allowed' => {
       'a'   => ['href', 'target'],
-      'img' => ['src', 'width', 'height', 'alt']
+      'img' => ['src', 'width', 'height', 'alt'],
       'b'   => [],
       'i'   => [],
       'em'  => [],
