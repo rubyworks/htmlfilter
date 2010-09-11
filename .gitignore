@@ -1,4 +1,6 @@
 log
-doc/rdoc
-doc/ri
+doc
+ri
 pkg
+tmp
+site/docs
