@@ -35,6 +35,9 @@
 #
 class HTMLFilter
 
+  # Library version.
+  VERSION = "1.2.0"  # :till: VERSION = "<%= version %>"
+
   # tags and attributes that are allowed
   #
   # Eg.
