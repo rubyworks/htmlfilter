@@ -3,7 +3,7 @@ title  : HTMLFilter
 suite  : rubyworks
 summary: HTML/CSS Sanity
 contact: trans <transfire@gmail.com>
-license: MIT
+license: Attribution-ShareAlike 3.0
 authors: Thomas Sawyer
 created: 2009-06-25
 
@@ -11,10 +11,10 @@ description:
    Sanitize and sterilize HTML, also includes a CSS filter.
 
 resources:
-  homepage    : http://rubyworks.github.com/htmlfilter
-  development : http://github.com/rubyworks/htmlfilter
-  repository  : git://github.com/rubyworks/htmlfilter.git
-  subscribe   : rubyworks-mailinglist+subscribe@googlegroups.com
+  home: http://rubyworks.github.com/htmlfilter
+  code: http://github.com/rubyworks/htmlfilter
+  mail: http://groups.google.com/group/rubyworks-mailinglist
+  repo: git://github.com/rubyworks/htmlfilter.git
 
 copyright:
   Copyright (c) 2009 Thomas Sawyer

@@ -1,6 +1,7 @@
+require File.dirname(__FILE__) + '/helper.rb'
+
 require "test/unit"
 require "cssfilter"
-#require 'yaml'
 
 class TestCSSFilter < Test::Unit::TestCase
 
