@@ -1,197 +1,236 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 
-	<title>Class: String</title>
+  <title>Class: String</title>
 
-	<link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
+  
+    <link rel="SHORTCUT ICON" href="./assets/icon/class.png">
+  
 
-	<script src="./js/jquery.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="./js/thickbox-compressed.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="./js/quicksearch.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="./js/darkfish.js" type="text/javascript"
-		charset="utf-8"></script>
+  <link type="text/css" rel="stylesheet" href="./assets/rdoc.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="./assets/highlight/styles/github.css" title="GitHub" />
 
+  <script type="text/javascript" charset="utf-8" src="./assets/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./assets/highlight/highlight.pack.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./assets/quicksearch.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./assets/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function() {
+      $('#documentation pre').wrapInner('<code></code>');
+      hljs.tabReplace = '    ';
+      hljs.initHighlightingOnLoad('ruby');
+
+	    hookSourceViews();
+	    hookDebuggingToggle();
+	    hookQuickSearch();
+	    highlightLocationTarget();
+
+	    $('ul.link-list a').bind( "click", highlightClickTarget );
+    });
+  </script>
 </head>
 <body class="class">
+<div id="main">
 
-	<div id="metadata">
-		<div id="file-metadata">
-			<div id="file-list-section" class="section">
-				<h3 class="section-header">In Files</h3>
-				<div class="section-body">
-					<ul>
-					
-						<li><a href="./lib/htmlfilter_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-							class="thickbox" title="lib/htmlfilter.rb">lib/htmlfilter.rb</a></li>
-					
-					</ul>
-				</div>
-			</div>
+  <div class="head">
+    <h1>
+      
+        <img src="./assets/icon/class.png" align="absmiddle">&nbsp;
+      
+      <a href="./index.html">HTMLFilter</a>&nbsp;
+      <a href="/">String</a>
+    </h1>
+  </div>
 
-			
-		</div>
+  <div id="metadata">
+    <div id="project-metadata">
 
-		<div id="class-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li class="file"><a href="./lib/htmlfilter_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/htmlfilter.rb">lib/htmlfilter.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
 
-			<!-- Parent Class -->
-			
-			<div id="parent-class-section" class="section">
-				<h3 class="section-header">Parent</h3>
-				
-				<p class="link">Object</p>
-				
-			</div>
-			
+      <!-- What about Git info, or Hg info? This seems almost silly, albeit kind of cool. -->
+      <!-- TODO: generalize this for all SCMs -->
 
-			<!-- Namespace Contents -->
-			
+      
+    </div>
 
-			<!-- Method Quickref -->
-			
-			<div id="method-list-section" class="section">
-				<h3 class="section-header">Methods</h3>
-				<ul class="link-list">
-					
-					<li><a href="#M000033">#html_filter</a></li>
-					
-				</ul>
-			</div>
-			
+    <div id="class-metadata">
 
-			<!-- Included Modules -->
-			
-		</div>
+      <!-- Parent Class -->
+      
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        <ul>
+          
+          <li class="class">Object</li>
+          
+        </ul>
+      </div>
+      
 
-		<div id="project-metadata">
-			
-			
-			<div id="fileindex-section" class="section project-section">
-				<h3 class="section-header">Files</h3>
-				<ul>
-				
-					<li class="file"><a href="./HISTORY.html">HISTORY</a></li>
-				
-					<li class="file"><a href="./README_rdoc.html">README.rdoc</a></li>
-				
-					<li class="file"><a href="./Rakefile.html">Rakefile</a></li>
-				
-					<li class="file"><a href="./TODO.html">TODO</a></li>
-				
-				</ul>
-			</div>
-			
+      <!-- Namespace Contents -->
+      
 
-			<div id="classindex-section" class="section project-section">
-				<h3 class="section-header">Class Index
-					<span class="search-toggle"><img src="./images/find.png"
-						height="16" width="16" alt="[+]"
-						title="show/hide quicksearch" /></span></h3>
-				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
-				<fieldset>
-					<legend>Quicksearch</legend>
-					<input type="text" name="quicksearch" value=""
-						class="quicksearch-field" />
-				</fieldset>
-				</form>
+      <!-- Method Quickref -->
+      
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+            
+            <li class="method">
+              <a href="#method-i-html_filter">#html_filter</a>
+            </li>
+          
+        </ul>
+      </div>
+      
 
-				<ul class="link-list">
-				
-					<li><a href="./CSSFilter.html">CSSFilter</a></li>
-				
-					<li><a href="./CSSFilter/Tree.html">CSSFilter::Tree</a></li>
-				
-					<li><a href="./HTMLFilter.html">HTMLFilter</a></li>
-				
-					<li><a href="./String.html">String</a></li>
-				
-				</ul>
-				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
-			</div>
+      <!-- Included Modules -->
+      
+    </div>
 
-			
-		</div>
-	</div>
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Information</h3>
+        <ul>
+        
+          <li class="file"><a href="./Rakefile.html">Rakefile</a></li>
+        
+          <li class="file"><a href="./HISTORY_rdoc.html">HISTORY.rdoc</a></li>
+        
+          <li class="file"><a href="./README_rdoc.html">README.rdoc</a></li>
+        
+        </ul>
+      </div>
+      
 
-	<div id="documentation">
-		<h1 class="class">String</h1>
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="./assets/icon/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
 
-		<div id="description">
-			<p>
+        <!-- classpage.html : classes -->
+        <ul class="link-list">
+        
+          <li class="class"><a href="./CSSFilter.html">CSSFilter</a></li>
+        
+          <li class="class"><a href="./CSSFilter/Tree.html">CSSFilter::Tree</a></li>
+        
+          <li class="class"><a href="./HTMLFilter.html">HTMLFilter</a></li>
+        
+          <li class="class"><a href="./String.html">String</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+    </div>
+
+    <div id="validator-badges">
+      
+      <div style="float: right; margin-right: 5px;">
+        <a href="http://validator.w3.org/check/referer"><img src="./assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
+      </div>
+      Generated with <a href="http://rubyworks.github.com/rdazzle">RDazzle Newfish</a> 1.4.0
+      <br/><br/>
+    </div>
+  </div>
+
+  <div id="documentation">
+
+    <div id="description">
+      
+        <h1>String</h1>
+      
+
+      <p>
 Overload the standard <a href="String.html">String</a> class for extra
 convienience.
 </p>
 
-		</div>
+    </div>
 
-		<!-- Constants -->
-		
+    <!-- Constants -->
+    
 
-		<!-- Attributes -->
-		
+    <!-- Attributes -->
+    
 
-		<!-- Methods -->
-		
-		<div id="public-instance-method-details" class="method-section section">
-			<h3 class="section-header">Public Instance Methods</h3>
+    <!-- Methods -->
+    
+    <div id="public-instance-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
 
-		
-			<div id="html-filter-method" class="method-detail ">
-				<a name="M000033"></a>
+    
+      <div id="html-filter-method" class="method-detail ">
+        <a name="method-i-html_filter"></a>
 
-				<div class="method-heading">
-				
-					<span class="method-name">html_filter</span><span
-						class="method-args">(*opts)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
+        <div class="method-heading">
+        
+          <span class="method-name">html_filter</span><span
+            class="method-args">(*opts)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
 
-				<div class="method-description">
-					
-					<p class="missing-docs">(Not documented)</p>
-					
+        <div class="method-description">
+          
+          
+          
 
-					
-					<div class="method-source-code"
-						id="html-filter-source">
+          
+          <div class="method-source-code"
+            id="html-filter-source">
 <pre>
-<span class="ruby-comment cmt"># File lib/htmlfilter.rb, line 611</span>
-  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">html_filter</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">opts</span>)
-    <span class="ruby-constant">HTMLFilter</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">opts</span>).<span class="ruby-identifier">filter</span>(<span class="ruby-keyword kw">self</span>)
-  <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
+     <span class="ruby-comment cmt"># File lib/htmlfilter.rb, line 591</span>
+591:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">html_filter</span>(*<span class="ruby-identifier">opts</span>)
+592:     <span class="ruby-constant">HTMLFilter</span>.<span class="ruby-identifier">new</span>(*<span class="ruby-identifier">opts</span>).<span class="ruby-identifier">filter</span>(<span class="ruby-keyword kw">self</span>)
+593:   <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
 
-				
-			</div>
+        
+      </div>
 
-		
-		</div>
-	
+    
+    </div>
+  
 
-	</div>
+  </div>
 
 
-	<div id="rdoc-debugging-section-dump" class="debugging-section">
-	
-		<p>Disabled; run with --debug to generate this.</p>
-	
-	</div>
+  <div id="rdoc-debugging-section-dump" class="debugging-section">
+  
+    <p>Disabled; run with --debug to generate this.</p>
+  
+  </div>
 
-	<div id="validator-badges">
-		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
-		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
-			Rdoc Generator</a> 1.1.6</small>.</p>
-	</div>
-
+</main>
 </body>
 </html>
 

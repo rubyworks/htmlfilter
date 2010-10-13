@@ -1,43 +1,348 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 
-	<title>HTMLFilter</title>
+  <title>HTMLFilter</title>
 
-	<link type="text/css" media="screen" href="rdoc.css" rel="stylesheet" />
+  <link rel="SHORTCUT ICON" href="assets/icon/ruby.png">
 
-	<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+  <link type="text/css" rel="stylesheet" href="assets/rdoc.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="assets/highlight/styles/github.css" title="GitHub" />
 
+  <script type="text/javascript" charset="utf-8" src="assets/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="assets/highlight/highlight.pack.js"></script>
+  <script type="text/javascript" charset="utf-8" src="assets/quicksearch.js"></script>
+  <script type="text/javascript" charset="utf-8" src="assets/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function() {
+      $('#documentation pre').wrapInner('<code></code>');
+      hljs.tabReplace = '    ';
+      hljs.initHighlightingOnLoad('ruby');
+
+	    hookSourceViews();
+	    hookDebuggingToggle();
+	    hookQuickSearch();
+	    highlightLocationTarget();
+
+	    $('ul.link-list a').bind( "click", highlightClickTarget );
+    });
+  </script>
 </head>
 <body class="indexpage">
+<div id="main">
 
-	
-	<h1>HTMLFilter</h1>
+  
+  <div class="head">
+    <h1>
+      <img src="assets/icon/project.png" align="absmiddle">&nbsp;
+      <a href="index.html">HTMLFilter</a>
+    </h1>
+  </div>
 
-	
-	<div id="main">
-		
+  <div id="metadata">
+    <div id="project-metadata">
+
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Information</h3>
+        <ul>
+        
+          <li class="file"><a href="Rakefile.html">Rakefile</a></li>
+        
+          <li class="file"><a href="HISTORY_rdoc.html">HISTORY.rdoc</a></li>
+        
+          <li class="file"><a href="README_rdoc.html">README.rdoc</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="assets/icon/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li class="class"><a href="CSSFilter.html">CSSFilter</a></li>
+        
+          <li class="class"><a href="CSSFilter/Tree.html">CSSFilter::Tree</a></li>
+        
+          <li class="class"><a href="HTMLFilter.html">HTMLFilter</a></li>
+        
+          <li class="class"><a href="String.html">String</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      <!-- METHODS -->
+      <div id="methodindex-section" class="section project-section">
+        <h3 class="section-header">Method Index
+          <span class="search-toggle"><img src="assets/icon/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">CSSFilter</span>
+              <a href="CSSFilter.html#method-c-new">::new</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">HTMLFilter</span>
+              <a href="HTMLFilter.html#method-c-new">::new</a>
+            </li>
+          
+            
+            <li class="singleton" style="clear: both;">
+              <span class="method-parent-aside">CSSFilter::Tree</span>
+              <a href="CSSFilter/Tree.html#method-c-new">::new</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CSSFilter</span>
+              <a href="CSSFilter.html#method-i-accept_host">#accept_host</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">HTMLFilter</span>
+              <a href="HTMLFilter.html#method-i-balance_html">#balance_html</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">HTMLFilter</span>
+              <a href="HTMLFilter.html#method-i-check_entity">#check_entity</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">HTMLFilter</span>
+              <a href="HTMLFilter.html#method-i-check_tags">#check_tags</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CSSFilter</span>
+              <a href="CSSFilter.html#method-i-clean_properties">#clean_properties</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CSSFilter</span>
+              <a href="CSSFilter.html#method-i-clean_value">#clean_value</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">HTMLFilter</span>
+              <a href="HTMLFilter.html#method-i-decode_dec_entity">#decode_dec_entity</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">HTMLFilter</span>
+              <a href="HTMLFilter.html#method-i-decode_entities">#decode_entities</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">HTMLFilter</span>
+              <a href="HTMLFilter.html#method-i-decode_hex_entity">#decode_hex_entity</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">HTMLFilter</span>
+              <a href="HTMLFilter.html#method-i-decode_num_entity">#decode_num_entity</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">HTMLFilter</span>
+              <a href="HTMLFilter.html#method-i-escape_comments">#escape_comments</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">HTMLFilter</span>
+              <a href="HTMLFilter.html#method-i-escape_special_chars">#escape_special_chars</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">HTMLFilter</span>
+              <a href="HTMLFilter.html#method-i-filter">#filter</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CSSFilter</span>
+              <a href="CSSFilter.html#method-i-filter">#filter</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">HTMLFilter</span>
+              <a href="HTMLFilter.html#method-i-fix_case">#fix_case</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">HTMLFilter</span>
+              <a href="HTMLFilter.html#method-i-fix_case_inner">#fix_case_inner</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">String</span>
+              <a href="String.html#method-i-html_filter">#html_filter</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">HTMLFilter</span>
+              <a href="HTMLFilter.html#method-i-is_valid_entity">#is_valid_entity</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CSSFilter</span>
+              <a href="CSSFilter.html#method-i-parse">#parse</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">HTMLFilter</span>
+              <a href="HTMLFilter.html#method-i-process_param_protocol">#process_param_protocol</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">HTMLFilter</span>
+              <a href="HTMLFilter.html#method-i-process_remove_blanks">#process_remove_blanks</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">HTMLFilter</span>
+              <a href="HTMLFilter.html#method-i-process_tag">#process_tag</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CSSFilter</span>
+              <a href="CSSFilter.html#method-i-remove_blanklines">#remove_blanklines</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CSSFilter</span>
+              <a href="CSSFilter.html#method-i-remove_comments">#remove_comments</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CSSFilter</span>
+              <a href="CSSFilter.html#method-i-remove_nullvalues">#remove_nullvalues</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CSSFilter</span>
+              <a href="CSSFilter.html#method-i-remove_urls">#remove_urls</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CSSFilter</span>
+              <a href="CSSFilter.html#method-i-remove_whitespace">#remove_whitespace</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">HTMLFilter</span>
+              <a href="HTMLFilter.html#method-i-strip_single">#strip_single</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">HTMLFilter</span>
+              <a href="HTMLFilter.html#method-i-tag_counts">#tag_counts</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">CSSFilter::Tree</span>
+              <a href="CSSFilter/Tree.html#method-i-to_css">#to_css</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">HTMLFilter</span>
+              <a href="HTMLFilter.html#method-i-validate_entities">#validate_entities</a>
+            </li>
+          
+        </ul>
+      </div>
+
+    </div>
+
+    <div id="validator-badges">
+      
+      <div style="float: right; margin-right: 5px;">
+        <a href="http://validator.w3.org/check/referer"><img src="assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
+      </div>
+      Generated with <a href="http://rubyworks.github.com/rdazzle">RDazzle Newfish</a> 1.4.0
+      <br/><br/> 
+    </div>
+  </div>
+
+  
+  <div id="documentation">
+    <h1>HtmlFilter</h1>
 <ul>
-<li><a
+<li><p>
+<a
 href="http://rubyworks.github.com/htmlfilter">rubyworks.github.com/htmlfilter</a>
-
+</p>
 </li>
-<li><a
+<li><p>
+<a
 href="http://github.com/rubyworks/htmlfilter">github.com/rubyworks/htmlfilter</a>
-
+</p>
 </li>
 </ul>
 <h2>DESCRIPTION:</h2>
 <p>
 HTML Filter library can be used to sanitize and sterilize HTML. A good idea
-if you let users submit HTML in comments, for instance.
+if you let users submit HTML in comments, for instance. 
 </p>
 <p>
 This library also include CssFilter. The CssFilter class will clean-up a
@@ -46,20 +351,25 @@ importantly remove urls.
 </p>
 <h2>FEATURES:</h2>
 <ul>
-<li>Based on well-worn PHP library.
-
+<li><p>
+Based on well-worn PHP library.
+</p>
 </li>
-<li>Regular expression based filtering.
-
+<li><p>
+Regular expression based filtering.
+</p>
 </li>
-<li>Very efficient for small snippets, like blog comments.
-
+<li><p>
+Very efficient for small snippets, like blog comments.
+</p>
 </li>
-<li>Pure-Ruby and no dependencies.
-
+<li><p>
+Pure-Ruby and no dependencies.
+</p>
 </li>
-<li>Also has library to clean and compact cascading stylesheets.
-
+<li><p>
+Also has library to clean and compact cascading stylesheets.
+</p>
 </li>
 </ul>
 <h2>SYNOPSIS:</h2>
@@ -82,8 +392,9 @@ See RDocs for more information.
 </p>
 <h2>INSTALL:</h2>
 <ul>
-<li>sudo gem install htmlfilter
-
+<li><p>
+sudo gem install htmlfilter
+</p>
 </li>
 </ul>
 <h2>LICENSE:</h2>
@@ -104,115 +415,10 @@ Attribution-ShareAlike 2.5 License. See <a
 href="http://creativecommons.org/licenses/by-sa/2.5/.">creativecommons.org/licenses/by-sa/2.5/.</a>
 </p>
 
-	</div>
-	
+  </div>
+  
 
-	
-	
-	<h2>Files</h2>
-	<ul>
-		
-			<li class="file"><a href="HISTORY.html">HISTORY</a></li>
-		
-			<li class="file"><a href="README_rdoc.html">README.rdoc</a></li>
-		
-			<li class="file"><a href="Rakefile.html">Rakefile</a></li>
-		
-			<li class="file"><a href="TODO.html">TODO</a></li>
-		
-	</ul>
-	
-
-	<h2>Classes/Modules</h2>
-	<ul>
-		
-		<li class="class"><a href="CSSFilter.html">CSSFilter</a></li>
-		
-		<li class="class"><a href="CSSFilter/Tree.html">CSSFilter::Tree</a></li>
-		
-		<li class="class"><a href="HTMLFilter.html">HTMLFilter</a></li>
-		
-		<li class="class"><a href="String.html">String</a></li>
-		
-	</ul>
-
-	<h2>Methods</h2>
-	<ul>
-		
-			<li><a href="CSSFilter/Tree.html#M000011">::new &mdash; CSSFilter::Tree</a></li>
-		
-			<li><a href="HTMLFilter.html#M000013">::new &mdash; HTMLFilter</a></li>
-		
-			<li><a href="CSSFilter.html#M000000">::new &mdash; CSSFilter</a></li>
-		
-			<li><a href="CSSFilter.html#M000001">#accept_host &mdash; CSSFilter</a></li>
-		
-			<li><a href="HTMLFilter.html#M000017">#balance_html &mdash; HTMLFilter</a></li>
-		
-			<li><a href="HTMLFilter.html#M000025">#check_entity &mdash; HTMLFilter</a></li>
-		
-			<li><a href="HTMLFilter.html#M000018">#check_tags &mdash; HTMLFilter</a></li>
-		
-			<li><a href="CSSFilter.html#M000009">#clean_properties &mdash; CSSFilter</a></li>
-		
-			<li><a href="CSSFilter.html#M000010">#clean_value &mdash; CSSFilter</a></li>
-		
-			<li><a href="HTMLFilter.html#M000029">#decode_dec_entity &mdash; HTMLFilter</a></li>
-		
-			<li><a href="HTMLFilter.html#M000027">#decode_entities &mdash; HTMLFilter</a></li>
-		
-			<li><a href="HTMLFilter.html#M000028">#decode_hex_entity &mdash; HTMLFilter</a></li>
-		
-			<li><a href="HTMLFilter.html#M000030">#decode_num_entity &mdash; HTMLFilter</a></li>
-		
-			<li><a href="HTMLFilter.html#M000016">#escape_comments &mdash; HTMLFilter</a></li>
-		
-			<li><a href="HTMLFilter.html#M000032">#escape_special_chars &mdash; HTMLFilter</a></li>
-		
-			<li><a href="HTMLFilter.html#M000014">#filter &mdash; HTMLFilter</a></li>
-		
-			<li><a href="CSSFilter.html#M000002">#filter &mdash; CSSFilter</a></li>
-		
-			<li><a href="HTMLFilter.html#M000022">#fix_case &mdash; HTMLFilter</a></li>
-		
-			<li><a href="HTMLFilter.html#M000023">#fix_case_inner &mdash; HTMLFilter</a></li>
-		
-			<li><a href="String.html#M000033">#html_filter &mdash; String</a></li>
-		
-			<li><a href="HTMLFilter.html#M000026">#is_valid_entity &mdash; HTMLFilter</a></li>
-		
-			<li><a href="CSSFilter.html#M000008">#parse &mdash; CSSFilter</a></li>
-		
-			<li><a href="HTMLFilter.html#M000020">#process_param_protocol &mdash; HTMLFilter</a></li>
-		
-			<li><a href="HTMLFilter.html#M000021">#process_remove_blanks &mdash; HTMLFilter</a></li>
-		
-			<li><a href="HTMLFilter.html#M000019">#process_tag &mdash; HTMLFilter</a></li>
-		
-			<li><a href="CSSFilter.html#M000006">#remove_blanklines &mdash; CSSFilter</a></li>
-		
-			<li><a href="CSSFilter.html#M000003">#remove_comments &mdash; CSSFilter</a></li>
-		
-			<li><a href="CSSFilter.html#M000007">#remove_nullvalues &mdash; CSSFilter</a></li>
-		
-			<li><a href="CSSFilter.html#M000004">#remove_urls &mdash; CSSFilter</a></li>
-		
-			<li><a href="CSSFilter.html#M000005">#remove_whitespace &mdash; CSSFilter</a></li>
-		
-			<li><a href="HTMLFilter.html#M000031">#strip_single &mdash; HTMLFilter</a></li>
-		
-			<li><a href="HTMLFilter.html#M000015">#tag_counts &mdash; HTMLFilter</a></li>
-		
-			<li><a href="CSSFilter/Tree.html#M000012">#to_css &mdash; CSSFilter::Tree</a></li>
-		
-			<li><a href="HTMLFilter.html#M000024">#validate_entities &mdash; HTMLFilter</a></li>
-		
-	</ul>
-
-	<div id="validator-badges">
-		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
-		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
-			Rdoc Generator</a> 1.1.6</small>.</p>
-	</div>
+</div>
 </body>
 </html>
+
