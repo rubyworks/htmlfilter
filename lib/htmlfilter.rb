@@ -1,3 +1,13 @@
+# htmlfilter.rb
+#
+# Copyright (c) 2007 Thomas Sawyer
+#
+# Creative Commons Attribution-ShareAlike 3.0 License
+#
+# See http://creativecommons.org/licenses/by-sa/3.0/
+#
+# Thanks to Jang Kim for adding support for single quoted attributes.
+
 # = HTML Filter
 #
 # HTML Filter library can be used to sanitize and sterilize
@@ -6,37 +16,7 @@
 #
 # HtmlFilter is a port of lib_filter.php, v1.15 by Cal Henderson <cal@iamcal.com>
 # licensed under a Creative Commons Attribution-ShareAlike 2.5 License
-# http://creativecommons.org/licenses/by-sa/2.5/.
-#
-# Thanks to Jang Kim for adding support for single quoted attributes.
-#
-# == Reference
-#
-# * http://iamcal.com/publish/articles/php/processing_html/
-# * http://iamcal.com/publish/articles/php/processing_html_part_2/
-#
-# == Author(s)
-#
-# * Trans
-# * George Moschovitis
-# * James Britt
-# * Cal Henderson
-# * Jang Kim
-#
-# == Copying
-#
-# Copyright (c) 2007 Thomas Sawyer
-#
-# Creative Commons Attribution-ShareAlike 3.0 License
-#
-# Ref. http://creativecommons.org/licenses/by-sa/3.0/
-
-
-# = HTMLFilter
-#
-# HTML Filter library can be used to sanitize and sterilize
-# HTML. A good idea if you let users submit HTML in comments,
-# for instance.
+# http://creativecommons.org/licenses/by-sa/3.0/.
 #
 # == Usage
 #
@@ -612,9 +592,4 @@ class String
     HTMLFilter.new(*opts).filter(self)
   end
 end
-
-# For backward compatability. Eventually this will be deprecated.
-HtmlFilter = HTMLFilter
-
-
 

@@ -1,21 +1,10 @@
-# = CSS Filter
-#
-# The CSSFilter class will clean up a cascading stylesheet.
-# It can be used to remove whitespace and most importantly
-# remove urls.
-#
-# == Authors
-#
-# * Trans
-#
-# == Copying
+# cssfilter.rb
 #
 # Copyright (c) 2007 Thomas Sawyer
 #
 # Creative Commons Attribution-ShareAlike 3.0 License
 #
-# Ref. http://creativecommons.org/licenses/by-sa/3.0/
-
+# See http://creativecommons.org/licenses/by-sa/3.0/
 
 # TODO: Allow urls to be specified per attribute type.
 
@@ -224,7 +213,4 @@ class CSSFilter
   end
 
 end
-
-# For backward compatability. Eventually this will be deprecated.
-CssFilter = CSSFilter
 
