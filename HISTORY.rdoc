@@ -1,6 +1,16 @@
 = RELEASE HISTORY
 
-== 1.1 / 2009-11-24
+== 1.2.0 / 2010-10-13
+
+Finally removed the lowecase variations on the class names.
+You must HTMLFilter now and not HtmlFiler.
+
+Changes:
+
+* Remove lowercase variations on class names.
+
+
+== 1.1.0 / 2009-11-24
 
 This is release adjusts the names of the classes to
 be capitialized according to the actual use of the
