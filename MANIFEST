@@ -1,17 +1,12 @@
-#!mast bin lib meta test [A-Z]*
+#!mast bin lib test [A-Z]*
 lib/cssfilter.rb
 lib/htmlfilter.rb
-meta/collection
-meta/contact
-meta/description
-meta/homepage
-meta/name
-meta/repository
-meta/title
-meta/version
+test/helper.rb
 test/test_cssfilter.rb
 test/test_htmlfilter.rb
 Rakefile
-TODO
+HISTORY.rdoc
+PROFILE
 README.rdoc
-HISTORY
+Syckfile
+VERSION
