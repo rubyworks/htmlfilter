@@ -1,12 +1,9 @@
-#!mast bin lib test [A-Z]*
+#!mast .ruby bin lib man spec test [A-Z]*.rdoc
+.ruby
 lib/cssfilter.rb
 lib/htmlfilter.rb
 test/helper.rb
 test/test_cssfilter.rb
 test/test_htmlfilter.rb
-Rakefile
 HISTORY.rdoc
-PROFILE
 README.rdoc
-Syckfile
-VERSION
