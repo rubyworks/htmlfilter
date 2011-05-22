@@ -1,19 +1,24 @@
-= HtmlFilter
+= HTMLFilter
 
-* http://rubyworks.github.com/htmlfilter
-* http://github.com/rubyworks/htmlfilter
 
-== DESCRIPTION:
+== RESOURCES
+
+* home: http://rubyworks.github.com/htmlfilter
+* code: http://github.com/rubyworks/htmlfilter
+
+
+== DESCRIPTION
 
 HTML Filter library can be used to sanitize and sterilize
 HTML. A good idea if you let users submit HTML in comments,
 for instance. 
 
-This library also include CssFilter. The CssFilter class will
+This library also include CSSFilter. The CSSFilter class will
 clean-up a cascading style sheet. It can be used to remove
-whitespace and most importantly remove urls.
+whitespace and most importantly remove URLs.
 
-== FEATURES:
+
+== FEATURES
 
 * Based on well-worn PHP library.
 * Regular expression based filtering.
@@ -21,25 +26,35 @@ whitespace and most importantly remove urls.
 * Pure-Ruby and no dependencies.
 * Also has library to clean and compact cascading stylesheets.
 
-== SYNOPSIS:
+
+== SYNOPSIS
 
 Via the class.
 
   html = "<<b>hello</b>"
 
-  HtmlFilter.new(options).filter(html)
+  HTMLFilter.new(options).filter(html)
 
 Or using the String extension.
 
   html.html_filter(options)  #=> "<b>hello</b>"
 
-See RDocs for more information.
+See API documentation for more information.
 
-== INSTALL:
 
-* sudo gem install htmlfilter
+== INSTALL
 
-== LICENSE:
+  gem install htmlfilter
+
+
+== DEVELOPMENT
+
+HTMLFilter is hosted on GitHub[http://github.com/rubyworks/htmlfilter].
+
+HTMLFilter is a RubyWorks[http://rubyworks.github.com] project.
+
+
+== LICENSE
 
 (Creative Commons Attribution-ShareAlike License)
 
