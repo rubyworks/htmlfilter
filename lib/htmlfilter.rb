@@ -1,13 +1,3 @@
-# htmlfilter.rb
-#
-# Copyright (c) 2007 Thomas Sawyer
-#
-# Creative Commons Attribution-ShareAlike 3.0 License
-#
-# See http://creativecommons.org/licenses/by-sa/3.0/
-#
-# Thanks to Jang Kim for adding support for single quoted attributes.
-
 # = HTML Filter
 #
 # HTML Filter library can be used to sanitize and sterilize
@@ -30,9 +20,18 @@
 #
 # == Issues
 #
-# * The built in option constants could use a fair bit of refinement.
-# * Eventually the old HtmlFilter name needs to be deprecated.
+# * The built in option constants could use some refinement.
 #
+# == Copying
+#
+# Copyright (c) 2007 Thomas Sawyer
+#
+# Creative Commons Attribution-ShareAlike 3.0 License
+#
+# See http://creativecommons.org/licenses/by-sa/3.0/
+#
+# Thanks to Jang Kim for adding support for single quoted attributes.
+
 class HTMLFilter
 
   # Library version.

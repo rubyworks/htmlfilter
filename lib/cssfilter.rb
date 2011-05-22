@@ -1,13 +1,3 @@
-# cssfilter.rb
-#
-# Copyright (c) 2007 Thomas Sawyer
-#
-# Creative Commons Attribution-ShareAlike 3.0 License
-#
-# See http://creativecommons.org/licenses/by-sa/3.0/
-
-# TODO: Allow urls to be specified per attribute type.
-
 #require 'htmlfilter/uri'
 require 'uri'
 
@@ -16,6 +6,18 @@ require 'uri'
 # The CSSFilter class will clean up a cascading style sheet.
 # It can be used to remove whitespace and most importantly
 # remove urls.
+#
+# == Issues
+#
+# TODO: Allow urls to be specified per attribute type.
+#
+# == Copying
+#
+# Copyright (c) 2007 Thomas Sawyer
+#
+# Creative Commons Attribution-ShareAlike 3.0 License
+#
+# See http://creativecommons.org/licenses/by-sa/3.0/
 
 class CSSFilter
 
