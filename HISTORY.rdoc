@@ -3,11 +3,12 @@
 == 1.2.0 / 2010-10-13
 
 Finally removed the lowecase variations on the class names.
-You must HTMLFilter now and not HtmlFiler.
+You must use HTMLFilter now and not HtmlFilter.
 
 Changes:
 
 * Remove lowercase variations on class names.
+* No longer Multiton.
 
 
 == 1.1.0 / 2009-11-24
