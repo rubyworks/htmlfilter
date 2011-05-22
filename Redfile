@@ -2,11 +2,8 @@
 grancher:
   active: true
 
-box:
-  service: Box
-  types  : [gem]
-  spec   : '.gemspec'
-  active : true
+gem:
+  service: Gem
 
 dnote:
   service  : DNote
@@ -24,22 +21,11 @@ stats:
   output   : ~
   active   : true
 
-rdoc:
-  service  : RDoc
-  template : newfish
-  include  : ~
-  exclude  : ~
-  main     : ~
-  extra    : ~
-  output   : doc
-  active   : true
-
-ridoc:
-  service: RIDoc
-  include: ~
-  exclude: ~
-  output : ri
-  active : true
+yard:
+  service : Custom
+  track   : site
+  document: |
+    system "yard"
 
 testrb:
   service  : Testrb
@@ -48,8 +34,7 @@ testrb:
   loadpath : ~
   requires : ~
   live     : false   
-  active   : false
-
+  active   : true
 
 email:
   service : Email

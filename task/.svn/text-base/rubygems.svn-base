@@ -1,6 +1,0 @@
----
-rubygems:
-  service: Gem
-  include: ~
-  exclude: [ doc ]
-
