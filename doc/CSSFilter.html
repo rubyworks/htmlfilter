@@ -1,0 +1,1520 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<title>Class: CSSFilter</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (C)</a> &raquo; 
+    
+    
+    <span class="title">CSSFilter</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: CSSFilter
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">CSSFilter</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/cssfilter.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<h1>CSS Filter</h1>
+
+<p>The CSSFilter class will clean up a cascading style sheet. It can be used
+to remove whitespace and most importantly remove urls.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+   
+    
+   
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="CSSFilter/Tree.html" title="CSSFilter::Tree (class)">Tree</a></span>
+    
+  
+</p>
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="VERSION-constant" class="">VERSION =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>Library version.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='string val'>&quot;1.2.0&quot;</span>
+</pre></dd>
+      
+        <dt id="DEFAULT-constant" class="">DEFAULT =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>CssFilter option defaults.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrace token'>{</span>
+  <span class='string val'>'strip_comments'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span><span class='comma token'>,</span>
+  <span class='string val'>'strip_urls'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span><span class='comma token'>,</span>
+  <span class='string val'>'allowed_urls'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'allowed_hosts'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'allowed_scheme'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'strip_whitespace'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='false false kw'>false</span><span class='comma token'>,</span>
+  <span class='string val'>'strip_blanklines'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span><span class='comma token'>,</span>
+  <span class='string val'>'rewrite'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='false false kw'>false</span><span class='comma token'>,</span>
+  <span class='string val'>'substitute_urls'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+<span class='rbrace token'>}</span>
+</pre></dd>
+      
+    </dl>
+  
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#allowed_hosts-instance_method" title="#allowed_hosts (instance method)">- (Object) <strong>allowed_hosts</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>url hosts which will be allowed.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#allowed_scheme-instance_method" title="#allowed_scheme (instance method)">- (Object) <strong>allowed_scheme</strong> </a>
+    
+
+    
+      (also: #allowed_protocols)
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>url schemes which will be allowed (http, ftp, mailto).</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#allowed_urls-instance_method" title="#allowed_urls (instance method)">- (Object) <strong>allowed_urls</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>urls which will be allowed.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#rewrite-instance_method" title="#rewrite (instance method)">- (Object) <strong>rewrite</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Complete parse and rewrite of CSS document.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#strip_blanklines-instance_method" title="#strip_blanklines (instance method)">- (Object) <strong>strip_blanklines</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>remove blank lines.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#strip_comments-instance_method" title="#strip_comments (instance method)">- (Object) <strong>strip_comments</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>should we remove comments? (true, false).</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#strip_urls-instance_method" title="#strip_urls (instance method)">- (Object) <strong>strip_urls</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>should we remove urls? (true, false).</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#strip_whitespace-instance_method" title="#strip_whitespace (instance method)">- (Object) <strong>strip_whitespace</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>remove blank lines.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#substitute_urls-instance_method" title="#substitute_urls (instance method)">- (Object) <strong>substitute_urls</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>substitue urls  (NOT YET USED).</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#accept_host-instance_method" title="#accept_host (instance method)">- (Object) <strong>accept_host</strong>(host) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#clean_properties-instance_method" title="#clean_properties (instance method)">- (Object) <strong>clean_properties</strong>(atts) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Takes a css entry and ensures it is valid (as best it can).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#clean_value-instance_method" title="#clean_value (instance method)">- (Object) <strong>clean_value</strong>(val) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#filter-instance_method" title="#filter (instance method)">- (Object) <strong>filter</strong>(css) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (CSSFilter) <strong>initialize</strong>(options = nil) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A new instance of CSSFilter.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse-instance_method" title="#parse (instance method)">- (Object) <strong>parse</strong>(css) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Breaks a css document up into a hash.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_blanklines-instance_method" title="#remove_blanklines (instance method)">- (Object) <strong>remove_blanklines</strong>(data) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_comments-instance_method" title="#remove_comments (instance method)">- (Object) <strong>remove_comments</strong>(data) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_nullvalues-instance_method" title="#remove_nullvalues (instance method)">- (Object) <strong>remove_nullvalues</strong>(data) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_urls-instance_method" title="#remove_urls (instance method)">- (Object) <strong>remove_urls</strong>(data) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>TODO: allowed_urls.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_whitespace-instance_method" title="#remove_whitespace (instance method)">- (Object) <strong>remove_whitespace</strong>(data) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="CSSFilter (class)">CSSFilter</a></span></tt>) <strong>initialize</strong>(options = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>A new instance of CSSFilter</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cssfilter.rb', line 74</span>
+
+<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='options identifier id'>options</span>
+    <span class='h identifier id'>h</span> <span class='assign token'>=</span> <span class='DEFAULT constant id'>DEFAULT</span><span class='dot token'>.</span><span class='dup identifier id'>dup</span>
+    <span class='options identifier id'>options</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='k identifier id'>k</span><span class='comma token'>,</span><span class='v identifier id'>v</span><span class='bitor op'>|</span>
+      <span class='h identifier id'>h</span><span class='lbrack token'>[</span><span class='k identifier id'>k</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='v identifier id'>v</span>
+    <span class='end end kw'>end</span>
+    <span class='options identifier id'>options</span> <span class='assign token'>=</span> <span class='h identifier id'>h</span>
+  <span class='else else kw'>else</span>
+    <span class='options identifier id'>options</span> <span class='assign token'>=</span> <span class='DEFAULT constant id'>DEFAULT</span><span class='dot token'>.</span><span class='dup identifier id'>dup</span>
+  <span class='end end kw'>end</span>
+
+  <span class='options identifier id'>options</span><span class='dot token'>.</span><span class='each identifier id'>each</span><span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='k identifier id'>k</span><span class='comma token'>,</span><span class='v identifier id'>v</span><span class='bitor op'>|</span> <span class='send identifier id'>send</span><span class='lparen token'>(</span><span class='dstring node'>&quot;#{k}=&quot;</span><span class='comma token'>,</span><span class='v identifier id'>v</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="allowed_hosts=-instance_method"></span>
+      <span id="allowed_hosts-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="allowed_hosts-instance_method">
+  
+    - (<tt>Object</tt>) <strong>allowed_hosts</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>url hosts which will be allowed.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cssfilter.rb', line 39</span>
+
+<span class='def def kw'>def</span> <span class='allowed_hosts identifier id'>allowed_hosts</span>
+  <span class='@allowed_hosts ivar id'>@allowed_hosts</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="allowed_scheme=-instance_method"></span>
+      <span id="allowed_scheme-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="allowed_scheme-instance_method">
+  
+    - (<tt>Object</tt>) <strong>allowed_scheme</strong> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='allowed_protocols-instance_method'>allowed_protocols</span></span>
+    </span>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>url schemes which will be allowed (http, ftp, mailto)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+32
+33
+34</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cssfilter.rb', line 32</span>
+
+<span class='def def kw'>def</span> <span class='allowed_scheme identifier id'>allowed_scheme</span>
+  <span class='@allowed_scheme ivar id'>@allowed_scheme</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="allowed_urls=-instance_method"></span>
+      <span id="allowed_urls-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="allowed_urls-instance_method">
+  
+    - (<tt>Object</tt>) <strong>allowed_urls</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>urls which will be allowed. (NOT YET USED)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+42
+43
+44</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cssfilter.rb', line 42</span>
+
+<span class='def def kw'>def</span> <span class='allowed_urls identifier id'>allowed_urls</span>
+  <span class='@allowed_urls ivar id'>@allowed_urls</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="rewrite=-instance_method"></span>
+      <span id="rewrite-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="rewrite-instance_method">
+  
+    - (<tt>Object</tt>) <strong>rewrite</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Complete parse and rewrite of CSS document. This does a complete
+“cleaning” but note that is not yet a perfect parser.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+56
+57
+58</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cssfilter.rb', line 56</span>
+
+<span class='def def kw'>def</span> <span class='rewrite identifier id'>rewrite</span>
+  <span class='@rewrite ivar id'>@rewrite</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="strip_blanklines=-instance_method"></span>
+      <span id="strip_blanklines-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="strip_blanklines-instance_method">
+  
+    - (<tt>Object</tt>) <strong>strip_blanklines</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>remove blank lines.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+51
+52
+53</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cssfilter.rb', line 51</span>
+
+<span class='def def kw'>def</span> <span class='strip_blanklines identifier id'>strip_blanklines</span>
+  <span class='@strip_blanklines ivar id'>@strip_blanklines</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="strip_comments=-instance_method"></span>
+      <span id="strip_comments-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="strip_comments-instance_method">
+  
+    - (<tt>Object</tt>) <strong>strip_comments</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>should we remove comments? (true, false)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+26
+27
+28</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cssfilter.rb', line 26</span>
+
+<span class='def def kw'>def</span> <span class='strip_comments identifier id'>strip_comments</span>
+  <span class='@strip_comments ivar id'>@strip_comments</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="strip_urls=-instance_method"></span>
+      <span id="strip_urls-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="strip_urls-instance_method">
+  
+    - (<tt>Object</tt>) <strong>strip_urls</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>should we remove urls? (true, false)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+29
+30
+31</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cssfilter.rb', line 29</span>
+
+<span class='def def kw'>def</span> <span class='strip_urls identifier id'>strip_urls</span>
+  <span class='@strip_urls ivar id'>@strip_urls</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="strip_whitespace=-instance_method"></span>
+      <span id="strip_whitespace-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="strip_whitespace-instance_method">
+  
+    - (<tt>Object</tt>) <strong>strip_whitespace</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>remove blank lines.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+48
+49
+50</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cssfilter.rb', line 48</span>
+
+<span class='def def kw'>def</span> <span class='strip_whitespace identifier id'>strip_whitespace</span>
+  <span class='@strip_whitespace ivar id'>@strip_whitespace</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="substitute_urls=-instance_method"></span>
+      <span id="substitute_urls-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="substitute_urls-instance_method">
+  
+    - (<tt>Object</tt>) <strong>substitute_urls</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>substitue urls  (NOT YET USED)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+45
+46
+47</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cssfilter.rb', line 45</span>
+
+<span class='def def kw'>def</span> <span class='substitute_urls identifier id'>substitute_urls</span>
+  <span class='@substitute_urls ivar id'>@substitute_urls</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="accept_host-instance_method">
+  
+    - (<tt>Object</tt>) <strong>accept_host</strong>(host) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+90
+91
+92</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cssfilter.rb', line 90</span>
+
+<span class='def def kw'>def</span> <span class='accept_host identifier id'>accept_host</span><span class='lparen token'>(</span><span class='host identifier id'>host</span><span class='rparen token'>)</span>
+  <span class='@hosts ivar id'>@hosts</span> <span class='lshft op'>&lt;&lt;</span> <span class='host identifier id'>host</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="clean_properties-instance_method">
+  
+    - (<tt>Object</tt>) <strong>clean_properties</strong>(atts) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Takes a css entry and ensures it is valid (as best it can). It will fix
+trival mistakes, and raise an error when it is beyond repair.</p>
+
+<p>TODO: So far this does absolutely nothing!</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+174
+175
+176</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cssfilter.rb', line 174</span>
+
+<span class='def def kw'>def</span> <span class='clean_properties identifier id'>clean_properties</span><span class='lparen token'>(</span><span class='atts identifier id'>atts</span><span class='rparen token'>)</span>
+  <span class='atts identifier id'>atts</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="clean_value-instance_method">
+  
+    - (<tt>Object</tt>) <strong>clean_value</strong>(val) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cssfilter.rb', line 180</span>
+
+<span class='def def kw'>def</span> <span class='clean_value identifier id'>clean_value</span><span class='lparen token'>(</span><span class='val identifier id'>val</span><span class='rparen token'>)</span>
+  <span class='val identifier id'>val</span> <span class='assign token'>=</span> <span class='val identifier id'>val</span><span class='dot token'>.</span><span class='strip identifier id'>strip</span>
+
+  <span class='if if kw'>if</span> <span class='urls identifier id'>urls</span>
+    <span class='uris identifier id'>uris</span> <span class='assign token'>=</span> <span class='URI constant id'>URI</span><span class='dot token'>.</span><span class='extract identifier id'>extract</span><span class='lparen token'>(</span><span class='val identifier id'>val</span><span class='rparen token'>)</span>
+    <span class='uris identifier id'>uris</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='u identifier id'>u</span><span class='bitor op'>|</span>
+      <span class='val identifier id'>val</span><span class='dot token'>.</span><span class='sub! fid id'>sub!</span><span class='lparen token'>(</span><span class='u identifier id'>u</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='comma token'>,</span> <span class='urls identifier id'>urls</span><span class='rparen token'>)</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+
+  <span class='return return kw'>return</span> <span class='val identifier id'>val</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="filter-instance_method">
+  
+    - (<tt>Object</tt>) <strong>filter</strong>(css) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cssfilter.rb', line 96</span>
+
+<span class='def def kw'>def</span> <span class='filter identifier id'>filter</span><span class='lparen token'>(</span><span class='css identifier id'>css</span><span class='rparen token'>)</span>
+  <span class='css identifier id'>css</span> <span class='assign token'>=</span> <span class='remove_comments identifier id'>remove_comments</span><span class='lparen token'>(</span><span class='css identifier id'>css</span><span class='rparen token'>)</span>    <span class='if if_mod kw'>if</span> <span class='strip_comments identifier id'>strip_comments</span>
+  <span class='css identifier id'>css</span> <span class='assign token'>=</span> <span class='remove_urls identifier id'>remove_urls</span><span class='lparen token'>(</span><span class='css identifier id'>css</span><span class='rparen token'>)</span>        <span class='if if_mod kw'>if</span> <span class='strip_urls identifier id'>strip_urls</span>
+
+  <span class='css identifier id'>css</span> <span class='assign token'>=</span> <span class='remove_nullvalues identifier id'>remove_nullvalues</span><span class='lparen token'>(</span><span class='css identifier id'>css</span><span class='rparen token'>)</span>
+
+  <span class='css identifier id'>css</span> <span class='assign token'>=</span> <span class='remove_whitespace identifier id'>remove_whitespace</span><span class='lparen token'>(</span><span class='css identifier id'>css</span><span class='rparen token'>)</span>  <span class='if if_mod kw'>if</span> <span class='strip_whitespace identifier id'>strip_whitespace</span>
+  <span class='css identifier id'>css</span> <span class='assign token'>=</span> <span class='remove_blanklines identifier id'>remove_blanklines</span><span class='lparen token'>(</span><span class='css identifier id'>css</span><span class='rparen token'>)</span>  <span class='if if_mod kw'>if</span> <span class='strip_blanklines identifier id'>strip_blanklines</span>
+
+  <span class='css identifier id'>css</span> <span class='assign token'>=</span> <span class='parse identifier id'>parse</span><span class='lparen token'>(</span><span class='css identifier id'>css</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='to_css identifier id'>to_css</span>       <span class='if if_mod kw'>if</span> <span class='rewrite identifier id'>rewrite</span>
+  <span class='css identifier id'>css</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="parse-instance_method">
+  
+    - (<tt>Object</tt>) <strong>parse</strong>(css) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Breaks a css document up into a hash. This can be used completely
+rewritting the css.</p>
+
+<p>TODO: Not complete, does not work with “@xxx foo;” for example.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cssfilter.rb', line 154</span>
+
+<span class='def def kw'>def</span> <span class='parse identifier id'>parse</span><span class='lparen token'>(</span><span class='css identifier id'>css</span><span class='rparen token'>)</span>
+  <span class='tree identifier id'>tree</span> <span class='assign token'>=</span> <span class='Tree constant id'>Tree</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
+  <span class='entries identifier id'>entries</span> <span class='assign token'>=</span> <span class='css identifier id'>css</span><span class='dot token'>.</span><span class='scan identifier id'>scan</span><span class='lparen token'>(</span><span class='regexp val'>/^(.*?)\{(.*?)\}/</span><span class='m identifier id'>m</span><span class='rparen token'>)</span>
+  <span class='entries identifier id'>entries</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='ref identifier id'>ref</span><span class='comma token'>,</span> <span class='props identifier id'>props</span><span class='bitor op'>|</span>
+    <span class='tree identifier id'>tree</span><span class='lbrack token'>[</span><span class='ref identifier id'>ref</span><span class='dot token'>.</span><span class='strip identifier id'>strip</span><span class='rbrack token'>]</span> <span class='opasgn op'>||=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+    <span class='props identifier id'>props</span> <span class='assign token'>=</span> <span class='clean_properties identifier id'>clean_properties</span><span class='lparen token'>(</span><span class='props identifier id'>props</span><span class='rparen token'>)</span>
+    <span class='props identifier id'>props</span> <span class='assign token'>=</span> <span class='props identifier id'>props</span><span class='dot token'>.</span><span class='scan identifier id'>scan</span><span class='lparen token'>(</span><span class='regexp val'>/(.*?)[:](.*?)([;]|\s*\Z)/</span><span class='rparen token'>)</span>
+    <span class='props identifier id'>props</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='lparen token'>(</span><span class='key identifier id'>key</span><span class='comma token'>,</span><span class='val identifier id'>val</span><span class='rparen token'>)</span><span class='bitor op'>|</span>
+      <span class='tree identifier id'>tree</span><span class='lbrack token'>[</span><span class='ref identifier id'>ref</span><span class='dot token'>.</span><span class='strip identifier id'>strip</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='key identifier id'>key</span><span class='dot token'>.</span><span class='strip identifier id'>strip</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='clean_value identifier id'>clean_value</span><span class='lparen token'>(</span><span class='val identifier id'>val</span><span class='rparen token'>)</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+  <span class='return return kw'>return</span> <span class='tree identifier id'>tree</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="remove_blanklines-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remove_blanklines</strong>(data) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+139
+140
+141</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cssfilter.rb', line 139</span>
+
+<span class='def def kw'>def</span> <span class='remove_blanklines identifier id'>remove_blanklines</span><span class='lparen token'>(</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
+  <span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='regexp val'>/^\s*\n/</span><span class='comma token'>,</span><span class='string val'>''</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="remove_comments-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remove_comments</strong>(data) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+111
+112
+113</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cssfilter.rb', line 111</span>
+
+<span class='def def kw'>def</span> <span class='remove_comments identifier id'>remove_comments</span><span class='lparen token'>(</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
+  <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='regexp val'>/\/\*(.8?)\*\//</span><span class='comma token'>,</span><span class='string val'>''</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="remove_nullvalues-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remove_nullvalues</strong>(data) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+145
+146
+147</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cssfilter.rb', line 145</span>
+
+<span class='def def kw'>def</span> <span class='remove_nullvalues identifier id'>remove_nullvalues</span><span class='lparen token'>(</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
+  <span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='regexp val'>/\w+[:](\s+)[;]/</span><span class='comma token'>,</span><span class='string val'>''</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="remove_urls-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remove_urls</strong>(data) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>TODO: allowed_urls</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cssfilter.rb', line 117</span>
+
+<span class='def def kw'>def</span> <span class='remove_urls identifier id'>remove_urls</span><span class='lparen token'>(</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
+  <span class='urls identifier id'>urls</span> <span class='assign token'>=</span> <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='scan identifier id'>scan</span><span class='lparen token'>(</span><span class='regexp val'>/url\((.*?)\)/</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='flatten identifier id'>flatten</span>
+  <span class='uris identifier id'>uris</span> <span class='assign token'>=</span> <span class='urls identifier id'>urls</span><span class='dot token'>.</span><span class='collect identifier id'>collect</span><span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='u identifier id'>u</span><span class='bitor op'>|</span> <span class='URI constant id'>URI</span><span class='dot token'>.</span><span class='extract identifier id'>extract</span><span class='lparen token'>(</span><span class='u identifier id'>u</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span><span class='dot token'>.</span><span class='flatten identifier id'>flatten</span>
+  <span class='uris identifier id'>uris</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='u identifier id'>u</span><span class='bitor op'>|</span>
+    <span class='uri identifier id'>uri</span> <span class='assign token'>=</span> <span class='URI constant id'>URI</span><span class='dot token'>.</span><span class='parse identifier id'>parse</span><span class='lparen token'>(</span><span class='u identifier id'>u</span><span class='rparen token'>)</span>
+    <span class='unless unless kw'>unless</span> <span class='allowed_hosts identifier id'>allowed_hosts</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='uri identifier id'>uri</span><span class='dot token'>.</span><span class='host identifier id'>host</span><span class='rparen token'>)</span> <span class='or or kw'>or</span>
+           <span class='allowed_scheme identifier id'>allowed_scheme</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='uri identifier id'>uri</span><span class='dot token'>.</span><span class='scheme identifier id'>scheme</span><span class='rparen token'>)</span>
+      <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='sub! fid id'>sub!</span><span class='lparen token'>(</span><span class='u identifier id'>u</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='comma token'>,</span> <span class='string val'>''</span><span class='rparen token'>)</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+  <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='regexp val'>/url\(\s*\)/</span><span class='comma token'>,</span> <span class='string val'>''</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="remove_whitespace-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remove_whitespace</strong>(data) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+132
+133
+134
+135</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cssfilter.rb', line 132</span>
+
+<span class='def def kw'>def</span> <span class='remove_whitespace identifier id'>remove_whitespace</span><span class='lparen token'>(</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
+  <span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='regexp val'>/^\s*/</span><span class='comma token'>,</span><span class='string val'>''</span><span class='rparen token'>)</span>
+  <span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='regexp val'>/\s*$/</span><span class='comma token'>,</span><span class='string val'>''</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Sun May 22 07:46:40 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.7 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

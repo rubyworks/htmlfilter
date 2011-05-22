@@ -1,0 +1,2547 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<title>Class: HTMLFilter</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (H)</a> &raquo; 
+    
+    
+    <span class="title">HTMLFilter</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: HTMLFilter
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">HTMLFilter</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/htmlfilter.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<h1>HTML Filter</h1>
+
+<p>HTML Filter library can be used to sanitize and sterilize HTML. A good idea
+if you let users submit HTML in comments, for instance.</p>
+
+<p>HtmlFilter is a port of lib_filter.php, v1.15 by Cal Henderson
+&lt;cal@iamcal.com&gt; licensed under a Creative Commons
+Attribution-ShareAlike 2.5 License <a
+href="http://creativecommons.org/licenses/by-sa/3.0">creativecommons.org/licenses/by-sa/3.0</a>/.</p>
+
+<h2>Usage</h2>
+
+<pre class="code"><span class='hf identifier id'>hf</span> <span class='assign token'>=</span> <span class='HTMLFilter constant id'>HTMLFilter</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
+<span class='hf identifier id'>hf</span><span class='dot token'>.</span><span class='filter identifier id'>filter</span><span class='lparen token'>(</span><span class='string val'>&quot;&lt;b&gt;Bold Action&quot;</span><span class='rparen token'>)</span>  <span class='comment val'>#=&gt; &quot;&lt;b&gt;Bold Action&lt;/b&gt;&quot;</span>
+</pre>
+
+<h2>Reference</h2>
+<ul><li>
+<p><a
+href="http://iamcal.com/publish/articles/php/processing_html">iamcal.com/publish/articles/php/processing_html</a>/</p>
+</li><li>
+<p><a
+href="http://iamcal.com/publish/articles/php/processing_html_part_2">iamcal.com/publish/articles/php/processing_html_part_2</a>/</p>
+</li></ul>
+
+<h2>Issues</h2>
+<ul><li>
+<p>The built in option constants could use a fair bit of refinement.</p>
+</li><li>
+<p>Eventually the old HtmlFilter name needs to be deprecated.</p>
+</li></ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="VERSION-constant" class="">VERSION =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>Library version.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='string val'>&quot;1.2.0&quot;</span>
+</pre></dd>
+      
+        <dt id="DEFAULT-constant" class="">DEFAULT =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>Default settings</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrace token'>{</span>
+  <span class='string val'>'allowed'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrace token'>{</span>
+    <span class='string val'>'a'</span>   <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'href'</span><span class='comma token'>,</span> <span class='string val'>'target'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+    <span class='string val'>'img'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'src'</span><span class='comma token'>,</span> <span class='string val'>'width'</span><span class='comma token'>,</span> <span class='string val'>'height'</span><span class='comma token'>,</span> <span class='string val'>'alt'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+    <span class='string val'>'b'</span>   <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+    <span class='string val'>'i'</span>   <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+    <span class='string val'>'em'</span>  <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+    <span class='string val'>'tt'</span>  <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='rbrace token'>}</span><span class='comma token'>,</span>
+  <span class='string val'>'no_close'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'img'</span><span class='comma token'>,</span> <span class='string val'>'br'</span><span class='comma token'>,</span> <span class='string val'>'hr'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'always_close'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'a'</span><span class='comma token'>,</span> <span class='string val'>'b'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'protocol_attributes'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'src'</span><span class='comma token'>,</span> <span class='string val'>'href'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'allowed_protocols'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'http'</span><span class='comma token'>,</span> <span class='string val'>'ftp'</span><span class='comma token'>,</span> <span class='string val'>'mailto'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'remove_blanks'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'a'</span><span class='comma token'>,</span> <span class='string val'>'b'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'strip_comments'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span><span class='comma token'>,</span>
+  <span class='string val'>'always_make_tags'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span><span class='comma token'>,</span>
+  <span class='string val'>'allow_numbered_entities'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span><span class='comma token'>,</span>
+  <span class='string val'>'allowed_entities'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'amp'</span><span class='comma token'>,</span> <span class='string val'>'gt'</span><span class='comma token'>,</span> <span class='string val'>'lt'</span><span class='comma token'>,</span> <span class='string val'>'quot'</span><span class='rbrack token'>]</span>
+<span class='rbrace token'>}</span>
+</pre></dd>
+      
+        <dt id="BASIC-constant" class="">BASIC =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>Basic settings are simlialr to DEFAULT but do not allow any type of links,
+neither <tt>a href</tt> or <tt>img</tt>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrace token'>{</span>
+  <span class='string val'>'allowed'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrace token'>{</span>
+    <span class='string val'>'b'</span>   <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+    <span class='string val'>'i'</span>   <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+    <span class='string val'>'em'</span>  <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+    <span class='string val'>'tt'</span>  <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='rbrace token'>}</span><span class='comma token'>,</span>
+  <span class='string val'>'no_close'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'img'</span><span class='comma token'>,</span> <span class='string val'>'br'</span><span class='comma token'>,</span> <span class='string val'>'hr'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'always_close'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'a'</span><span class='comma token'>,</span> <span class='string val'>'b'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'protocol_attributes'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'src'</span><span class='comma token'>,</span> <span class='string val'>'href'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'allowed_protocols'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'http'</span><span class='comma token'>,</span> <span class='string val'>'ftp'</span><span class='comma token'>,</span> <span class='string val'>'mailto'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'remove_blanks'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'a'</span><span class='comma token'>,</span> <span class='string val'>'b'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'strip_comments'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span><span class='comma token'>,</span>
+  <span class='string val'>'always_make_tags'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span><span class='comma token'>,</span>
+  <span class='string val'>'allow_numbered_entities'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span><span class='comma token'>,</span>
+  <span class='string val'>'allowed_entities'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'amp'</span><span class='comma token'>,</span> <span class='string val'>'gt'</span><span class='comma token'>,</span> <span class='string val'>'lt'</span><span class='comma token'>,</span> <span class='string val'>'quot'</span><span class='rbrack token'>]</span>
+<span class='rbrace token'>}</span>
+</pre></dd>
+      
+        <dt id="STRICT-constant" class="">STRICT =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>Strict settings do not allow any tags.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrace token'>{</span>
+  <span class='string val'>'allowed'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='comma token'>,</span>
+  <span class='string val'>'no_close'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'img'</span><span class='comma token'>,</span> <span class='string val'>'br'</span><span class='comma token'>,</span> <span class='string val'>'hr'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'always_close'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'a'</span><span class='comma token'>,</span> <span class='string val'>'b'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'protocol_attributes'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'src'</span><span class='comma token'>,</span> <span class='string val'>'href'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'allowed_protocols'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'http'</span><span class='comma token'>,</span> <span class='string val'>'ftp'</span><span class='comma token'>,</span> <span class='string val'>'mailto'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'remove_blanks'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'a'</span><span class='comma token'>,</span> <span class='string val'>'b'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'strip_comments'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span><span class='comma token'>,</span>
+  <span class='string val'>'always_make_tags'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span><span class='comma token'>,</span>
+  <span class='string val'>'allow_numbered_entities'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span><span class='comma token'>,</span>
+  <span class='string val'>'allowed_entities'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'amp'</span><span class='comma token'>,</span> <span class='string val'>'gt'</span><span class='comma token'>,</span> <span class='string val'>'lt'</span><span class='comma token'>,</span> <span class='string val'>'quot'</span><span class='rbrack token'>]</span>
+<span class='rbrace token'>}</span>
+</pre></dd>
+      
+        <dt id="RELAXED-constant" class="">RELAXED =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>Relaxed settings allows a great deal of HTML spec.</p>
+
+<p>TODO: Need to expand upon RELAXED options.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrace token'>{</span>
+  <span class='string val'>'allowed'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrace token'>{</span>
+    <span class='string val'>'a'</span>    <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'class'</span><span class='comma token'>,</span> <span class='string val'>'href'</span><span class='comma token'>,</span> <span class='string val'>'target'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+    <span class='string val'>'b'</span>    <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'class'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+    <span class='string val'>'i'</span>    <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'class'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+    <span class='string val'>'img'</span>  <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'class'</span><span class='comma token'>,</span> <span class='string val'>'src'</span><span class='comma token'>,</span> <span class='string val'>'width'</span><span class='comma token'>,</span> <span class='string val'>'height'</span><span class='comma token'>,</span> <span class='string val'>'alt'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+    <span class='string val'>'div'</span>  <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'class'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+    <span class='string val'>'pre'</span>  <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'class'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+    <span class='string val'>'code'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'class'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+    <span class='string val'>'ul'</span>   <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'class'</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='string val'>'ol'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'class'</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='string val'>'li'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'class'</span><span class='rbrack token'>]</span>
+  <span class='rbrace token'>}</span><span class='comma token'>,</span>
+  <span class='string val'>'no_close'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'img'</span><span class='comma token'>,</span> <span class='string val'>'br'</span><span class='comma token'>,</span> <span class='string val'>'hr'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'always_close'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'a'</span><span class='comma token'>,</span> <span class='string val'>'b'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'protocol_attributes'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'src'</span><span class='comma token'>,</span> <span class='string val'>'href'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'allowed_protocols'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'http'</span><span class='comma token'>,</span> <span class='string val'>'ftp'</span><span class='comma token'>,</span> <span class='string val'>'mailto'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'remove_blanks'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'a'</span><span class='comma token'>,</span> <span class='string val'>'b'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'strip_comments'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span><span class='comma token'>,</span>
+  <span class='string val'>'always_make_tags'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span><span class='comma token'>,</span>
+  <span class='string val'>'allow_numbered_entities'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span><span class='comma token'>,</span>
+  <span class='string val'>'allowed_entities'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'amp'</span><span class='comma token'>,</span> <span class='string val'>'gt'</span><span class='comma token'>,</span> <span class='string val'>'lt'</span><span class='comma token'>,</span> <span class='string val'>'quot'</span><span class='rbrack token'>]</span>
+<span class='rbrace token'>}</span>
+</pre></dd>
+      
+    </dl>
+  
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#allow_numbered_entities-instance_method" title="#allow_numbered_entities (instance method)">- (Object) <strong>allow_numbered_entities</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>entity control option (true, false).</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#allowed-instance_method" title="#allowed (instance method)">- (Object) <strong>allowed</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>tags and attributes that are allowed.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#allowed_entities-instance_method" title="#allowed_entities (instance method)">- (Object) <strong>allowed_entities</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>entity control option (amp, gt, lt, quot, etc.).</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#allowed_protocols-instance_method" title="#allowed_protocols (instance method)">- (Object) <strong>allowed_protocols</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>protocols which are allowed (http, ftp, mailto).</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#always_close-instance_method" title="#always_close (instance method)">- (Object) <strong>always_close</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>tags which must always have seperate opening and closing tags (e.g.
+“”).</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#always_make_tags-instance_method" title="#always_make_tags (instance method)">- (Object) <strong>always_make_tags</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>should we try and make a &lt;b&gt; tag out of “b&gt;” (true, false).</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#no_close-instance_method" title="#no_close (instance method)">- (Object) <strong>no_close</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>tags which should always be self-closing (e.g. “&lt;img /&gt;”).</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#protocol_attributes-instance_method" title="#protocol_attributes (instance method)">- (Object) <strong>protocol_attributes</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>attributes which should be checked for valid protocols (src,href).</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_blanks-instance_method" title="#remove_blanks (instance method)">- (Object) <strong>remove_blanks</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>tags which should be removed if they contain no content (e.g. “” or
+“&lt;b /&gt;”).</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#strip_comments-instance_method" title="#strip_comments (instance method)">- (Object) <strong>strip_comments</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>should we remove comments? (true, false).</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#balance_html-instance_method" title="#balance_html (instance method)">- (Object) <strong>balance_html</strong>(data) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#check_entity-instance_method" title="#check_entity (instance method)">- (Object) <strong>check_entity</strong>(preamble, term) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#check_tags-instance_method" title="#check_tags (instance method)">- (Object) <strong>check_tags</strong>(data) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#decode_dec_entity-instance_method" title="#decode_dec_entity (instance method)">- (Object) <strong>decode_dec_entity</strong>(*m) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#decode_entities-instance_method" title="#decode_entities (instance method)">- (Object) <strong>decode_entities</strong>(data) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>within attributes, we want to convert all hex/dec/url escape sequences into
+their raw characters so that we can check we don’t get stray
+quotes/brackets inside strings.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#decode_hex_entity-instance_method" title="#decode_hex_entity (instance method)">- (Object) <strong>decode_hex_entity</strong>(*m) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#decode_num_entity-instance_method" title="#decode_num_entity (instance method)">- (Object) <strong>decode_num_entity</strong>(orig_type, d) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#escape_comments-instance_method" title="#escape_comments (instance method)">- (Object) <strong>escape_comments</strong>(data) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#escape_special_chars-instance_method" title="#escape_special_chars (instance method)">- (Object) <strong>escape_special_chars</strong>(data) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Certain characters have special significance in HTML, and should be
+represented by HTML entities if they are to preserve their meanings.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#filter-instance_method" title="#filter (instance method)">- (Object) <strong>filter</strong>(html) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Filter html string.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#fix_case-instance_method" title="#fix_case (instance method)">- (Object) <strong>fix_case</strong>(data) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#fix_case_inner-instance_method" title="#fix_case_inner (instance method)">- (Object) <strong>fix_case_inner</strong>(data) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (HTMLFilter) <strong>initialize</strong>(options = nil) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>New html filter.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#is_valid_entity-instance_method" title="#is_valid_entity (instance method)">- (Object) <strong>is_valid_entity</strong>(entity) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#process_param_protocol-instance_method" title="#process_param_protocol (instance method)">- (Object) <strong>process_param_protocol</strong>(data) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#process_remove_blanks-instance_method" title="#process_remove_blanks (instance method)">- (Object) <strong>process_remove_blanks</strong>(data) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#process_tag-instance_method" title="#process_tag (instance method)">- (Object) <strong>process_tag</strong>(data) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#strip_single-instance_method" title="#strip_single (instance method)">- (Object) <strong>strip_single</strong>(data) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#tag_counts-instance_method" title="#tag_counts (instance method)">- (Object) <strong>tag_counts</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>internal tag counter.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#validate_entities-instance_method" title="#validate_entities (instance method)">- (Object) <strong>validate_entities</strong>(data) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="HTMLFilter (class)">HTMLFilter</a></span></tt>) <strong>initialize</strong>(options = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>New html filter.</p>
+
+<p>Provide custom <tt>options</tt>, or use one of the built-in options
+constants.</p>
+
+<pre class="code"><span class='hf identifier id'>hf</span> <span class='assign token'>=</span> <span class='HTMLFilter constant id'>HTMLFilter</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='HTMLFilter constant id'>HTMLFilter</span><span class='colon2 op'>::</span><span class='RELAXED constant id'>RELAXED</span><span class='rparen token'>)</span>
+<span class='hf identifier id'>hf</span><span class='dot token'>.</span><span class='filter identifier id'>filter</span><span class='lparen token'>(</span><span class='htmlstr identifier id'>htmlstr</span><span class='rparen token'>)</span>
+</pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 174</span>
+
+<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='options identifier id'>options</span>
+    <span class='h identifier id'>h</span> <span class='assign token'>=</span> <span class='DEFAULT constant id'>DEFAULT</span><span class='dot token'>.</span><span class='dup identifier id'>dup</span>
+    <span class='options identifier id'>options</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='k identifier id'>k</span><span class='comma token'>,</span><span class='v identifier id'>v</span><span class='bitor op'>|</span>
+      <span class='h identifier id'>h</span><span class='lbrack token'>[</span><span class='k identifier id'>k</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='v identifier id'>v</span>
+    <span class='end end kw'>end</span>
+    <span class='options identifier id'>options</span> <span class='assign token'>=</span> <span class='h identifier id'>h</span>
+  <span class='else else kw'>else</span>
+    <span class='options identifier id'>options</span> <span class='assign token'>=</span> <span class='DEFAULT constant id'>DEFAULT</span><span class='dot token'>.</span><span class='dup identifier id'>dup</span>
+  <span class='end end kw'>end</span>
+  <span class='options identifier id'>options</span><span class='dot token'>.</span><span class='each identifier id'>each</span><span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='k identifier id'>k</span><span class='comma token'>,</span><span class='v identifier id'>v</span><span class='bitor op'>|</span> <span class='send identifier id'>send</span><span class='lparen token'>(</span><span class='dstring node'>&quot;#{k}=&quot;</span><span class='comma token'>,</span><span class='v identifier id'>v</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="allow_numbered_entities=-instance_method"></span>
+      <span id="allow_numbered_entities-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="allow_numbered_entities-instance_method">
+  
+    - (<tt>Object</tt>) <strong>allow_numbered_entities</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>entity control option (true, false)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+77
+78
+79</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 77</span>
+
+<span class='def def kw'>def</span> <span class='allow_numbered_entities identifier id'>allow_numbered_entities</span>
+  <span class='@allow_numbered_entities ivar id'>@allow_numbered_entities</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="allowed=-instance_method"></span>
+      <span id="allowed-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="allowed-instance_method">
+  
+    - (<tt>Object</tt>) <strong>allowed</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>tags and attributes that are allowed</p>
+
+<p>Eg.</p>
+
+<pre class="code"><span class='lbrace token'>{</span>
+  <span class='string val'>'a'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'href'</span><span class='comma token'>,</span> <span class='string val'>'target'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'b'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'img'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'src'</span><span class='comma token'>,</span> <span class='string val'>'width'</span><span class='comma token'>,</span> <span class='string val'>'height'</span><span class='comma token'>,</span> <span class='string val'>'alt'</span><span class='rbrack token'>]</span>
+<span class='rbrace token'>}</span>
+</pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+50
+51
+52</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 50</span>
+
+<span class='def def kw'>def</span> <span class='allowed identifier id'>allowed</span>
+  <span class='@allowed ivar id'>@allowed</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="allowed_entities=-instance_method"></span>
+      <span id="allowed_entities-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="allowed_entities-instance_method">
+  
+    - (<tt>Object</tt>) <strong>allowed_entities</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>entity control option (amp, gt, lt, quot, etc.)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+80
+81
+82</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 80</span>
+
+<span class='def def kw'>def</span> <span class='allowed_entities identifier id'>allowed_entities</span>
+  <span class='@allowed_entities ivar id'>@allowed_entities</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="allowed_protocols=-instance_method"></span>
+      <span id="allowed_protocols-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="allowed_protocols-instance_method">
+  
+    - (<tt>Object</tt>) <strong>allowed_protocols</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>protocols which are allowed (http, ftp, mailto)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+64
+65
+66</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 64</span>
+
+<span class='def def kw'>def</span> <span class='allowed_protocols identifier id'>allowed_protocols</span>
+  <span class='@allowed_protocols ivar id'>@allowed_protocols</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="always_close=-instance_method"></span>
+      <span id="always_close-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="always_close-instance_method">
+  
+    - (<tt>Object</tt>) <strong>always_close</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>tags which must always have seperate opening and closing tags (e.g. “”)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+57
+58
+59</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 57</span>
+
+<span class='def def kw'>def</span> <span class='always_close identifier id'>always_close</span>
+  <span class='@always_close ivar id'>@always_close</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="always_make_tags=-instance_method"></span>
+      <span id="always_make_tags-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="always_make_tags-instance_method">
+  
+    - (<tt>Object</tt>) <strong>always_make_tags</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>should we try and make a &lt;b&gt; tag out of “b&gt;” (true, false)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+74
+75
+76</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 74</span>
+
+<span class='def def kw'>def</span> <span class='always_make_tags identifier id'>always_make_tags</span>
+  <span class='@always_make_tags ivar id'>@always_make_tags</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="no_close=-instance_method"></span>
+      <span id="no_close-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="no_close-instance_method">
+  
+    - (<tt>Object</tt>) <strong>no_close</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>tags which should always be self-closing (e.g. “&lt;img /&gt;”)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+53
+54
+55</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 53</span>
+
+<span class='def def kw'>def</span> <span class='no_close identifier id'>no_close</span>
+  <span class='@no_close ivar id'>@no_close</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="protocol_attributes=-instance_method"></span>
+      <span id="protocol_attributes-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="protocol_attributes-instance_method">
+  
+    - (<tt>Object</tt>) <strong>protocol_attributes</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>attributes which should be checked for valid protocols (src,href)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+61
+62
+63</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 61</span>
+
+<span class='def def kw'>def</span> <span class='protocol_attributes identifier id'>protocol_attributes</span>
+  <span class='@protocol_attributes ivar id'>@protocol_attributes</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="remove_blanks=-instance_method"></span>
+      <span id="remove_blanks-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="remove_blanks-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remove_blanks</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>tags which should be removed if they contain no content (e.g. “” or
+“&lt;b /&gt;”)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+68
+69
+70</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 68</span>
+
+<span class='def def kw'>def</span> <span class='remove_blanks identifier id'>remove_blanks</span>
+  <span class='@remove_blanks ivar id'>@remove_blanks</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="strip_comments=-instance_method"></span>
+      <span id="strip_comments-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="strip_comments-instance_method">
+  
+    - (<tt>Object</tt>) <strong>strip_comments</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>should we remove comments? (true, false)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+71
+72
+73</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 71</span>
+
+<span class='def def kw'>def</span> <span class='strip_comments identifier id'>strip_comments</span>
+  <span class='@strip_comments ivar id'>@strip_comments</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="balance_html-instance_method">
+  
+    - (<tt>Object</tt>) <strong>balance_html</strong>(data)  <span class="extras">(private)</span>
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 224</span>
+
+<span class='def def kw'>def</span> <span class='balance_html identifier id'>balance_html</span><span class='lparen token'>(</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
+  <span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='dup identifier id'>dup</span>
+
+  <span class='if if kw'>if</span> <span class='always_make_tags identifier id'>always_make_tags</span>
+    <span class='comment val'># try and form html</span>
+    <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub! fid id'>gsub!</span><span class='lparen token'>(</span><span class='regexp val'>/&gt;&gt;+/</span><span class='comma token'>,</span> <span class='string val'>'&gt;'</span><span class='rparen token'>)</span>
+    <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub! fid id'>gsub!</span><span class='lparen token'>(</span><span class='regexp val'>/&lt;&lt;+/</span><span class='comma token'>,</span> <span class='string val'>'&lt;'</span><span class='rparen token'>)</span>
+    <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub! fid id'>gsub!</span><span class='lparen token'>(</span><span class='regexp val'>/^&gt;/</span><span class='comma token'>,</span> <span class='string val'>''</span><span class='rparen token'>)</span>
+    <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub! fid id'>gsub!</span><span class='lparen token'>(</span><span class='regexp val'>/&lt;([^&gt;]*?)(?=&lt;|$)/</span><span class='comma token'>,</span> <span class='string val'>'&lt;\1&gt;'</span><span class='rparen token'>)</span>
+    <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub! fid id'>gsub!</span><span class='lparen token'>(</span><span class='regexp val'>/(^|&gt;)([^&lt;]*?)(?=&gt;)/</span><span class='comma token'>,</span> <span class='string val'>'\1&lt;\2'</span><span class='rparen token'>)</span>
+  <span class='else else kw'>else</span>
+    <span class='comment val'># escape stray brackets</span>
+    <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub! fid id'>gsub!</span><span class='lparen token'>(</span><span class='regexp val'>/&lt;([^&gt;]*?)(?=&lt;|$)/</span><span class='comma token'>,</span> <span class='string val'>'&amp;lt;\1'</span><span class='rparen token'>)</span>
+    <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub! fid id'>gsub!</span><span class='lparen token'>(</span><span class='regexp val'>/(^|&gt;)([^&lt;]*?)(?=&gt;)/</span><span class='comma token'>,</span> <span class='string val'>'\1\2&amp;gt;&lt;'</span><span class='rparen token'>)</span>
+    <span class='comment val'># the last regexp causes '&lt;&gt;' entities to appear</span>
+    <span class='comment val'># (we need to do a lookahead assertion so that the last bracket</span>
+    <span class='comment val'># can be used in the next pass of the regexp)</span>
+    <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub! fid id'>gsub!</span><span class='lparen token'>(</span><span class='string val'>'&lt;&gt;'</span><span class='comma token'>,</span> <span class='string val'>''</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+
+  <span class='return return kw'>return</span> <span class='data identifier id'>data</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="check_entity-instance_method">
+  
+    - (<tt>Object</tt>) <strong>check_entity</strong>(preamble, term)  <span class="extras">(private)</span>
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 454</span>
+
+<span class='def def kw'>def</span> <span class='check_entity identifier id'>check_entity</span><span class='lparen token'>(</span><span class='preamble identifier id'>preamble</span><span class='comma token'>,</span> <span class='term identifier id'>term</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='term identifier id'>term</span> <span class='neq op'>!=</span> <span class='string val'>';'</span>
+      <span class='return return kw'>return</span> <span class='string val'>'&amp;amp;'</span> <span class='plus op'>+</span> <span class='preamble identifier id'>preamble</span>
+  <span class='end end kw'>end</span>
+
+  <span class='if if kw'>if</span> <span class='is_valid_entity identifier id'>is_valid_entity</span><span class='lparen token'>(</span><span class='preamble identifier id'>preamble</span><span class='rparen token'>)</span>
+      <span class='return return kw'>return</span> <span class='string val'>'&amp;'</span> <span class='plus op'>+</span> <span class='preamble identifier id'>preamble</span>
+  <span class='end end kw'>end</span>
+
+  <span class='return return kw'>return</span> <span class='string val'>'&amp;amp;'</span> <span class='plus op'>+</span> <span class='preamble identifier id'>preamble</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="check_tags-instance_method">
+  
+    - (<tt>Object</tt>) <strong>check_tags</strong>(data)  <span class="extras">(private)</span>
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 251</span>
+
+<span class='def def kw'>def</span> <span class='check_tags identifier id'>check_tags</span><span class='lparen token'>(</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
+  <span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='dup identifier id'>dup</span>
+
+  <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub! fid id'>gsub!</span><span class='lparen token'>(</span><span class='regexp val'>/&lt;(.*?)&gt;/s</span><span class='rparen token'>)</span><span class='lbrace token'>{</span>
+    <span class='process_tag identifier id'>process_tag</span><span class='lparen token'>(</span><span class='strip_single identifier id'>strip_single</span><span class='lparen token'>(</span><span class='$1 nth_ref id'>$1</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+  <span class='rbrace token'>}</span>
+
+  <span class='tag_counts identifier id'>tag_counts</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='tag identifier id'>tag</span><span class='comma token'>,</span> <span class='cnt identifier id'>cnt</span><span class='bitor op'>|</span>
+      <span class='cnt identifier id'>cnt</span><span class='dot token'>.</span><span class='times identifier id'>times</span><span class='lbrace token'>{</span> <span class='data identifier id'>data</span> <span class='lshft op'>&lt;&lt;</span> <span class='dstring node'>&quot;&lt;/#{tag}&gt;&quot;</span> <span class='rbrace token'>}</span>
+  <span class='end end kw'>end</span>
+
+  <span class='return return kw'>return</span> <span class='data identifier id'>data</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="decode_dec_entity-instance_method">
+  
+    - (<tt>Object</tt>) <strong>decode_dec_entity</strong>(*m)  <span class="extras">(private)</span>
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+515
+516
+517</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 515</span>
+
+<span class='def def kw'>def</span> <span class='decode_dec_entity identifier id'>decode_dec_entity</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='m identifier id'>m</span><span class='rparen token'>)</span>
+  <span class='return return kw'>return</span> <span class='decode_num_entity identifier id'>decode_num_entity</span><span class='lparen token'>(</span><span class='m identifier id'>m</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='m identifier id'>m</span><span class='lbrack token'>[</span><span class='integer val'>2</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="decode_entities-instance_method">
+  
+    - (<tt>Object</tt>) <strong>decode_entities</strong>(data)  <span class="extras">(private)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>within attributes, we want to convert all hex/dec/url escape sequences into
+their raw characters so that we can check we don’t get stray
+quotes/brackets inside strings.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 491</span>
+
+<span class='def def kw'>def</span> <span class='decode_entities identifier id'>decode_entities</span><span class='lparen token'>(</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
+  <span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='dup identifier id'>dup</span>
+
+  <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub! fid id'>gsub!</span><span class='lparen token'>(</span><span class='regexp val'>/(&amp;)#(\d+);?/</span><span class='rparen token'>)</span><span class='lbrace token'>{</span> <span class='decode_dec_entity identifier id'>decode_dec_entity</span><span class='lparen token'>(</span><span class='$1 nth_ref id'>$1</span><span class='comma token'>,</span> <span class='$2 nth_ref id'>$2</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+  <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub! fid id'>gsub!</span><span class='lparen token'>(</span><span class='regexp val'>/(&amp;)#x([0-9a-f]+);?/i</span><span class='rparen token'>)</span><span class='lbrace token'>{</span> <span class='decode_hex_entity identifier id'>decode_hex_entity</span><span class='lparen token'>(</span><span class='$1 nth_ref id'>$1</span><span class='comma token'>,</span> <span class='$2 nth_ref id'>$2</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+  <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub! fid id'>gsub!</span><span class='lparen token'>(</span><span class='regexp val'>/(%)([0-9a-f]{2});?/i</span><span class='rparen token'>)</span><span class='lbrace token'>{</span> <span class='decode_hex_entity identifier id'>decode_hex_entity</span><span class='lparen token'>(</span><span class='$1 nth_ref id'>$1</span><span class='comma token'>,</span> <span class='$2 nth_ref id'>$2</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+
+  <span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='validate_entities identifier id'>validate_entities</span><span class='lparen token'>(</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
+
+  <span class='return return kw'>return</span> <span class='data identifier id'>data</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="decode_hex_entity-instance_method">
+  
+    - (<tt>Object</tt>) <strong>decode_hex_entity</strong>(*m)  <span class="extras">(private)</span>
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+507
+508
+509</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 507</span>
+
+<span class='def def kw'>def</span> <span class='decode_hex_entity identifier id'>decode_hex_entity</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='m identifier id'>m</span><span class='rparen token'>)</span>
+  <span class='return return kw'>return</span> <span class='decode_num_entity identifier id'>decode_num_entity</span><span class='lparen token'>(</span><span class='m identifier id'>m</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='m identifier id'>m</span><span class='lbrack token'>[</span><span class='integer val'>2</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='to_i identifier id'>to_i</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='lparen token'>(</span><span class='integer val'>16</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="decode_num_entity-instance_method">
+  
+    - (<tt>Object</tt>) <strong>decode_num_entity</strong>(orig_type, d)  <span class="extras">(private)</span>
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 523</span>
+
+<span class='def def kw'>def</span> <span class='decode_num_entity identifier id'>decode_num_entity</span><span class='lparen token'>(</span><span class='orig_type identifier id'>orig_type</span><span class='comma token'>,</span> <span class='d identifier id'>d</span><span class='rparen token'>)</span>
+  <span class='d identifier id'>d</span> <span class='assign token'>=</span> <span class='d identifier id'>d</span><span class='dot token'>.</span><span class='to_i identifier id'>to_i</span>
+  <span class='d identifier id'>d</span> <span class='assign token'>=</span> <span class='integer val'>32</span> <span class='if if_mod kw'>if</span> <span class='d identifier id'>d</span> <span class='lt op'>&lt;</span> <span class='integer val'>0</span>   <span class='comment val'># space</span>
+
+  <span class='comment val'># don't mess with high chars</span>
+  <span class='if if kw'>if</span> <span class='d identifier id'>d</span> <span class='gt op'>&gt;</span> <span class='integer val'>127</span>
+      <span class='return return kw'>return</span> <span class='string val'>'%'</span> <span class='plus op'>+</span> <span class='d identifier id'>d</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='lparen token'>(</span><span class='integer val'>16</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='orig_type identifier id'>orig_type</span> <span class='eq op'>==</span> <span class='string val'>'%'</span>
+      <span class='return return kw'>return</span> <span class='dstring node'>&quot;&amp;#{d};&quot;</span> <span class='if if_mod kw'>if</span> <span class='orig_type identifier id'>orig_type</span> <span class='eq op'>==</span> <span class='string val'>'&amp;'</span>
+  <span class='end end kw'>end</span>
+
+  <span class='return return kw'>return</span> <span class='escape_special_chars identifier id'>escape_special_chars</span><span class='lparen token'>(</span><span class='d identifier id'>d</span><span class='dot token'>.</span><span class='chr identifier id'>chr</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="escape_comments-instance_method">
+  
+    - (<tt>Object</tt>) <strong>escape_comments</strong>(data)  <span class="extras">(private)</span>
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+212
+213
+214
+215
+216
+217
+218</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 212</span>
+
+<span class='def def kw'>def</span> <span class='escape_comments identifier id'>escape_comments</span><span class='lparen token'>(</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
+  <span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='regexp val'>/&lt;!--(.*?)--&gt;/s</span><span class='rparen token'>)</span> <span class='do do kw'>do</span>
+    <span class='string val'>'&lt;!--'</span> <span class='plus op'>+</span> <span class='escape_special_chars identifier id'>escape_special_chars</span><span class='lparen token'>(</span><span class='strip_single identifier id'>strip_single</span><span class='lparen token'>(</span><span class='$1 nth_ref id'>$1</span><span class='rparen token'>)</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='string val'>'--&gt;'</span>
+  <span class='end end kw'>end</span>
+
+  <span class='return return kw'>return</span> <span class='data identifier id'>data</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="escape_special_chars-instance_method">
+  
+    - (<tt>Object</tt>) <strong>escape_special_chars</strong>(data)  <span class="extras">(private)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Certain characters have special significance in HTML, and should be
+represented by HTML entities if they are to preserve their meanings. This
+function returns a string with some of these conversions made; the
+translations made are those most useful for everyday web programming.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+550
+551
+552
+553
+554
+555
+556
+557
+558</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 550</span>
+
+<span class='def def kw'>def</span> <span class='escape_special_chars identifier id'>escape_special_chars</span><span class='lparen token'>(</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
+  <span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='dup identifier id'>dup</span>
+  <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub! fid id'>gsub!</span><span class='lparen token'>(</span> <span class='regexp val'>/&amp;/n</span>  <span class='comma token'>,</span> <span class='string val'>'&amp;amp;'</span> <span class='rparen token'>)</span>
+  <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub! fid id'>gsub!</span><span class='lparen token'>(</span> <span class='regexp val'>/\&quot;/n</span> <span class='comma token'>,</span> <span class='string val'>'&amp;quot;'</span> <span class='rparen token'>)</span>
+  <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub! fid id'>gsub!</span><span class='lparen token'>(</span> <span class='regexp val'>/&gt;/n</span>  <span class='comma token'>,</span> <span class='string val'>'&amp;gt;'</span> <span class='rparen token'>)</span>
+  <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub! fid id'>gsub!</span><span class='lparen token'>(</span> <span class='regexp val'>/&lt;/n</span>  <span class='comma token'>,</span> <span class='string val'>'&amp;lt;'</span> <span class='rparen token'>)</span>
+  <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub! fid id'>gsub!</span><span class='lparen token'>(</span> <span class='regexp val'>/'/</span>   <span class='comma token'>,</span> <span class='string val'>'&amp;#039;'</span> <span class='rparen token'>)</span>
+  <span class='return return kw'>return</span> <span class='data identifier id'>data</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="filter-instance_method">
+  
+    - (<tt>Object</tt>) <strong>filter</strong>(html) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Filter html string.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 189</span>
+
+<span class='def def kw'>def</span> <span class='filter identifier id'>filter</span><span class='lparen token'>(</span><span class='html identifier id'>html</span><span class='rparen token'>)</span>
+  <span class='@tag_counts ivar id'>@tag_counts</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+  <span class='html identifier id'>html</span> <span class='assign token'>=</span> <span class='escape_comments identifier id'>escape_comments</span><span class='lparen token'>(</span><span class='html identifier id'>html</span><span class='rparen token'>)</span>
+  <span class='html identifier id'>html</span> <span class='assign token'>=</span> <span class='balance_html identifier id'>balance_html</span><span class='lparen token'>(</span><span class='html identifier id'>html</span><span class='rparen token'>)</span>
+  <span class='html identifier id'>html</span> <span class='assign token'>=</span> <span class='check_tags identifier id'>check_tags</span><span class='lparen token'>(</span><span class='html identifier id'>html</span><span class='rparen token'>)</span>
+  <span class='html identifier id'>html</span> <span class='assign token'>=</span> <span class='process_remove_blanks identifier id'>process_remove_blanks</span><span class='lparen token'>(</span><span class='html identifier id'>html</span><span class='rparen token'>)</span>
+  <span class='html identifier id'>html</span> <span class='assign token'>=</span> <span class='validate_entities identifier id'>validate_entities</span><span class='lparen token'>(</span><span class='html identifier id'>html</span><span class='rparen token'>)</span>
+  <span class='comment val'>#html = truncate_html(html)</span>
+  <span class='html identifier id'>html</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="fix_case-instance_method">
+  
+    - (<tt>Object</tt>) <strong>fix_case</strong>(data)  <span class="extras">(private)</span>
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 390</span>
+
+<span class='def def kw'>def</span> <span class='fix_case identifier id'>fix_case</span><span class='lparen token'>(</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
+  <span class='data_notags identifier id'>data_notags</span> <span class='assign token'>=</span> <span class='strip_tags identifier id'>strip_tags</span><span class='lparen token'>(</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
+  <span class='data_notags identifier id'>data_notags</span> <span class='assign token'>=</span> <span class='data_notags identifier id'>data_notags</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='regexp val'>/[^a-zA-Z]/</span><span class='comma token'>,</span> <span class='string val'>''</span><span class='rparen token'>)</span>
+
+  <span class='if if kw'>if</span> <span class='data_notags identifier id'>data_notags</span><span class='dot token'>.</span><span class='size identifier id'>size</span> <span class='lt op'>&lt;</span> <span class='integer val'>5</span>
+      <span class='return return kw'>return</span> <span class='data identifier id'>data</span>
+  <span class='end end kw'>end</span>
+
+  <span class='if if kw'>if</span> <span class='regexp val'>/[a-z]/</span> <span class='match op'>=~</span> <span class='data_notags identifier id'>data_notags</span>
+      <span class='return return kw'>return</span> <span class='data identifier id'>data</span>
+  <span class='end end kw'>end</span>
+
+  <span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='regexp val'>/(&gt;|^)([^&lt;]+?)(&lt;|$)/s</span><span class='rparen token'>)</span><span class='lbrace token'>{</span>
+      <span class='strip_single identifier id'>strip_single</span><span class='lparen token'>(</span><span class='$1 nth_ref id'>$1</span><span class='rparen token'>)</span> <span class='plus op'>+</span>
+      <span class='fix_case_inner identifier id'>fix_case_inner</span><span class='lparen token'>(</span><span class='strip_single identifier id'>strip_single</span><span class='lparen token'>(</span><span class='$2 nth_ref id'>$2</span><span class='rparen token'>)</span><span class='rparen token'>)</span> <span class='plus op'>+</span>
+      <span class='strip_single identifier id'>strip_single</span><span class='lparen token'>(</span><span class='$3 nth_ref id'>$3</span><span class='rparen token'>)</span>
+  <span class='rbrace token'>}</span>
+
+  <span class='return return kw'>return</span> <span class='data identifier id'>data</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="fix_case_inner-instance_method">
+  
+    - (<tt>Object</tt>) <strong>fix_case_inner</strong>(data)  <span class="extras">(private)</span>
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 415</span>
+
+<span class='def def kw'>def</span> <span class='fix_case_inner identifier id'>fix_case_inner</span><span class='lparen token'>(</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
+  <span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='dup identifier id'>dup</span>
+
+  <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='downcase! fid id'>downcase!</span>
+
+  <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub! fid id'>gsub!</span><span class='lparen token'>(</span><span class='regexp val'>/(^|[^\w\s\';,\\-])(\s*)([a-z])/</span><span class='rparen token'>)</span><span class='lbrace token'>{</span>
+      <span class='strip_single identifier id'>strip_single</span><span class='lparen token'>(</span><span class='dstring node'>&quot;#{$1}#{$2}&quot;</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='strip_single identifier id'>strip_single</span><span class='lparen token'>(</span><span class='$3 nth_ref id'>$3</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='upcase identifier id'>upcase</span>
+  <span class='rbrace token'>}</span>
+
+  <span class='return return kw'>return</span> <span class='data identifier id'>data</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="is_valid_entity-instance_method">
+  
+    - (<tt>Object</tt>) <strong>is_valid_entity</strong>(entity)  <span class="extras">(private)</span>
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 470</span>
+
+<span class='def def kw'>def</span> <span class='is_valid_entity identifier id'>is_valid_entity</span><span class='lparen token'>(</span><span class='entity identifier id'>entity</span><span class='rparen token'>)</span>
+  <span class='re identifier id'>re</span> <span class='assign token'>=</span> <span class='regexp val'>/^#([0-9]+)$/i</span>
+
+  <span class='if if kw'>if</span> <span class='md identifier id'>md</span> <span class='assign token'>=</span> <span class='re identifier id'>re</span><span class='dot token'>.</span><span class='match identifier id'>match</span><span class='lparen token'>(</span><span class='entity identifier id'>entity</span><span class='rparen token'>)</span>
+      <span class='if if kw'>if</span> <span class='lparen token'>(</span><span class='md identifier id'>md</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='to_i identifier id'>to_i</span> <span class='gt op'>&gt;</span> <span class='integer val'>127</span><span class='rparen token'>)</span>
+          <span class='return return kw'>return</span> <span class='true true kw'>true</span>
+      <span class='end end kw'>end</span>
+      <span class='return return kw'>return</span> <span class='allow_numbered_entities identifier id'>allow_numbered_entities</span>
+  <span class='end end kw'>end</span>
+
+  <span class='if if kw'>if</span> <span class='allowed_entities identifier id'>allowed_entities</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='entity identifier id'>entity</span><span class='rparen token'>)</span>
+      <span class='return return kw'>return</span> <span class='true true kw'>true</span>
+  <span class='end end kw'>end</span>
+
+  <span class='return return kw'>return</span> <span class='nil nil kw'>nil</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="process_param_protocol-instance_method">
+  
+    - (<tt>Object</tt>) <strong>process_param_protocol</strong>(data)  <span class="extras">(private)</span>
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 356</span>
+
+<span class='def def kw'>def</span> <span class='process_param_protocol identifier id'>process_param_protocol</span><span class='lparen token'>(</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
+  <span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='decode_entities identifier id'>decode_entities</span><span class='lparen token'>(</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
+
+  <span class='re identifier id'>re</span> <span class='assign token'>=</span> <span class='regexp val'>/^([^:]+)\:/s</span><span class='i identifier id'>i</span>
+
+  <span class='if if kw'>if</span> <span class='matches identifier id'>matches</span> <span class='assign token'>=</span> <span class='re identifier id'>re</span><span class='dot token'>.</span><span class='match identifier id'>match</span><span class='lparen token'>(</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
+      <span class='unless unless kw'>unless</span> <span class='allowed_protocols identifier id'>allowed_protocols</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='matches identifier id'>matches</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+          <span class='comment val'>#data = '#'.substr(data, strlen(matches[1])+1)</span>
+          <span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='string val'>'#'</span> <span class='plus op'>+</span> <span class='data identifier id'>data</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='dot2 op'>..</span><span class='matches identifier id'>matches</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='size identifier id'>size</span><span class='plus op'>+</span><span class='integer val'>1</span><span class='rbrack token'>]</span>
+      <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+
+  <span class='return return kw'>return</span> <span class='data identifier id'>data</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="process_remove_blanks-instance_method">
+  
+    - (<tt>Object</tt>) <strong>process_remove_blanks</strong>(data)  <span class="extras">(private)</span>
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 375</span>
+
+<span class='def def kw'>def</span> <span class='process_remove_blanks identifier id'>process_remove_blanks</span><span class='lparen token'>(</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
+  <span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='dup identifier id'>dup</span>
+
+  <span class='remove_blanks identifier id'>remove_blanks</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='tag identifier id'>tag</span><span class='bitor op'>|</span>
+      <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub! fid id'>gsub!</span><span class='lparen token'>(</span><span class='dregexp node'>/&lt;#{tag}(\s[^&gt;]*)?&gt;&lt;\/#{tag}&gt;/</span><span class='comma token'>,</span> <span class='string val'>''</span><span class='rparen token'>)</span>
+      <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub! fid id'>gsub!</span><span class='lparen token'>(</span><span class='dregexp node'>/&lt;#{tag}(\s[^&gt;]*)?\/&gt;/</span><span class='comma token'>,</span> <span class='string val'>''</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+
+  <span class='return return kw'>return</span> <span class='data identifier id'>data</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="process_tag-instance_method">
+  
+    - (<tt>Object</tt>) <strong>process_tag</strong>(data)  <span class="extras">(private)</span>
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 269</span>
+
+<span class='def def kw'>def</span> <span class='process_tag identifier id'>process_tag</span><span class='lparen token'>(</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
+
+  <span class='comment val'># ending tags</span>
+
+  <span class='re identifier id'>re</span> <span class='assign token'>=</span> <span class='regexp val'>/^\/([a-z0-9]+)/s</span><span class='i identifier id'>i</span>
+
+  <span class='if if kw'>if</span> <span class='matches identifier id'>matches</span> <span class='assign token'>=</span> <span class='re identifier id'>re</span><span class='dot token'>.</span><span class='match identifier id'>match</span><span class='lparen token'>(</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
+      <span class='name identifier id'>name</span> <span class='assign token'>=</span> <span class='matches identifier id'>matches</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='downcase identifier id'>downcase</span>
+      <span class='if if kw'>if</span> <span class='allowed identifier id'>allowed</span><span class='dot token'>.</span><span class='key? fid id'>key?</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
+          <span class='unless unless kw'>unless</span> <span class='no_close identifier id'>no_close</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
+              <span class='if if kw'>if</span> <span class='tag_counts identifier id'>tag_counts</span><span class='lbrack token'>[</span><span class='name identifier id'>name</span><span class='rbrack token'>]</span>
+                  <span class='tag_counts identifier id'>tag_counts</span><span class='lbrack token'>[</span><span class='name identifier id'>name</span><span class='rbrack token'>]</span> <span class='opasgn op'>-=</span> <span class='integer val'>1</span>
+                  <span class='return return kw'>return</span> <span class='dstring node'>&quot;&lt;/#{name}&gt;&quot;</span>
+              <span class='end end kw'>end</span>
+          <span class='end end kw'>end</span>
+      <span class='else else kw'>else</span>
+          <span class='return return kw'>return</span> <span class='string val'>''</span>
+      <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+
+  <span class='comment val'># starting tags</span>
+
+  <span class='re identifier id'>re</span> <span class='assign token'>=</span> <span class='regexp val'>/^([a-z0-9]+)(.*?)(\/?)$/s</span><span class='i identifier id'>i</span>
+
+  <span class='if if kw'>if</span> <span class='matches identifier id'>matches</span> <span class='assign token'>=</span> <span class='re identifier id'>re</span><span class='dot token'>.</span><span class='match identifier id'>match</span><span class='lparen token'>(</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
+      <span class='name identifier id'>name</span>   <span class='assign token'>=</span> <span class='matches identifier id'>matches</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='downcase identifier id'>downcase</span>
+      <span class='body identifier id'>body</span>   <span class='assign token'>=</span> <span class='matches identifier id'>matches</span><span class='lbrack token'>[</span><span class='integer val'>2</span><span class='rbrack token'>]</span>
+      <span class='ending identifier id'>ending</span> <span class='assign token'>=</span> <span class='matches identifier id'>matches</span><span class='lbrack token'>[</span><span class='integer val'>3</span><span class='rbrack token'>]</span>
+
+      <span class='if if kw'>if</span> <span class='allowed identifier id'>allowed</span><span class='dot token'>.</span><span class='key? fid id'>key?</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
+          <span class='params identifier id'>params</span> <span class='assign token'>=</span> <span class='string val'>&quot;&quot;</span>
+
+          <span class='matches_2 identifier id'>matches_2</span> <span class='assign token'>=</span> <span class='body identifier id'>body</span><span class='dot token'>.</span><span class='scan identifier id'>scan</span><span class='lparen token'>(</span><span class='regexp val'>/([a-z0-9]+)=([&quot;'])(.*?)\2/s</span><span class='i identifier id'>i</span><span class='rparen token'>)</span>         <span class='comment val'># &lt;foo a=&quot;b&quot; /&gt;</span>
+          <span class='matches_1 identifier id'>matches_1</span> <span class='assign token'>=</span> <span class='body identifier id'>body</span><span class='dot token'>.</span><span class='scan identifier id'>scan</span><span class='lparen token'>(</span><span class='regexp val'>/([a-z0-9]+)(=)([^&quot;\s']+)/s</span><span class='i identifier id'>i</span><span class='rparen token'>)</span>          <span class='comment val'># &lt;foo a=b /&gt;</span>
+          <span class='matches_3 identifier id'>matches_3</span> <span class='assign token'>=</span> <span class='body identifier id'>body</span><span class='dot token'>.</span><span class='scan identifier id'>scan</span><span class='lparen token'>(</span><span class='regexp val'>/([a-z0-9]+)=([&quot;'])([^&quot;']*?)\s*$/s</span><span class='i identifier id'>i</span><span class='rparen token'>)</span>   <span class='comment val'># &lt;foo a=&quot;b /&gt;</span>
+
+          <span class='matches identifier id'>matches</span> <span class='assign token'>=</span> <span class='matches_1 identifier id'>matches_1</span> <span class='plus op'>+</span> <span class='matches_2 identifier id'>matches_2</span> <span class='plus op'>+</span> <span class='matches_3 identifier id'>matches_3</span>
+
+          <span class='matches identifier id'>matches</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='match identifier id'>match</span><span class='bitor op'>|</span>
+              <span class='pname identifier id'>pname</span> <span class='assign token'>=</span> <span class='match identifier id'>match</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='downcase identifier id'>downcase</span>
+              <span class='if if kw'>if</span> <span class='allowed identifier id'>allowed</span><span class='lbrack token'>[</span><span class='name identifier id'>name</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='pname identifier id'>pname</span><span class='rparen token'>)</span>
+                  <span class='value identifier id'>value</span> <span class='assign token'>=</span> <span class='match identifier id'>match</span><span class='lbrack token'>[</span><span class='integer val'>2</span><span class='rbrack token'>]</span>
+                  <span class='if if kw'>if</span> <span class='protocol_attributes identifier id'>protocol_attributes</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='pname identifier id'>pname</span><span class='rparen token'>)</span>
+                      <span class='value identifier id'>value</span> <span class='assign token'>=</span> <span class='process_param_protocol identifier id'>process_param_protocol</span><span class='lparen token'>(</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
+                  <span class='end end kw'>end</span>
+                  <span class='params identifier id'>params</span> <span class='opasgn op'>+=</span> <span class='dstring node'>%{ #{pname}=&quot;#{value}&quot;}</span>
+              <span class='end end kw'>end</span>
+          <span class='end end kw'>end</span>
+          <span class='if if kw'>if</span> <span class='no_close identifier id'>no_close</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
+              <span class='ending identifier id'>ending</span> <span class='assign token'>=</span> <span class='string val'>' /'</span>
+          <span class='end end kw'>end</span>
+          <span class='if if kw'>if</span> <span class='always_close identifier id'>always_close</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
+              <span class='ending identifier id'>ending</span> <span class='assign token'>=</span> <span class='string val'>''</span>
+          <span class='end end kw'>end</span>
+          <span class='if if kw'>if</span> <span class='ending identifier id'>ending</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
+              <span class='if if kw'>if</span> <span class='tag_counts identifier id'>tag_counts</span><span class='dot token'>.</span><span class='key? fid id'>key?</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
+                  <span class='tag_counts identifier id'>tag_counts</span><span class='lbrack token'>[</span><span class='name identifier id'>name</span><span class='rbrack token'>]</span> <span class='opasgn op'>+=</span> <span class='integer val'>1</span>
+              <span class='else else kw'>else</span>
+                  <span class='tag_counts identifier id'>tag_counts</span><span class='lbrack token'>[</span><span class='name identifier id'>name</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='integer val'>1</span>
+              <span class='end end kw'>end</span>
+          <span class='end end kw'>end</span>
+          <span class='unless unless kw'>unless</span> <span class='ending identifier id'>ending</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
+              <span class='ending identifier id'>ending</span> <span class='assign token'>=</span> <span class='string val'>' /'</span>
+          <span class='end end kw'>end</span>
+          <span class='return return kw'>return</span> <span class='string val'>'&lt;'</span> <span class='plus op'>+</span> <span class='name identifier id'>name</span> <span class='plus op'>+</span> <span class='params identifier id'>params</span> <span class='plus op'>+</span> <span class='ending identifier id'>ending</span> <span class='plus op'>+</span> <span class='string val'>'&gt;'</span>
+      <span class='else else kw'>else</span>
+          <span class='return return kw'>return</span> <span class='string val'>''</span>
+      <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+
+  <span class='comment val'># comments</span>
+  <span class='if if kw'>if</span> <span class='regexp val'>/^!--(.*)--$/s</span><span class='i identifier id'>i</span> <span class='match op'>=~</span> <span class='data identifier id'>data</span>
+      <span class='if if kw'>if</span> <span class='strip_comments identifier id'>strip_comments</span>
+          <span class='return return kw'>return</span> <span class='string val'>''</span>
+      <span class='else else kw'>else</span>
+          <span class='return return kw'>return</span> <span class='string val'>'&lt;'</span> <span class='plus op'>+</span> <span class='data identifier id'>data</span> <span class='plus op'>+</span> <span class='string val'>'&gt;'</span>
+      <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+
+  <span class='comment val'># garbage, ignore it</span>
+  <span class='return return kw'>return</span> <span class='string val'>''</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="strip_single-instance_method">
+  
+    - (<tt>Object</tt>) <strong>strip_single</strong>(data)  <span class="extras">(private)</span>
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+540
+541
+542</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 540</span>
+
+<span class='def def kw'>def</span> <span class='strip_single identifier id'>strip_single</span><span class='lparen token'>(</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
+  <span class='return return kw'>return</span> <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='string val'>'\&quot;'</span><span class='comma token'>,</span> <span class='string val'>'&quot;'</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='string val'>'\0'</span><span class='comma token'>,</span> <span class='integer val'>0</span><span class='dot token'>.</span><span class='chr identifier id'>chr</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="tag_counts-instance_method">
+  
+    - (<tt>Object</tt>) <strong>tag_counts</strong>  <span class="extras">(private)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>internal tag counter</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+206</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 206</span>
+
+<span class='def def kw'>def</span> <span class='tag_counts identifier id'>tag_counts</span> <span class='semicolon token'>;</span> <span class='@tag_counts ivar id'>@tag_counts</span> <span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="validate_entities-instance_method">
+  
+    - (<tt>Object</tt>) <strong>validate_entities</strong>(data)  <span class="extras">(private)</span>
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/htmlfilter.rb', line 431</span>
+
+<span class='def def kw'>def</span> <span class='validate_entities identifier id'>validate_entities</span><span class='lparen token'>(</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
+  <span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='dup identifier id'>dup</span>
+
+  <span class='comment val'># validate entities throughout the string</span>
+  <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub! fid id'>gsub!</span><span class='lparen token'>(</span><span class='regexp val'>%r!&amp;([^&amp;;]*)(?=(;|&amp;|$))!</span><span class='rparen token'>)</span><span class='lbrace token'>{</span>
+      <span class='check_entity identifier id'>check_entity</span><span class='lparen token'>(</span><span class='strip_single identifier id'>strip_single</span><span class='lparen token'>(</span><span class='$1 nth_ref id'>$1</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='strip_single identifier id'>strip_single</span><span class='lparen token'>(</span><span class='$2 nth_ref id'>$2</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+  <span class='rbrace token'>}</span>
+
+  <span class='comment val'># validate quotes outside of tags</span>
+  <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='gsub! fid id'>gsub!</span><span class='lparen token'>(</span><span class='regexp val'>/(&gt;|^)([^&lt;]+?)(&lt;|$)/s</span><span class='rparen token'>)</span><span class='lbrace token'>{</span>
+      <span class='m1 identifier id'>m1</span><span class='comma token'>,</span> <span class='m2 identifier id'>m2</span><span class='comma token'>,</span> <span class='m3 identifier id'>m3</span> <span class='assign token'>=</span> <span class='$1 nth_ref id'>$1</span><span class='comma token'>,</span> <span class='$2 nth_ref id'>$2</span><span class='comma token'>,</span> <span class='$3 nth_ref id'>$3</span>
+      <span class='strip_single identifier id'>strip_single</span><span class='lparen token'>(</span><span class='m1 identifier id'>m1</span><span class='rparen token'>)</span> <span class='plus op'>+</span>
+      <span class='strip_single identifier id'>strip_single</span><span class='lparen token'>(</span><span class='m2 identifier id'>m2</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='string val'>'\&quot;'</span><span class='comma token'>,</span> <span class='string val'>'&amp;quot;'</span><span class='rparen token'>)</span> <span class='plus op'>+</span>
+      <span class='strip_single identifier id'>strip_single</span><span class='lparen token'>(</span><span class='m3 identifier id'>m3</span><span class='rparen token'>)</span>
+  <span class='rbrace token'>}</span>
+
+  <span class='return return kw'>return</span> <span class='data identifier id'>data</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Sun May 22 07:46:39 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.7 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

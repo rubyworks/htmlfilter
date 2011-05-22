@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<title>File: README</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><div id='filecontents'>
+<h1>HTMLFilter</h1>
+
+<h2>RESOURCES</h2>
+<ul><li>
+<p>home: <a
+href="http://rubyworks.github.com/htmlfilter">rubyworks.github.com/htmlfilter</a></p>
+</li><li>
+<p>code: <a
+href="http://github.com/rubyworks/htmlfilter">github.com/rubyworks/htmlfilter</a></p>
+</li></ul>
+
+<h2>DESCRIPTION</h2>
+
+<p>HTML Filter library can be used to sanitize and sterilize HTML. A good idea
+if you let users submit HTML in comments, for instance.</p>
+
+<p>This library also include CSSFilter. The CSSFilter class will clean-up a
+cascading style sheet. It can be used to remove whitespace and most
+importantly remove URLs.</p>
+
+<h2>FEATURES</h2>
+<ul><li>
+<p>Based on well-worn PHP library.</p>
+</li><li>
+<p>Regular expression based filtering.</p>
+</li><li>
+<p>Very efficient for small snippets, like blog comments.</p>
+</li><li>
+<p>Pure-Ruby and no dependencies.</p>
+</li><li>
+<p>Also has library to clean and compact cascading stylesheets.</p>
+</li></ul>
+
+<h2>SYNOPSIS</h2>
+
+<p>Via the class.</p>
+
+<pre class="code"><span class='html identifier id'>html</span> <span class='assign token'>=</span> <span class='string val'>&quot;&lt;&lt;b&gt;hello&lt;/b&gt;&quot;</span>
+
+<span class='HTMLFilter constant id'>HTMLFilter</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='filter identifier id'>filter</span><span class='lparen token'>(</span><span class='html identifier id'>html</span><span class='rparen token'>)</span>
+</pre>
+
+<p>Or using the String extension.</p>
+
+<pre class="code"><span class='html identifier id'>html</span><span class='dot token'>.</span><span class='html_filter identifier id'>html_filter</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='rparen token'>)</span>  <span class='comment val'>#=&gt; &quot;&lt;b&gt;hello&lt;/b&gt;&quot;</span>
+</pre>
+
+<p>See API documentation for more information.</p>
+
+<h2>INSTALL</h2>
+
+<pre class="code"><span class='gem identifier id'>gem</span> <span class='install identifier id'>install</span> <span class='htmlfilter identifier id'>htmlfilter</span>
+</pre>
+
+<h2>DEVELOPMENT</h2>
+
+<p>HTMLFilter is hosted on <a
+href="http://github.com/rubyworks/htmlfilter">GitHub</a>.</p>
+
+<p>HTMLFilter is a <a href="http://rubyworks.github.com">RubyWorks</a>
+project.</p>
+
+<h2>LICENSE</h2>
+
+<p>(Creative Commons Attribution-ShareAlike License)</p>
+
+<p>Copyright © 2009 Thomas Sawyer</p>
+
+<p>See <a
+href="http://creativecommons.org/licenses/by-sa/3.0/deed.en">creativecommons.org/licenses/by-sa/3.0/deed.en</a></p>
+
+<p>HtmlFilter is a port of lib_filter.php, v1.15 by Cal Henderson
+&lt;cal@iamcal.com&gt;. This code is licensed under a Creative Commons
+Attribution-ShareAlike 2.5 License. See <a
+href="http://creativecommons.org/licenses/by-sa/2.5">creativecommons.org/licenses/by-sa/2.5</a>/.</p>
+</div></div>
+    
+    <div id="footer">
+  Generated on Sun May 22 07:46:38 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.7 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>
