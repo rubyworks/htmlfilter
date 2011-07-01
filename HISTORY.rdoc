@@ -2,7 +2,7 @@
 
 == 1.2.0 / 2010-10-13
 
-Finally removed the lowecase variations on the class names.
+Finally removed the lowercase variations on the class names.
 You must use HTMLFilter now and not HtmlFilter.
 
 Changes:

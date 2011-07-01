@@ -184,7 +184,7 @@ class HTMLFilter
   end
 
   # Filter html string.
-
+  #
   def filter(html)
     @tag_counts = {}
     html = escape_comments(html)

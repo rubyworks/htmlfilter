@@ -12,6 +12,7 @@ description:
 
 resources:
   home: http://rubyworks.github.com/htmlfilter
+  docs: http://rubyworks.github.com/htmlfilter/doc
   code: http://github.com/rubyworks/htmlfilter
   mail: http://groups.google.com/group/rubyworks-mailinglist
 
