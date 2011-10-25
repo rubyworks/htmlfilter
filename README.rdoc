@@ -3,8 +3,8 @@
 
 == RESOURCES
 
-* home: http://rubyworks.github.com/htmlfilter
-* code: http://github.com/rubyworks/htmlfilter
+* {Website}[http://rubyworks.github.com/htmlfilter]
+* {Source Code}[http://github.com/rubyworks/htmlfilter]
 
 
 == DESCRIPTION
@@ -31,7 +31,7 @@ whitespace and most importantly remove URLs.
 
 Via the class.
 
-  html = "<<b>hello</b>"
+  html = "<b>hello</b>"
 
   HTMLFilter.new(options).filter(html)
 
@@ -44,14 +44,14 @@ See API documentation for more information.
 
 == INSTALL
 
-  gem install htmlfilter
+  $ gem install htmlfilter
 
 
 == DEVELOPMENT
 
 HTMLFilter is hosted on GitHub[http://github.com/rubyworks/htmlfilter].
 
-HTMLFilter is a RubyWorks[http://rubyworks.github.com] project.
+HTMLFilter is a Rubyworks[http://rubyworks.github.com] project.
 
 
 == ACKNOWLEDGEMENTS
