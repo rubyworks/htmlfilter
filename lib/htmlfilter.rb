@@ -24,11 +24,7 @@
 #
 # == Copying
 #
-# Copyright (c) 2007 Thomas Sawyer
-#
-# Creative Commons Attribution-ShareAlike 3.0 License
-#
-# See http://creativecommons.org/licenses/by-sa/3.0/
+# Copyright (c) 2009 Thomas Sawyer, Rubyworks (BSD-2-Clause)
 #
 # Thanks to Jang Kim for adding support for single quoted attributes.
 
