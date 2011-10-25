@@ -1,5 +1,6 @@
 #!mast .ruby .yardopts bin lib man spec test [A-Z]*.*
 .ruby
+.yardopts
 lib/cssfilter.rb
 lib/htmlfilter.rb
 test/helper.rb
@@ -7,3 +8,4 @@ test/test_cssfilter.rb
 test/test_htmlfilter.rb
 HISTORY.rdoc
 README.rdoc
+COPYING.rdoc
