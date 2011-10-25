@@ -1,9 +1,8 @@
-require File.expand_path(File.dirname(__FILE__)) + '/helper.rb'
+require './test/helper.rb'
 
-require "test/unit"
 require "cssfilter"
 
-class TestCSSFilter < Test::Unit::TestCase
+class TestCSSFilter < MicroTest::TestCase
 
   def setup
     @css = <<-END
@@ -29,7 +28,8 @@ class TestCSSFilter < Test::Unit::TestCase
   def test_filter
     cssfilter = CSSFilter.new(:allowed_hosts=>["here.org"], :strip_whitespace => true)
     csstree   = cssfilter.filter(@css)
-    assert_equal(@result, csstree.to_s)
+
+    csstree.to_s.assert == @result
   end
 
 end

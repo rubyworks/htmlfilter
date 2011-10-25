@@ -1,22 +1,21 @@
-require File.expand_path(File.dirname(__FILE__)) + '/helper.rb'
+require './test/helper.rb'
 
-require "test/unit"
 require "htmlfilter"
 
-class TestHTMLFilter < Test::Unit::TestCase
+class TestHTMLFilter < MicroTest::TestCase
 
   # core tests
 
   def test_strip_single
     hf = HTMLFilter.new
-    assert_equal( '"', hf.send(:strip_single,'\"') )
-    assert_equal( "\000", hf.send(:strip_single,'\0') )
+    hf.send(:strip_single,'\"').assert == '"'
+    hf.send(:strip_single,'\0').assert == "\000"
   end
 
   # functional tests
 
   def assert_filter(filtered, original)
-    assert_equal(filtered, original.html_filter)
+    original.html_filter.assert == filtered
   end
 
   def test_fix_quotes

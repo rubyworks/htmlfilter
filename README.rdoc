@@ -54,15 +54,19 @@ HTMLFilter is hosted on GitHub[http://github.com/rubyworks/htmlfilter].
 HTMLFilter is a RubyWorks[http://rubyworks.github.com] project.
 
 
-== LICENSE
+== ACKNOWLEDGEMENTS
 
-(Creative Commons Attribution-ShareAlike License)
-
-Copyright (c) 2009 Thomas Sawyer
-
-See http://creativecommons.org/licenses/by-sa/3.0/deed.en
+Thanks to Jang Kim for adding support for single quoted attributes.
 
 HtmlFilter is a port of lib_filter.php, v1.15 by Cal Henderson <cal@iamcal.com>.
 This code is licensed under a Creative Commons Attribution-ShareAlike 2.5 License.
 See http://creativecommons.org/licenses/by-sa/2.5/.
 
+
+== COPYRIGHTS
+
+Copyright (c) 2009 Thomas Sawyer, Rubyworks  (BSD-2)
+
+Copyright (c) 2007 Cal Henderson (CC-BY-SA)
+
+See COPYING.rdoc for details.

@@ -1,0 +1,33 @@
+---
+github:
+  active: true
+
+gem:
+  active: true
+
+dnote:
+  service  : DNote
+  labels   : ~
+  output:
+    - log/NOTES.rdoc
+
+yard:
+  active: true
+
+minitest:
+  tests    : test/test_*.rb
+  loadpath : ~
+  requires : ~
+  active   : true
+
+email:
+  service : Email
+  mailto  : 
+    - rubyworks-mailinglist@googlegroups.com
+    - ruby-talk@ruby-lang.org
+
+vclog:
+  output:
+    - log/Changes.rdoc
+    - log/History.rdoc
+

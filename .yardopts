@@ -1,6 +1,8 @@
 --title "HTMLFilter"
 --readme README.rdoc
---output-dir site/doc
+--protected
 --private
-lib/**/*.rb -
-[A-Z][A-Z]*
+lib/**/*.rb
+-
+[A-Z]*.*
+

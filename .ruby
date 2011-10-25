@@ -1,34 +1,46 @@
---- 
-spec_version: 1.0.0
-replaces: []
-
-loadpath: 
-- lib
-name: htmlfilter
-repositories: 
-  public: git://github.com/rubyworks/htmlfilter.git
+---
+source:
+- meta
+authors:
+- name: Thomas Sawyer
+  email: transfire@gmail.com
+copyrights:
+- holder: Thomas Sawyer, Rubyworks
+  year: '2009'
+  license: BSD-2-Clause
+replacements: []
+alternatives: []
+requirements:
+- name: detroit
+  groups:
+  - build
+  development: true
+- name: microtest
+  groups:
+  - test
+  development: true
+- name: ae
+  groups:
+  - test
+  development: true
+dependencies: []
 conflicts: []
-
-engine_check: []
-
-title: HTMLFilter
-contact: trans <transfire@gmail.com>
-resources: 
+repositories:
+- uri: git://github.com/rubyworks/htmlfilter.git
+  scm: git
+  name: upstream
+resources:
+  home: http://rubyworks.github.com/htmlfilter
+  docs: http://rubydoc.info/gems/htmlfilter
   code: http://github.com/rubyworks/htmlfilter
   mail: http://groups.google.com/group/rubyworks-mailinglist
-  home: http://rubyworks.github.com/htmlfilter
-maintainers: []
-
-requires: []
-
-manifest: Manifest.txt
-version: 1.2.0
-licenses: 
-- Attribution-ShareAlike 3.0
-copyright: Copyright (c) 2009 Thomas Sawyer
-authors: 
-- Thomas Sawyer
-organization: RubyWorks
-description: Sanitize and sterilize HTML, also includes a CSS filter.
+extra: {}
+load_path:
+- lib
+revision: 0
+created: '2009-06-25'
 summary: HTML/CSS Sanity
-created: 2009-06-25
+title: HTMLFilter
+version: 1.2.0
+description: Sanitize and sterilize HTML, also includes a CSS filter.
+date: '2011-10-25'
