@@ -41,7 +41,7 @@ revision: 0
 created: '2009-06-25'
 summary: HTML/CSS Sanity
 title: HTMLFilter
-version: 1.2.0
+version: 1.2.1
 name: htmlfilter
 description: Sanitize and sterilize HTML, also includes a CSS filter.
 date: '2011-10-26'
