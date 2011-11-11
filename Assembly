@@ -1,6 +1,6 @@
 ---
 github:
-  active: true
+  gh_pages: web
 
 gem:
   active: true
@@ -14,11 +14,11 @@ dnote:
 yard:
   active: true
 
-minitest:
-  tests    : test/test_*.rb
-  loadpath : ~
-  requires : ~
-  active   : true
+#ruby-test:
+#  tests    : test/test_*.rb
+#  loadpath : ~
+#  requires : ~
+#  active   : true
 
 email:
   service : Email
