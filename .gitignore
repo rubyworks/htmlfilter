@@ -4,5 +4,4 @@ log
 doc
 pkg
 tmp
-site/docs
-pages
+web

@@ -1,6 +1,6 @@
 ---
 source:
-- meta
+- var
 authors:
 - name: Thomas Sawyer
   email: transfire@gmail.com
@@ -44,4 +44,4 @@ title: HTMLFilter
 version: 1.2.1
 name: htmlfilter
 description: Sanitize and sterilize HTML, also includes a CSS filter.
-date: '2011-10-26'
+date: '2011-11-11'
