@@ -134,18 +134,37 @@ class HTMLFilter
 
   # Relaxed settings allows a great deal of HTML spec.
   #
-  # TODO: Need to expand upon RELAXED options.
-  #
   RELAXED = {
     'allowed' => {
       'a'    => ['class', 'href', 'target'],
       'b'    => ['class'],
       'i'    => ['class'],
-      'img'  => ['class', 'src', 'width', 'height', 'alt'],
+      'img'  => ['class', 'src', 'width', 'height', 'alt', 'id', 'align', 'border'],
       'div'  => ['class'],
       'pre'  => ['class'],
       'code' => ['class'],
-      'ul'   => ['class'], 'ol' => ['class'], 'li' => ['class']
+      'ul'   => ['class'], 'ol' => ['class'], 'li' => ['class'],
+      'blockquote'  => ['class'],
+      'dl'  => ['class'], 'dt'  => ['class'], 'dd'  => ['class'],
+      'h1'  => ['class'], 'h2'  => ['class'], 'h3'  => ['class'], 'h4'  => ['class'],
+      'h5'  => ['class'], 'h6'  => ['class'],
+      'p'  => ['class'],
+      'table'  => ['class', 'border', 'width', 'height', 'cellpadding', 'cellspacing'],
+      'thead'  => ['class', 'align', 'valign'],
+      'tfoot'  => ['class', 'align', 'valign'],
+      'tbody'  => ['class', 'align', 'valign'],
+      'tr'  => ['class', 'align', 'valign'],
+      'th'  => ['class', 'nowrap', 'width', 'align', 'valign', 'colspan', 'rowspan'],
+      'td'  => ['class', 'nowrap', 'width', 'align', 'valign', 'colspan', 'rowspan'],
+      'col'  => ['class', 'width', 'align', 'valign'],
+      'colgroup'  => ['class', 'width', 'align', 'valign'],
+      'hr'  => '',
+      'br'  => '',
+      'span'  => ['class'],
+      'u'  => ['class'],
+      's'  => ['class'],
+      'strong'  => ['class'],
+      'em'  => ['class'],
     },
     'no_close' => ['img', 'br', 'hr'],
     'always_close' => ['a', 'b'],
