@@ -28,20 +28,22 @@ whitespace and most importantly remove URLs.
 
 Via the class.
 
-  html = "<b>hello</b>"
+    html = "<b>hello</b>"
 
-  HTMLFilter.new(options).filter(html)
+    HTMLFilter.new(options).filter(html)
 
 Or using the String extension.
 
-  html.html_filter(options)  #=> "<b>hello</b>"
+    html.html_filter(options)  #=> "<b>hello</b>"
 
 See API documentation for more information.
 
 
 ## Installation
 
-  $ gem install htmlfilter
+Of course, RubyGems is the answer:
+
+    $ gem install htmlfilter
 
 
 ## Development
