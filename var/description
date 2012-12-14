@@ -1,1 +1,2 @@
-Sanitize and sterilize HTML, also includes a CSS filter.
+Pure Ruby library to sanitize and sterilize HTML.
+Also includes a CSS filter.
