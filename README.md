@@ -48,9 +48,9 @@ Of course, RubyGems is the answer:
 
 ## Development
 
-HTMLFilter is hosted on GitHub[http://github.com/rubyworks/htmlfilter].
+HTMLFilter is hosted on [GitHub](http://github.com/rubyworks/htmlfilter).
 
-HTMLFilter is a Rubyworks[http://rubyworks.github.com] project.
+HTMLFilter is a [Rubyworks](http://rubyworks.github.com) project.
 
 
 ## Acknowledgements
