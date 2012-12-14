@@ -2,6 +2,8 @@
 .index
 .ruby
 .yardopts
+bin/cssfilter
+bin/htmlfilter
 lib/cssfilter.rb
 lib/htmlfilter.rb
 test/helper.rb
