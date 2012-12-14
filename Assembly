@@ -9,7 +9,7 @@ dnote:
   service  : DNote
   labels   : ~
   output:
-    - log/NOTES.rdoc
+    - log/NOTES.md
 
 yard:
   active: true
@@ -28,6 +28,6 @@ email:
 
 vclog:
   output:
-    - log/Changes.rdoc
-    - log/History.rdoc
+    - log/Changes.md
+    - log/History.md
 
