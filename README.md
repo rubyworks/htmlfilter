@@ -1,13 +1,10 @@
-= HTMLFilter
+# HTMLFilter
+
+[Website](http://rubyworks.github.com/htmlfilter) /
+[Source Code](http://github.com/rubyworks/htmlfilter)
 
 
-== RESOURCES
-
-* {Website}[http://rubyworks.github.com/htmlfilter]
-* {Source Code}[http://github.com/rubyworks/htmlfilter]
-
-
-== DESCRIPTION
+## Description
 
 HTML Filter library can be used to sanitize and sterilize
 HTML. A good idea if you let users submit HTML in comments,
@@ -18,7 +15,7 @@ clean-up a cascading style sheet. It can be used to remove
 whitespace and most importantly remove URLs.
 
 
-== FEATURES
+## Features
 
 * Based on well-worn PHP library.
 * Regular expression based filtering.
@@ -27,7 +24,7 @@ whitespace and most importantly remove URLs.
 * Also has library to clean and compact cascading stylesheets.
 
 
-== SYNOPSIS
+## Synopsis
 
 Via the class.
 
@@ -42,19 +39,19 @@ Or using the String extension.
 See API documentation for more information.
 
 
-== INSTALL
+## Installation
 
   $ gem install htmlfilter
 
 
-== DEVELOPMENT
+## Development
 
 HTMLFilter is hosted on GitHub[http://github.com/rubyworks/htmlfilter].
 
 HTMLFilter is a Rubyworks[http://rubyworks.github.com] project.
 
 
-== ACKNOWLEDGEMENTS
+## Acknowledgements
 
 Thanks to Jang Kim for adding support for single quoted attributes.
 
@@ -63,10 +60,10 @@ This code is licensed under a Creative Commons Attribution-ShareAlike 2.5 Licens
 See http://creativecommons.org/licenses/by-sa/2.5/.
 
 
-== COPYRIGHTS
+## Copyrights
 
-Copyright (c) 2009 Thomas Sawyer, Rubyworks  (BSD-2)
+* Copyright (c) 2009 Rubyworks (BSD-2-Clause)
+* Copyright (c) 2007 Cal Henderson (CC-BY-SA)
 
-Copyright (c) 2007 Cal Henderson (CC-BY-SA)
+See LICENSE.txt and NOTICE.md for details.
 
-See COPYING.rdoc for details.

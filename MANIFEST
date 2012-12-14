@@ -1,4 +1,5 @@
-#!mast .ruby .yardopts bin lib man spec test [A-Z]*.*
+#!mast .index .ruby .yardopts bin data demo lib man share spec test [A-Z]*.*
+.index
 .ruby
 .yardopts
 lib/cssfilter.rb
@@ -6,6 +7,7 @@ lib/htmlfilter.rb
 test/helper.rb
 test/test_cssfilter.rb
 test/test_htmlfilter.rb
-HISTORY.rdoc
-README.rdoc
-COPYING.rdoc
+LICENSE.txt
+HISTORY.md
+README.md
+NOTICE.md

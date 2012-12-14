@@ -1,6 +1,6 @@
-= RELEASE HISTORY
+# RELEASE HISTORY
 
-== 1.2.1 | 2011-10-26
+## 1.2.1 | 2011-10-26
 
 This release is simply a maintenance release to bring the 
 projects build configuration up to date.
@@ -10,7 +10,7 @@ Changes:
 * Modernize build configuration.
 
 
-== 1.2.0 | 2010-10-13
+## 1.2.0 | 2010-10-13
 
 Finally removed the lowercase variations on the class names.
 You must use HTMLFilter now and not HtmlFilter.
@@ -21,7 +21,7 @@ Changes:
 * No longer Multiton.
 
 
-== 1.1.0 | 2009-11-24
+## 1.1.0 | 2009-11-24
 
 This is release adjusts the names of the classes to
 be capitialized according to the actual use of the
@@ -38,7 +38,10 @@ Changes:
 * Added built-in option constants.
 * CssTree is now CSSFilter::Tree.
 
-== 1.0.0 | 2009-06-25
+
+## 1.0.0 | 2009-06-25
+
+First stand-alone release.
 
 Changes:
 
