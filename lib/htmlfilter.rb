@@ -134,29 +134,95 @@ class HTMLFilter
 
   # Relaxed settings allows a great deal of HTML spec.
   #
-  # TODO: Need to expand upon RELAXED options.
+  # Here is a very comprhensive set of tags with attributes.
   #
   RELAXED = {
-    'allowed' => {
-      'a'    => ['class', 'href', 'target'],
-      'b'    => ['class'],
-      'i'    => ['class'],
-      'img'  => ['class', 'src', 'width', 'height', 'alt'],
-      'div'  => ['class'],
-      'pre'  => ['class'],
-      'code' => ['class'],
-      'ul'   => ['class'], 'ol' => ['class'], 'li' => ['class']
-    },
-    'no_close' => ['img', 'br', 'hr'],
-    'always_close' => ['a', 'b'],
-    'protocol_attributes' => ['src', 'href'],
-    'allowed_protocols' => ['http', 'ftp', 'mailto'],
-    'remove_blanks' => ['a', 'b'],
-    'strip_comments' => true,
-    'always_make_tags' => true,
-    'allow_numbered_entities' => true,
-    'allowed_entities' => ['amp', 'gt', 'lt', 'quot']
-  }
+      'allowed' => {
+        'a'  => ['class', 'href', 'target', 'name', 'id', 'style', 'title'],
+        'abbr'  => ['class', 'dir', 'lang', 'id', 'style', 'title'],
+        'acronym'  => ['class', 'dir', 'lang', 'id', 'style', 'title'],
+        'address'  => ['class', 'dir', 'lang', 'id', 'style', 'title'],
+        #'applet'  => ['class', 'dir', 'lang', 'id', 'style', 'title'],
+        'area' => ['shape', 'cords', 'type', 'nohref', 'href', 'class', 'id', 'style', 'title'],
+        'b'  => ['class', 'id', 'style', 'title'],
+        'base' => ['target', 'type', 'href'], # NO class, id, style, title
+        'basefont' => ['color', 'face', 'size'], # NO class, id, style, title
+        'bdo'  => ['class', 'dir', 'lang', 'id', 'style', 'title'],
+        'bgsound'  => ['loop', 'src'],
+        'big'  => ['class', 'dir', 'lang', 'id', 'style', 'title'],
+        'blockquote' => ['class', 'id', 'style', 'title'],
+        'body' => ['background', 'bgcolor', 'text', 'link', 'vlink', 'class', 'id', 'style', 'title'],
+        'button' => ['disabled', 'name', 'type', 'value', 'accesskey', 'class', 'id', 'style', 'title'],
+        'br' => ['clear', 'class', 'id', 'style', 'title'],  # </br> or <br />
+        'caption' => ['class', 'align', 'valign', 'id', 'style', 'title'],
+        'center' => ['class', 'id', 'style', 'title'],
+        'cite' => ['class', 'id', 'style', 'title'],
+        'code'=> ['class', 'id', 'style', 'title'],
+        'col'  => ['char', 'charoff', 'span', 'class', 'width', 'align', 'valign', 'id', 'style', 'title'],
+        'colgroup'  => ['char', 'charoff', 'span', 'class', 'width', 'align', 'valign', 'id', 'style', 'title'],
+        'div'  => ['class', 'align', 'style', 'id', 'style', 'title'],
+        'dl' => ['class', 'id', 'style', 'title'],
+        'dt' => ['class', 'id', 'style', 'title'],
+        'dd' => ['class', 'id', 'style', 'title'],
+        'em'  => ['class', 'id', 'style', 'title'],
+        'frameset' => ['cols', 'rows', 'class', 'id', 'style', 'title'],
+        'frame' => ['src', 'name', 'noresize', 'scroll', 'marginwidth', 'marginheight', 'class', 'id', 'style', 'title'],
+        'form' => ['method', 'action', 'class', 'id', 'style', 'title'],
+        'font' => ['face', 'size', 'color', 'class', 'id', 'style', 'title'],
+        'head' => [], # NO class, id, style, title
+        'html' => [], # NO class, id, style, title
+        'h1' => ['align', 'class', 'id', 'style', 'title'],
+        'h2' => ['align', 'class', 'id', 'style', 'title'],
+        'h3' => ['align', 'class', 'id', 'style', 'title'],
+        'h4' => ['align', 'class', 'id', 'style', 'title'],
+        'h5' => ['align', 'class', 'id', 'style', 'title'],
+        'h6' => ['align', 'class', 'id', 'style', 'title'],
+        'hr' => ['width', 'size', 'noshade', 'class', 'id', 'style', 'title'], #</hr> or <hr />
+        'i'  => ['class', 'id', 'style', 'title'],
+        'iframe' => ['src', 'name', 'noresize', 'scroll', 'marginwidth', 'marginheight', 'class', 'id', 'style', 'title'],
+        'img' => ['src', 'align', 'width', 'height', 'alt', 'border', 'ISMAP', 'class', 'USEMAP', 'id', 'style', 'title'],
+        'input' => ['name', 'type', 'class', 'id', 'style', 'title'],
+        'li' => ['type', 'start', 'class', 'id', 'style', 'title'],
+        'link' => ['rel', 'type', 'href', 'class', 'id', 'style', 'title'],
+        'map' => ['name', 'class', 'id', 'style', 'title'],
+        'meta' => ['http-equiv', 'content', 'name', 'content'], # NO class, id, style, title
+        'noframes' => [],
+        'option' => ['class', 'id', 'style', 'title'],
+        'ol' => ['type', 'start', 'class', 'id', 'style', 'title'],
+        'p'  => ['align', 'class', 'id', 'style', 'title'],
+        'param' => [], # NO class, id, style, title
+        'pre' => ['class', 'id', 'style', 'title'],
+        's'  => ['class', 'id', 'style', 'title'],
+        'select' => ['name', 'size', 'class', 'id', 'style', 'title'],
+        #'script' => '', # not this for sure
+        'span'  => ['class', 'id', 'style', 'title'],
+        'strong'  => ['class', 'id', 'style', 'title'],
+        'style' => ['type'], # NO class, id, style, title
+        'table' => ['class', 'border', 'width', 'height', 'cellpadding', 'cellspacing', 'bgcolor', 'background', 'id', 'style', 'title'],
+        'tbody' => ['class', 'align', 'valign', 'id', 'style', 'title'],
+        'td' => ['class', 'nowrap', 'width', 'align', 'valign', 'colspan', 'rowspan', 'bgcolor', 'id', 'style', 'title'],
+        'textarea' => ['name', 'rows', 'cols', 'class', 'id', 'style', 'title'],
+        'tfoot' => ['class', 'align', 'valign', 'id', 'style', 'title'],
+        'th' => ['class', 'nowrap', 'width', 'align', 'valign', 'colspan', 'rowspan', 'bgcolor', 'id', 'style', 'title'],
+        'thead' => ['class', 'align', 'valign', 'id', 'style', 'title'],
+        'title' => [], # NO class, id, style, title
+        'tr' => ['class', 'align', 'valign', 'bgcolor', 'id', 'style', 'title'],
+        'tt' => ['class', 'id', 'style', 'title'],
+        'u'  => ['class', 'id', 'style', 'title'],
+        'ul' => ['type', 'class', 'id', 'style', 'title'],
+      },
+      #'body', 'div', 'span', 'br', 'hr', 'p', 'b', 'i', 'tt', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'font', 'blockquote', 'ul', 'ol', 'li', 'dl', 'dt', 'dd', 'a', 'img', 'map', 'area', 'table', 'tr', 'td', 'th', 'thead', 'tfoot', 'tbody', 'caption', 'frameset', 'frame', 'noframes', 'form', 'input', 'select', 'option', 'textarea', 'link', 'col', 'colgroup', 'u', 's', 'strong', 'em', 'base', 'html', 'head', 'title', 'param', 'script', 'meta', 'style' 
+      'no_close' => ['img', 'br', 'hr'],
+      'always_close' => ['a', 'b'],
+      'protocol_attributes' => ['src', 'href'],
+      'allowed_protocols' => ['http', 'ftp', 'mailto', 'https', 'sftp'],
+      'remove_blanks' => ['a', 'b'],
+      'strip_comments' => false, # comments? <!--  -->
+      'always_make_tags' => false,
+      'allow_numbered_entities' => true,
+      'allowed_entities' => ['amp', 'cent', 'copy', 'deg', 'gt', 'lt', 'nbsp', '#174', '#153', 'pound', 'ndash', '#8211', 'mdash', '#8212', 'iexcl', '#161', 'iquest', '#191', 'quot', '#34', 'ldquo', '#8220', 'rdquo', '#8221', '#39', 'lsquo', '#8216', 'rsquo', '#8217', 'laquo', 'raquo', '#171', '#187', 'nbsp', '#160', 'amp', '#38', 'cent', '#162', 'copy', '#169', 'divide', '#247', 'gt', '#62', 'lt', '#60', 'micro', '#181', 'middot', 'para', '#182', 'plusmn', 'euro', '#8364', 'pound', '#163', 'reg', '#174', 'sect', '#167', 'trade', '#153', 'yen', '#165', 'aacute', 'Aacute', '#225', '#193', 'agrave', 'Agrave', '#224', '#192', 'acirc', 'Acirc', '#226', '#194', 'aring', 'Aring', '#229', '#197', 'atilde', 'Atilde', '#227', '#195', 'auml', 'Auml', '#228', '#196', 'aelig', 'AElig', '#230', '#198', 'ccedil', 'Ccedil', '#231', '#199', 'eacute', 'Eacute', '#233', '#201', 'egrave', 'Egrave', '#232', '#200', 'ecirc', 'Ecirc', '#234', '#202', 'euml', 'Euml', '#235', '#203', 'iacute', 'Iacute', '#237', '#205', 'igrave', 'Igrave', '#236', '#204', 'icirc', 'Icirc', '#238', '#206', 'iuml', 'Iuml', '#239', '#207', 'ntilde', 'Ntilde', '#241', '#209', 'oacute', 'Oacute', '#243', '#211', 'ograve', 'Ograve', '#242', '#210', 'ocirc', 'Ocirc', '#244', '#212', 'oslash', 'Oslash', '#248', '#216', 'otilde', 'Otilde', '#245', '#213', 'ouml', 'Ouml', '#246', '#214', 'szlig', '#223', 'uacute', 'Uacute', '#250', '#218', 'ugrave', 'Ugrave', '#249', '#217', 'ucirc', 'Ucirc', '#251', '#219', 'uuml', 'Uuml', '#252', '#220', 'yuml', '#255', '#180', '#96']
+   }
+
 
   # New html filter.
   #
