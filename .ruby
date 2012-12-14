@@ -1,1 +1,1 @@
-htmlfilter 1.2.1 2011-11-11
+htmlfilter 1.3.0 2012-12-14

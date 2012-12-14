@@ -1,0 +1,3 @@
+#!/usr/bin/env ruby
+require 'cssfilter'
+CSSFilter::CLI.run

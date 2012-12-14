@@ -217,5 +217,56 @@ class CSSFilter
 
   end
 
+  # Simple Command line interface for CSSFilter.
+  #
+  # It can be configured via a YAML file.
+  #
+  class CLI
+    def self.run
+      new.run
+    end
+
+    attr_reader :config_file
+
+    attr_reader :options
+
+    def initialize
+      require 'optparse'
+      @config_file = nil
+      @options = {}
+    end
+
+    def parser
+      OptionParser.new do |opt|
+        opt.on('--config <YAML_FILE>', 'filter with custom configuration'){ |file| @config_file = file }
+        opt.on('--debug', 'run in debug mode to see error details'){ $DEBUG = true }
+      end
+    end
+
+    def options
+      if config_file
+        raise "configuration file not found" unless File.exist?(config_file)
+        @options = YAML.load_file(config_file)
+      end
+    end
+
+    def run
+      parser.parse!
+      begin
+        files = ARGV
+        files.each do |f|
+          raise "cssfilter: file not found -- #{f}" unless File.exist?(f)
+        end
+        files.each do |file|
+          css = File.read(file)
+          puts CSSFilter.new(options).filter(css)
+        end
+      rescue => error
+        raise error if $DEBUG
+        $stderr.puts error
+      end
+    end
+  end
+
 end
 

@@ -1,5 +1,17 @@
 # RELEASE HISTORY
 
+## 1.3.0 | 2012-12-14
+
+This release provides a fairly comprehensive set of RELAXED html tags/attributes
+and allowed html entities. All thanks to David Wright. The release also adds
+a basic command line interface.
+
+Changes:
+
+* Make RELAXED set fairly comprehensive.
+* Add basic command line executable.
+
+
 ## 1.2.1 | 2011-10-26
 
 This release is simply a maintenance release to bring the 
