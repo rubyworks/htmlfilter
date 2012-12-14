@@ -1,4 +1,4 @@
-#!mast .index .ruby .yardopts bin data demo lib man share spec test [A-Z]*.*
+#!mast -x Gemfile.lock .index .ruby .yardopts bin data demo lib man share spec test [A-Z]*.*
 .index
 .ruby
 .yardopts
