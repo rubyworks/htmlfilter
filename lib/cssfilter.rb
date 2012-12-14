@@ -22,7 +22,7 @@ require 'uri'
 class CSSFilter
 
   # Library version.
-  VERSION = "1.2.0" # :till: VERSION = <%= version %>
+  VERSION = "1.3.0"
 
   # should we remove comments? (true, false)
   attr_accessor :strip_comments
