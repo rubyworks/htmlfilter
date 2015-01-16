@@ -52,4 +52,7 @@ class TestHTMLFilter < MicroTest::TestCase
     assert_filter '', '<b/></b>'
   end
 
+  def test_multiline_strings
+    assert_filter "<b>\nbold\n</b>", "<b>\nbold\n</b>"
+  end
 end
