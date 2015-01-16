@@ -271,7 +271,7 @@ class HTMLFilter
   #
 
   def escape_comments(data)
-    data = data.gsub(/<!--(.*?)-->/s) do
+    data = data.gsub(/<!--(.*?)-->/m) do
       '<!--' + escape_special_chars(strip_single($1)) + '-->'
     end
 
@@ -312,7 +312,7 @@ class HTMLFilter
   def check_tags(data)
     data = data.dup
 
-    data.gsub!(/<(.*?)>/s){
+    data.gsub!(/<(.*?)>/m){
       process_tag(strip_single($1))
     }
 
@@ -331,7 +331,7 @@ class HTMLFilter
 
     # ending tags
 
-    re = /^\/([a-z0-9]+)/si
+    re = /^\/([a-z0-9]+)/mi
 
     if matches = re.match(data)
         name = matches[1].downcase
@@ -349,7 +349,7 @@ class HTMLFilter
 
     # starting tags
 
-    re = /^([a-z0-9]+)(.*?)(\/?)$/si
+    re = /^([a-z0-9]+)(.*?)(\/?)$/mi
 
     if matches = re.match(data)
         name   = matches[1].downcase
@@ -359,9 +359,9 @@ class HTMLFilter
         if allowed.key?(name)
             params = ""
 
-            matches_2 = body.scan(/([a-z0-9]+)=(["'])(.*?)\2/si)         # <foo a="b" />
-            matches_1 = body.scan(/([a-z0-9]+)(=)([^"\s']+)/si)          # <foo a=b />
-            matches_3 = body.scan(/([a-z0-9]+)=(["'])([^"']*?)\s*$/si)   # <foo a="b />
+            matches_2 = body.scan(/([a-z0-9]+)=(["'])(.*?)\2/mi)         # <foo a="b" />
+            matches_1 = body.scan(/([a-z0-9]+)(=)([^"\s']+)/mi)          # <foo a=b />
+            matches_3 = body.scan(/([a-z0-9]+)=(["'])([^"']*?)\s*$/mi)   # <foo a="b />
 
             matches = matches_1 + matches_2 + matches_3
 
@@ -398,7 +398,7 @@ class HTMLFilter
     end
 
     # comments
-    if /^!--(.*)--$/si =~ data
+    if /^!--(.*)--$/mi =~ data
         if strip_comments
             return ''
         else
@@ -417,7 +417,7 @@ class HTMLFilter
   def process_param_protocol(data)
     data = decode_entities(data)
 
-    re = /^([^:]+)\:/si
+    re = /^([^:]+)\:/mi
 
     if matches = re.match(data)
         unless allowed_protocols.include?(matches[1])
@@ -460,7 +460,7 @@ class HTMLFilter
         return data
     end
 
-    data = data.gsub(/(>|^)([^<]+?)(<|$)/s){
+    data = data.gsub(/(>|^)([^<]+?)(<|$)/m){
         strip_single($1) +
         fix_case_inner(strip_single($2)) +
         strip_single($3)
@@ -498,7 +498,7 @@ class HTMLFilter
     }
 
     # validate quotes outside of tags
-    data.gsub!(/(>|^)([^<]+?)(<|$)/s){
+    data.gsub!(/(>|^)([^<]+?)(<|$)/m){
         m1, m2, m3 = $1, $2, $3
         strip_single(m1) +
         strip_single(m2).gsub('\"', '&quot;') +
